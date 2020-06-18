@@ -9,7 +9,8 @@
              mc:Ignorable="d" >
     <StackPanel>
         <TextBlock Text="Doanh Số" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
-        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Height="300" Name="mcChart" Background="LightSteelBlue" Margin="10" 
+        <!--#FF7199A2-->
+        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Height="300" Name="mcChart" Background="Transparent" BorderThickness="0" Margin="10" 
                    Title="Doanh Số Sản Phẩm"  
                    LegendTitle="Doanh Số Sản Phẩm">
             <DVC:Chart.Series>
@@ -18,7 +19,7 @@
             </DVC:Chart.Series>
         </DVC:Chart>
 
-        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Name="eclipCharts" Height="400" Background="LightSteelBlue" Margin="10"
+        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Name="eclipCharts" Height="400" BorderThickness="0" Background="Transparent" Margin="10"
                    Title="Top Sản Phẩm Bán Chạy">
             <DVC:Chart.Series>
                 <DVC:PieSeries Title="Experience"  IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">

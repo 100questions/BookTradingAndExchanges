@@ -16,7 +16,7 @@
             <!--<Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="170" Content="Tạo Khách Hàng" Margin="10 0" />-->
         </Grid>
         <TabControl Background="LightGray">
-            <TabItem Header="Khách Hàng" Background="LightGray" FontWeight="Bold" Foreground="Gray">
+            <TabItem Header="Khách Hàng" Background="LightGray">
                 <StackPanel>
                     <WrapPanel Orientation="Horizontal">
                         <TextBox Margin="15 25 15 15" MinWidth="400"
@@ -65,7 +65,7 @@
                     </ListView>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Nhà Cung Cấp" Background="LightGray" FontWeight="Bold" Foreground="Gray">
+            <TabItem Header="Nhà Cung Cấp" Background="LightGray">
                 <StackPanel>
                     <WrapPanel Orientation="Horizontal">
                         <TextBox Margin="15 25 15 15" MinWidth="400"

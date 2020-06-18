@@ -43,34 +43,34 @@
         </materialDesign:ColorZone>
         <StackPanel VerticalAlignment="Top" Orientation="Vertical" Width="200" Grid.Row="1" Grid.Column="0">
             <Button x:Name="btnCart" Style="{StaticResource btnMenu}" FontWeight="Bold" FontSize="16" Click="btnCart_Click">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <DockPanel HorizontalAlignment="Center" Width="180">
                     <materialDesign:PackIcon Kind="ShoppingCartArrowDown" Width="50" Height="30" VerticalAlignment="Center" />
-                    <TextBlock Text="Đơn Hàng" Padding="10" />
-                </StackPanel>
+                    <TextBlock Text="Đơn Hàng" Padding="10" Width="120" DockPanel.Dock="Right" />
+                </DockPanel>
             </Button>
             <Button x:Name="btnProduct" Style="{StaticResource btnMenu}" FontWeight="Bold" FontSize="16" Click="btnProduct_Click">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <DockPanel HorizontalAlignment="Center" Width="180">
                     <materialDesign:PackIcon Kind="Book" Width="50" Height="30" VerticalAlignment="Center"/>
-                    <TextBlock Text="Sản Phẩm" Padding="10" />
-                </StackPanel>
+                    <TextBlock Text="Sản Phẩm" Padding="10" Width="120" DockPanel.Dock="Right"/>
+                </DockPanel>
             </Button>
             <Button x:Name="btnUser" Style="{StaticResource btnMenu}" FontWeight="Bold" FontSize="16" Click="btnUser_Click">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <DockPanel HorizontalAlignment="Center" Width="180">
                     <materialDesign:PackIcon Kind="UserSettings" Width="50" Height="30" VerticalAlignment="Center"/>
-                    <TextBlock Text="Khách Hàng" Padding="10" />
-                </StackPanel>
+                    <TextBlock Text="Khách Hàng" Padding="10" DockPanel.Dock="Right" Width="120" />
+                </DockPanel>
             </Button>
             <Button x:Name="btnNhapKho" Style="{StaticResource btnMenu}" FontWeight="Bold" FontSize="16" Click="btnNhapKho_Click">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <DockPanel HorizontalAlignment="Center" Width="180">
                     <materialDesign:PackIcon Kind="Warehouse" Width="50" Height="30" VerticalAlignment="Center"/>
-                    <TextBlock Text="Nhập Kho" Padding="10" />
-                </StackPanel>
+                    <TextBlock Text="Nhập Kho" Padding="10" Width="120" DockPanel.Dock="Right" />
+                </DockPanel>
             </Button>
             <Button x:Name="btnDoanhSo" Style="{StaticResource btnMenu}" FontWeight="Bold" FontSize="16" Click="btnDoanhSo_Click">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <DockPanel HorizontalAlignment="Center" Width="180">
                     <materialDesign:PackIcon Kind="ChartLine" Width="50" Height="30" VerticalAlignment="Center"/>
-                    <TextBlock Text="Doanh Số" Padding="10" />
-                </StackPanel>
+                    <TextBlock Text="Doanh Số" Padding="10" DockPanel.Dock="Right" Width="120" />
+                </DockPanel>
             </Button>
             <materialDesign:ColorZone Background="#407d8b" Height="1000" />
         </StackPanel>
