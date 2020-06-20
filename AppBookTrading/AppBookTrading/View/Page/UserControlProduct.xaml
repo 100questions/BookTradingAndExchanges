@@ -11,41 +11,58 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Danh Sách Sản Phẩm" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
-            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="170" Content="Tạo Sản Phẩm" Margin="10 0" /> 
+            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Import Excel" Margin="5 0" />
+            <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Export Excel" Margin="5 0" />
         </Grid>
-        <WrapPanel Orientation="Horizontal">
-            <TextBox Margin="15 25 15 15" MinWidth="400"
+        <Border BorderThickness="0.5" BorderBrush="#407d8b" Padding="10" Margin="10">
+            <StackPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox Margin="15 25 15 15" MinWidth="200"
                     x:Name="txtTimSanPham"
                      Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Nhập Mã Sản Phẩm Hoặc Tên Sản Phẩm" />
-            <ComboBox Name="cbbTranThai"
+                     materialDesign:HintAssist.Hint="Mã Sản Phẩm" />
+
+                    <TextBox Margin="15 25 15 15" MinWidth="200"
+                    x:Name="txtTenSP"
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     materialDesign:HintAssist.Hint="Tên Sản Phẩm" />
+
+                    <TextBox Margin="15 25 15 15" MinWidth="150"
+                    x:Name="txtGiBan"
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     materialDesign:HintAssist.Hint="Giá Bán" />
+
+                    <ComboBox Name="cbbTranThai"
                   materialDesign:HintAssist.Hint="Đang Kinh Doanh"
                   MinWidth="140"
                   Margin="15 15 25 15"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-            </ComboBox>
-            <ComboBox Name="cbbDanhMucSP"
+                    </ComboBox>
+                    <ComboBox Name="cbbDanhMucSP"
                   materialDesign:HintAssist.Hint="Danh Mục Sản Phẩm"
                   MinWidth="140"
                   Margin="15 15 25 15"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-            </ComboBox>
-            <ComboBox Name="cbbNhaXuatBan"
+                    </ComboBox>
+                    <ComboBox Name="cbbNhaXuatBan"
                   materialDesign:HintAssist.Hint="Nha Xuất Bản"
                   MinWidth="140"
                   Margin="15 15 25 15"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-            </ComboBox>
-            <Button
-                x:Name="btnTimKiem"
-                Background="#407d8b"
-                BorderThickness="0"
-                Width="100"
-                Content="Tìm kiếm" />
+                    </ComboBox>
 
-        </WrapPanel>
+                </WrapPanel>
+                <DockPanel Margin="10 20 10 10" HorizontalAlignment="Right">
+                    <Button x:Name="btnTimKiem" Background="#407d8b" BorderThickness="0" Width="100" Content="Tìm kiếm" Margin="5 0" />
+                    <Button Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Tạo Sản Phẩm" Margin="5 0" />
+                    <Button Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="70" Content="Sửa" Margin="5 0" />
+                    <Button Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="70" Content="Xóa" Margin="5 0" />
+                </DockPanel>
+            </StackPanel>
+        </Border>
         <ListView
           ItemsSource="{Binding Items1}">
             <ListView.View>

@@ -7,7 +7,16 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <StackPanel Margin="10 0" Background="LightGray">
-        <TextBlock Text="Danh Sách Đơn Hàng" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Danh Sách Đơn Hàng" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
+            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Hủy Đơn" Margin="5 0" />
+            <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Hoàn Thành" Margin="5 0" />
+        </Grid>
         <WrapPanel Orientation="Horizontal">
             <TextBox Margin="15" Width="200"
                     x:Name="NameTextBox"

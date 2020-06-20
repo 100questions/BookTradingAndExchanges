@@ -69,7 +69,7 @@
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Center" Height="40" Margin="0 10 0 0">
-                    <Border Margin="7 0 7 0" Background="#5A9AA8" CornerRadius="7" BorderThickness="0">
+                    <Border Margin="7 0 7 0" Background="#407d8b" CornerRadius="7" BorderThickness="0">
                         <Button
                             BorderThickness="0"
                             Height="40" Width="135" 
@@ -97,7 +97,7 @@
                         </Button>
                     </Border>
 
-                    <Border Margin="7 0 7 0" Background="#C15651" CornerRadius="7" BorderThickness="0">
+                    <Border Margin="7 0 7 0" Background="#FF99433F" CornerRadius="7" BorderThickness="0">
                         <Button 
                             x:Name="btnClose" Click="btnClose_Click"
                         BorderThickness="0"
