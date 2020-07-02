@@ -15,10 +15,10 @@ namespace BookStoreServices.Controllers
         private SachRepository _repository = new SachRepository();
         [HttpGet]
         [Route("api/Sach")]
-        public HttpResponseMessage GetSachs()
+        public HttpResponseMessage Get()
         {
-            var sachs = _repository.List();
-            if(sachs != null)
+            var items = _repository.List();
+            if(items != null)
             {
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List());
             }
@@ -29,14 +29,14 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
-        [Route("api/Sach/{maSach}")]
-        public HttpResponseMessage GetSachs(string maSach)
+        [Route("api/Sach/{ma}")]
+        public HttpResponseMessage Get(string ma)
         {
-            SACH_DTO sach = _repository.Get(maSach);
+            SACH_DTO item_dto = _repository.Get(ma);
 
-            if (sach != null)
+            if (item_dto != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, sach);
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
             }
             else
             {
@@ -46,43 +46,43 @@ namespace BookStoreServices.Controllers
 
         [HttpPost]
         [Route("api/Sach")]
-        public HttpResponseMessage PostSach([FromBody] SACH s)
+        public HttpResponseMessage Post([FromBody] SACH item)
         {
-            SACH_DTO sach_dto = _repository.conVertBookToDTO(s);
-            _repository.Add(sach_dto);
-            return Request.CreateResponse(HttpStatusCode.OK, "Book is posted");
+            SACH_DTO item_dto = _repository.convertToDTO(item);
+            _repository.Add(item_dto);
+            return Request.CreateResponse(HttpStatusCode.OK, "The book is posted");
         }
 
         [HttpPut]
-        [Route("api/Sach/{maSach}")]
-        public HttpResponseMessage PutSach([FromBody] SACH s, string maSach)
+        [Route("api/Sach/{ma}")]
+        public HttpResponseMessage Put([FromBody] SACH item, string ma)
         {
-            var check = _repository.Get(maSach);
+            var check = _repository.Get(ma);
             if (check != null)
             {
-                SACH_DTO sach_dto = _repository.conVertBookToDTO(s);
-                _repository.Update(sach_dto, maSach);
-                return Request.CreateResponse(HttpStatusCode.OK, "Book is updated");
+                SACH_DTO item_dto = _repository.convertToDTO(item);
+                _repository.Update(item_dto, ma);
+                return Request.CreateResponse(HttpStatusCode.OK, "The book is updated");
             }
             else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Book is not existed");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The book is not existed");
             }
         }
 
         [HttpDelete]
-        [Route("api/Sach/{maSach}")]
-        public HttpResponseMessage DeleteSach(string maSach)
+        [Route("api/Sach/{ma}")]
+        public HttpResponseMessage Delete(string ma)
         {
-            var check = _repository.Get(maSach);
+            var check = _repository.Get(ma);
             if (check != null)
             {
-                _repository.Delete(maSach);
-                return Request.CreateResponse(HttpStatusCode.OK, "Book is deleted");
+                _repository.Delete(ma);
+                return Request.CreateResponse(HttpStatusCode.OK, "The book is deleted");
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "Book is not existed");
+                return Request.CreateResponse(HttpStatusCode.OK, "The book is not existed");
             }
         }
     }

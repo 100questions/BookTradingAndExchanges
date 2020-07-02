@@ -16,10 +16,10 @@ namespace BookStoreServices.Controllers
         private NhanVienRepository _repository = new NhanVienRepository();
         [HttpGet]
         [Route("api/NhanVien")]
-        public HttpResponseMessage GetNhanViens()
+        public HttpResponseMessage Get()
         {
-            var nvs = _repository.List();
-            if (nvs != null)
+            var items = _repository.List();
+            if (items != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, _repository.List());
             }
@@ -30,13 +30,13 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
-        [Route("api/NhanVien/{manv}")]
-        public HttpResponseMessage GetNhanVien(string manv)
+        [Route("api/NhanVien/{ma}")]
+        public HttpResponseMessage GetNhanVien(string ma)
         {
-            var nv = _repository.Get(manv);
-            if (nv != null)
+            var item = _repository.Get(ma);
+            if (item != null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, nv);
+                return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             else
             {
@@ -46,22 +46,22 @@ namespace BookStoreServices.Controllers
 
         [HttpPost]
         [Route("api/NhanVien")]
-        public HttpResponseMessage PostNhanVien([FromBody] NHANVIEN nv)
+        public HttpResponseMessage Post([FromBody] NHANVIEN item)
         {
-            NHANVIEN_DTO nv_dto = _repository.conVertNhanVienToDTO(nv);
-            _repository.Add(nv_dto);
+            NHANVIEN_DTO item_dto = _repository.conVertNhanVienToDTO(item);
+            _repository.Add(item_dto);
             return Request.CreateResponse(HttpStatusCode.OK, "Staff is posted");
         }
 
         [HttpPut]
-        [Route("api/NhanVien/{manv}")]
-        public HttpResponseMessage PutNhanVien([FromBody] NHANVIEN nv, string manv)
+        [Route("api/NhanVien/{ma}")]
+        public HttpResponseMessage Put([FromBody] NHANVIEN item, string ma)
         {
-            var check = _repository.Get(manv);
+            var check = _repository.Get(ma);
             if(check != null)
             {
-                NHANVIEN_DTO nv_dto = _repository.conVertNhanVienToDTO(nv);
-                _repository.Update(nv_dto, manv);
+                NHANVIEN_DTO item_dto = _repository.conVertNhanVienToDTO(item);
+                _repository.Update(item_dto, ma);
                 return Request.CreateResponse(HttpStatusCode.OK, "Staff is updated");
             }
             else
@@ -71,13 +71,13 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpDelete]
-        [Route("api/NhanVien/{manv}")]
-        public HttpResponseMessage DeleteNhanVien(string manv)
+        [Route("api/NhanVien/{ma}")]
+        public HttpResponseMessage Delete(string ma)
         {
-            var check = _repository.Get(manv);
+            var check = _repository.Get(ma);
             if(check != null)
             {
-                _repository.Delete(manv);
+                _repository.Delete(ma);
                 return Request.CreateResponse(HttpStatusCode.OK, "Staff is deleted");
             }
             else
