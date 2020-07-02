@@ -14,7 +14,7 @@ namespace BookStoreServices.Repository
         private BookStoreDataContext db = new BookStoreDataContext();
         public void Add(SACH_DTO item)
         {
-            SACH s = conVertBookBackFromDTO(item);
+            SACH s = convertBackFromDTO(item);
             db.SACHes.InsertOnSubmit(s);
             db.SubmitChanges();
 
@@ -22,12 +22,12 @@ namespace BookStoreServices.Repository
 
         public List<SACH_DTO> List()
         {
-            return db.SACHes.Select(x => conVertBookToDTO(x)).ToList();
+            return db.SACHes.Select(x => convertToDTO(x)).ToList();
         }
 
         public SACH_DTO Get(string maSach)
         {
-            return db.SACHes.Where(t => t.MASACH.Equals(maSach)).Select(x => conVertBookToDTO(x)).FirstOrDefault();
+            return db.SACHes.Where(t => t.MASACH.Equals(maSach)).Select(x => convertToDTO(x)).FirstOrDefault();
         }
 
         public void Delete(string maSach)
@@ -52,7 +52,7 @@ namespace BookStoreServices.Repository
         }
 
 
-        public SACH_DTO conVertBookToDTO(SACH s)
+        public SACH_DTO convertToDTO(SACH s)
         {
             SACH_DTO sach = new SACH_DTO();
             sach.MASACH = s.MASACH;
@@ -66,7 +66,7 @@ namespace BookStoreServices.Repository
             return sach;
         }
 
-        public SACH conVertBookBackFromDTO(SACH_DTO s)
+        public SACH convertBackFromDTO(SACH_DTO s)
         {
             SACH sach = new SACH();
             sach.MASACH = s.MASACH;
