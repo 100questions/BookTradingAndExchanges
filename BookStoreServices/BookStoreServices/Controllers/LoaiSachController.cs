@@ -22,7 +22,7 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if (items != null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, _repository.List());
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
             }
             else
             {
@@ -34,7 +34,7 @@ namespace BookStoreServices.Controllers
         [Route("api/LoaiSach/{ma}")]
         public HttpResponseMessage Get(string ma)
         {
-            var item = _repository.Get(ma);
+            var item = _repository.convertToDTO(_repository.Get(ma));
             if (item != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, item);
@@ -49,8 +49,7 @@ namespace BookStoreServices.Controllers
         [Route("api/LoaiSach")]
         public HttpResponseMessage Post([FromBody] LOAISACH item)
         {
-            LOAISACH_DTO item_dto = _repository.convertToDTO(item);
-            _repository.Add(item_dto);
+            _repository.Add(item);
             return Request.CreateResponse(HttpStatusCode.OK, "The type books is posted");
         }
 
@@ -61,8 +60,7 @@ namespace BookStoreServices.Controllers
             var check = _repository.Get(ma);
             if (check != null)
             {
-                LOAISACH_DTO item_dto = _repository.convertToDTO(item);
-                _repository.Update(item_dto, ma);
+                _repository.Update(item, ma);
                 return Request.CreateResponse(HttpStatusCode.OK, "The type of books is updated");
             }
             else

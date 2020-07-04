@@ -9,25 +9,24 @@ using System.Xml;
 
 namespace BookStoreServices.Repository
 {
-    public class SachRepository : IRepository<SACH_DTO>
+    public class SachRepository : IRepository<SACH>
     {
         private BookStoreDataContext db = new BookStoreDataContext();
-        public void Add(SACH_DTO item)
+        public void Add(SACH item)
         {
-            SACH s = convertBackFromDTO(item);
-            db.SACHes.InsertOnSubmit(s);
+            db.SACHes.InsertOnSubmit(item);
             db.SubmitChanges();
 
         }
 
-        public List<SACH_DTO> List()
+        public List<SACH> List()
         {
-            return db.SACHes.Select(x => convertToDTO(x)).ToList();
+            return db.SACHes.ToList();
         }
 
-        public SACH_DTO Get(string maSach)
+        public SACH Get(string maSach)
         {
-            return db.SACHes.Where(t => t.MASACH.Equals(maSach)).Select(x => convertToDTO(x)).FirstOrDefault();
+            return db.SACHes.Where(t => t.MASACH.Equals(maSach)).FirstOrDefault();
         }
 
         public void Delete(string maSach)
@@ -36,10 +35,9 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public void Update(SACH_DTO s, string maSach)
+        public void Update(SACH s, string maSach)
         {
-            SACH sach = new SACH();
-            sach = db.SACHes.FirstOrDefault(t => t.MASACH.Equals(maSach));
+            SACH sach = db.SACHes.FirstOrDefault(t => t.MASACH.Equals(maSach));
             sach.MASACH = s.MASACH;
             sach.MANXB = s.MANXB;
             sach.TENSACH = s.TENSACH;
@@ -54,30 +52,30 @@ namespace BookStoreServices.Repository
 
         public SACH_DTO convertToDTO(SACH s)
         {
-            SACH_DTO sach = new SACH_DTO();
-            sach.MASACH = s.MASACH;
-            sach.MANXB = s.MANXB;
-            sach.TENSACH = s.TENSACH;
-            sach.TACGIA = s.TACGIA;
-            sach.THELOAI = s.THELOAI;
-            sach.GIABANSACH = s.GIABANSACH;
-            sach.GIANHAPSACH = s.GIANHAPSACH;
-            sach.SLTON = s.SLTON;
-            return sach;
+            SACH_DTO s_dto = new SACH_DTO();
+            s_dto.MASACH = s.MASACH;
+            s_dto.MANXB = s.MANXB;
+            s_dto.TENSACH = s.TENSACH;
+            s_dto.TACGIA = s.TACGIA;
+            s_dto.THELOAI = s.THELOAI;
+            s_dto.GIABANSACH = s.GIABANSACH;
+            s_dto.GIANHAPSACH = s.GIANHAPSACH;
+            s_dto.SLTON = s.SLTON;
+            return s_dto;
         }
 
-        public SACH convertBackFromDTO(SACH_DTO s)
+        public SACH convertBackFromDTO(SACH_DTO s_dto)
         {
-            SACH sach = new SACH();
-            sach.MASACH = s.MASACH;
-            sach.MANXB = s.MANXB;
-            sach.TENSACH = s.TENSACH;
-            sach.TACGIA = s.TACGIA;
-            sach.THELOAI = s.THELOAI;
-            sach.GIABANSACH = s.GIABANSACH;
-            sach.GIANHAPSACH = s.GIANHAPSACH;
-            sach.SLTON = s.SLTON;
-            return sach;
+            SACH s = new SACH();
+            s.MASACH = s_dto.MASACH;
+            s.MANXB = s_dto.MANXB;
+            s.TENSACH = s_dto.TENSACH;
+            s.TACGIA = s_dto.TACGIA;
+            s.THELOAI = s_dto.THELOAI;
+            s.GIABANSACH = s_dto.GIABANSACH;
+            s.GIANHAPSACH = s_dto.GIANHAPSACH;
+            s.SLTON = s_dto.SLTON;
+            return s;
         }
     }
 }

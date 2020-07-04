@@ -125,15 +125,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ChucVuController.cs" />
+    <Compile Include="Controllers\CT_PhieuDoiTraSachController.cs" />
+    <Compile Include="Controllers\CT_PhieuNhapSachController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoaiSachController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhaXuatBanController.cs" />
+    <Compile Include="Controllers\PhieuDoiTraController.cs" />
+    <Compile Include="Controllers\PHIEUNHAPSACHController.cs" />
+    <Compile Include="Controllers\QL_NguoiDungController.cs" />
     <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="DTO\CHUCVU_DTO.cs" />
+    <Compile Include="DTO\CT_PHIEUDOITRASACH_DTO.cs" />
     <Compile Include="DTO\HOADON_DTO.cs" />
     <Compile Include="DTO\LOAISACH_DTO.cs" />
     <Compile Include="DTO\NHANVIEN_DTO.cs" />
     <Compile Include="DTO\NHAXUATBAN_DTO.cs" />
+    <Compile Include="DTO\PHIEUDOITRASACH_DTO.cs" />
+    <Compile Include="DTO\PHIEUNHAPSACH_DTO.cs" />
+    <Compile Include="DTO\QL_NGUOIDUNG_DTO.cs" />
     <Compile Include="DTO\SACH_DTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,15 +163,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Repository\ChiTietHoaDonRepository.cs" />
-    <Compile Include="Repository\ChiTietPhieuDoiTraRepository.cs" />
+    <Compile Include="Repository\ChiTietPhieuDoiTraSachRepository.cs" />
     <Compile Include="Repository\ChiTietPhieuNhapSachRepository.cs" />
     <Compile Include="Repository\ChucVuRepository.cs" />
+    <Compile Include="DTO\CT_PHIEUNHAPSACH_DTO.cs" />
     <Compile Include="Repository\HoaDonRepository.cs" />
     <Compile Include="Repository\KhachHangRepository.cs" />
+    <Compile Include="DTO\KHACHHANG_DTO.cs" />
     <Compile Include="Repository\LoaiSachRepository.cs" />
     <Compile Include="Repository\NhanVienRepository.cs" />
     <Compile Include="Repository\NhaXuatBanRepository.cs" />
-    <Compile Include="Repository\PhieuDoiTraRepository.cs" />
+    <Compile Include="Repository\PhieuDoiTraSachRepository.cs" />
     <Compile Include="Repository\PhieuNhapSachRepository.cs" />
     <Compile Include="Repository\QuanLyNguoiDungRepository.cs" />
     <Compile Include="Repository\SachRepository.cs" />
@@ -188,7 +202,6 @@
       <DependentUpon>BookStore.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\BookStoreAPITest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\BookStoreServices - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>

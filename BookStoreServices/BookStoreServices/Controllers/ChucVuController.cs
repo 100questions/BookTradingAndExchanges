@@ -6,16 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace BookStoreServices.Controllers
 {
-    public class HoaDonController : ApiController
+    public class ChucVuController : ApiController
     {
-        private HoaDonRepository _repository = new HoaDonRepository();
+        private ChucVuRepository _repository = new ChucVuRepository();
         [HttpGet]
-        [Route("api/HoaDon")]
+        [Route("api/ChucVu")]
         public HttpResponseMessage Get()
         {
             var items = _repository.List();
@@ -30,10 +29,10 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
-        [Route("api/HoaDon/{ma}")]
+        [Route("api/ChucVu/{ma}")]
         public HttpResponseMessage Get(string ma)
         {
-            HOADON_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
+            CHUCVU_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
             if (item_dto != null)
             {
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
@@ -45,16 +44,16 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpPost]
-        [Route("api/HoaDon")]
-        public HttpResponseMessage Post([FromBody] HOADON item)
+        [Route("api/ChucVu")]
+        public HttpResponseMessage Post([FromBody] CHUCVU item)
         {
             _repository.Add(item);
             return Request.CreateResponse(HttpStatusCode.OK, "The bill is posted");
         }
 
         [HttpPut]
-        [Route("api/HoaDon/{ma}")]
-        public HttpResponseMessage Put([FromBody] HOADON item, string ma)
+        [Route("api/ChucVu/{ma}")]
+        public HttpResponseMessage Put([FromBody] CHUCVU item, string ma)
         {
             var check = _repository.Get(ma);
             if (check != null)
@@ -69,7 +68,7 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpDelete]
-        [Route("api/HoaDon/{ma}")]
+        [Route("api/ChucVu/{ma}")]
         public HttpResponseMessage Delete(string ma)
         {
             var check = _repository.Get(ma);

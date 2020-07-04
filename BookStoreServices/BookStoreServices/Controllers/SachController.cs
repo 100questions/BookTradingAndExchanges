@@ -20,7 +20,7 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if(items != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List());
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
             }
             else
             {
@@ -32,8 +32,7 @@ namespace BookStoreServices.Controllers
         [Route("api/Sach/{ma}")]
         public HttpResponseMessage Get(string ma)
         {
-            SACH_DTO item_dto = _repository.Get(ma);
-
+            SACH_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
             if (item_dto != null)
             {
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
@@ -48,8 +47,7 @@ namespace BookStoreServices.Controllers
         [Route("api/Sach")]
         public HttpResponseMessage Post([FromBody] SACH item)
         {
-            SACH_DTO item_dto = _repository.convertToDTO(item);
-            _repository.Add(item_dto);
+            _repository.Add(item);
             return Request.CreateResponse(HttpStatusCode.OK, "The book is posted");
         }
 
@@ -57,11 +55,10 @@ namespace BookStoreServices.Controllers
         [Route("api/Sach/{ma}")]
         public HttpResponseMessage Put([FromBody] SACH item, string ma)
         {
-            var check = _repository.Get(ma);
+            var check = _repository.Get(ma);    
             if (check != null)
             {
-                SACH_DTO item_dto = _repository.convertToDTO(item);
-                _repository.Update(item_dto, ma);
+                _repository.Update(item, ma);
                 return Request.CreateResponse(HttpStatusCode.OK, "The book is updated");
             }
             else

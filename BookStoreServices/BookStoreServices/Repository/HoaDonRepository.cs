@@ -8,13 +8,12 @@ using System.Web;
 
 namespace BookStoreServices.Repository
 {
-    public class HoaDonRepository : IRepository<HOADON_DTO>
+    public class HoaDonRepository : IRepository<HOADON>
     {
         BookStoreDataContext db = new BookStoreDataContext();
-        public void Add(HOADON_DTO item)
+        public void Add(HOADON item)
         {
-            HOADON hd = convertBackFromDTO(item);
-            db.HOADONs.InsertOnSubmit(hd);
+            db.HOADONs.InsertOnSubmit(item);
             db.SubmitChanges();
         }
 
@@ -24,26 +23,24 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public HOADON_DTO Get(string ma)
+        public HOADON Get(string ma)
         {
-            return db.HOADONs.Where(t => t.MAHD.Equals(ma)).Select(x => convertToDTO(x)).FirstOrDefault();
+            return db.HOADONs.Where(t => t.MAHD.Equals(ma)).FirstOrDefault();
         }
 
-        public List<HOADON_DTO> List()
+        public List<HOADON> List()
         {
-            return db.HOADONs.Select(x => convertToDTO(x)).ToList();
+            return db.HOADONs.ToList();
         }
 
-        public void Update(HOADON_DTO item, string ma)
+        public void Update(HOADON item, string ma)
         {
             HOADON hd = db.HOADONs.Where(t => t.MAHD.Equals(ma)).FirstOrDefault();
             hd.MAHD = item.MAHD;
             hd.MAKH = item.MAKH;
             hd.NGAYLAPHD = DateTime.Parse(item.NGAYLAPHD.ToString());
-            //double validValue = null;
-            //hd.THANHTIEN = double.TryParse(item.THANHTIEN, out double va)
-            
-
+            hd.THANHTIEN = Convert.ToDouble(item.THANHTIEN);
+            db.SubmitChanges();
         }
 
         public HOADON_DTO convertToDTO(HOADON hd)
@@ -64,7 +61,6 @@ namespace BookStoreServices.Repository
             hd.MAKH = hd_dto.MAKH;
             DateTime validValue;
             hd.NGAYLAPHD = DateTime.TryParse(hd_dto.NGAYLAPHD.ToString(), out validValue) ? validValue : (DateTime?)null;
-            //hd.NGAYLAPHD = DateTime.Parse(hd_dto.NGAYLAPHD.ToString());
             hd.THANHTIEN = Convert.ToDouble(hd.THANHTIEN);
             return hd_dto;
         }

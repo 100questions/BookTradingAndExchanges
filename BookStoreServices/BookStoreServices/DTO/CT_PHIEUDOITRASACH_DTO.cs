@@ -5,13 +5,11 @@ using System.Web;
 
 namespace BookStoreServices.DTO
 {
-    public class HOADON_DTO
+    public class CT_PHIEUDOITRASACH_DTO
     {
+        public string MASP { get; set; }
+        public string MAPHIEUDOI { get; set; }
         public string MAHD { get; set; }
-        public string MAKH { get; set; }
-        public DateTime? NGAYLAPHD { get; set; }
-        public double THANHTIEN { get; set; }
+        public int SL { get; set; }
     }
-
-
 }

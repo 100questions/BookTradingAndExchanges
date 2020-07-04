@@ -22,7 +22,7 @@ namespace BookStoreServices.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BookStoreDB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbbookstore")]
 	public partial class BookStoreDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -72,7 +72,7 @@ namespace BookStoreServices.Models
     #endregion
 		
 		public BookStoreDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BookStoreDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbbookstoreConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -781,7 +781,7 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<int> _SLNHAP;
 		
-		private System.Nullable<int> _THANHTIEN;
+		private System.Nullable<double> _THANHTIEN;
 		
 		private EntityRef<PHIEUNHAPSACH> _PHIEUNHAPSACH;
 		
@@ -797,7 +797,7 @@ namespace BookStoreServices.Models
     partial void OnMAPHIEUChanged();
     partial void OnSLNHAPChanging(System.Nullable<int> value);
     partial void OnSLNHAPChanged();
-    partial void OnTHANHTIENChanging(System.Nullable<int> value);
+    partial void OnTHANHTIENChanging(System.Nullable<double> value);
     partial void OnTHANHTIENChanged();
     #endregion
 		
@@ -876,8 +876,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THANHTIEN", DbType="Int")]
-		public System.Nullable<int> THANHTIEN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THANHTIEN", DbType="Float")]
+		public System.Nullable<double> THANHTIEN
 		{
 			get
 			{
@@ -1044,7 +1044,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="Char(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50)")]
 		public string MAKH
 		{
 			get
@@ -1204,7 +1204,7 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<bool> _GIOITINH;
 		
-		private string _CMND;
+		private string _MatKhauDN;
 		
 		private EntitySet<HOADON> _HOADONs;
 		
@@ -1222,8 +1222,8 @@ namespace BookStoreServices.Models
     partial void OnDIACHIChanged();
     partial void OnGIOITINHChanging(System.Nullable<bool> value);
     partial void OnGIOITINHChanged();
-    partial void OnCMNDChanging(string value);
-    partial void OnCMNDChanged();
+    partial void OnMatKhauDNChanging(string value);
+    partial void OnMatKhauDNChanged();
     #endregion
 		
 		public KHACHHANG()
@@ -1232,7 +1232,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAKH
 		{
 			get
@@ -1332,22 +1332,22 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CMND", DbType="NChar(12)")]
-		public string CMND
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhauDN", DbType="NChar(12) NOT NULL", CanBeNull=false)]
+		public string MatKhauDN
 		{
 			get
 			{
-				return this._CMND;
+				return this._MatKhauDN;
 			}
 			set
 			{
-				if ((this._CMND != value))
+				if ((this._MatKhauDN != value))
 				{
-					this.OnCMNDChanging(value);
+					this.OnMatKhauDNChanging(value);
 					this.SendPropertyChanging();
-					this._CMND = value;
-					this.SendPropertyChanged("CMND");
-					this.OnCMNDChanged();
+					this._MatKhauDN = value;
+					this.SendPropertyChanged("MatKhauDN");
+					this.OnMatKhauDNChanged();
 				}
 			}
 		}
@@ -2220,7 +2220,7 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<System.DateTime> _NGAYNHAP;
 		
-		private System.Nullable<int> _THANHTIENPHIEUNHAP;
+		private System.Nullable<double> _THANHTIENPHIEUNHAP;
 		
 		private EntitySet<CT_PHIEUNHAPSACH> _CT_PHIEUNHAPSACHes;
 		
@@ -2236,7 +2236,7 @@ namespace BookStoreServices.Models
     partial void OnMANVChanged();
     partial void OnNGAYNHAPChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYNHAPChanged();
-    partial void OnTHANHTIENPHIEUNHAPChanging(System.Nullable<int> value);
+    partial void OnTHANHTIENPHIEUNHAPChanging(System.Nullable<double> value);
     partial void OnTHANHTIENPHIEUNHAPChanged();
     #endregion
 		
@@ -2311,8 +2311,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THANHTIENPHIEUNHAP", DbType="Int")]
-		public System.Nullable<int> THANHTIENPHIEUNHAP
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THANHTIENPHIEUNHAP", DbType="Float")]
+		public System.Nullable<double> THANHTIENPHIEUNHAP
 		{
 			get
 			{

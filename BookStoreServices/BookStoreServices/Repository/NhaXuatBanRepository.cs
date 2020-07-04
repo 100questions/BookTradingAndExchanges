@@ -8,13 +8,12 @@ using System.Web;
 
 namespace BookStoreServices.Repository
 {
-    public class NhaXuatBanRepository : IRepository<NHAXUATBAN_DTO>
+    public class NhaXuatBanRepository : IRepository<NHAXUATBAN>
     {
         BookStoreDataContext db = new BookStoreDataContext();
-        public void Add(NHAXUATBAN_DTO item)
+        public void Add(NHAXUATBAN item)
         {
-            NHAXUATBAN nxb = convertBackFromDTO(item);
-            db.NHAXUATBANs.InsertOnSubmit(nxb);
+            db.NHAXUATBANs.InsertOnSubmit(item);
             db.SubmitChanges();
         }
 
@@ -24,23 +23,23 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public NHAXUATBAN_DTO Get(string ma)
+        public NHAXUATBAN Get(string ma)
         {
-            return db.NHAXUATBANs.Where(t => t.MANXB.Equals(ma)).Select(x => convertToDTO(x)).FirstOrDefault();
+            return db.NHAXUATBANs.Where(t => t.MANXB.Equals(ma)).FirstOrDefault();
         }
 
-        public List<NHAXUATBAN_DTO> List()
+        public List<NHAXUATBAN> List()
         {
-            return db.NHAXUATBANs.Select(t => convertToDTO(t)).ToList();
+            return db.NHAXUATBANs.ToList();
         }
 
-        public void Update(NHAXUATBAN_DTO item, string ma)
+        public void Update(NHAXUATBAN item, string ma)
         {
-            NHAXUATBAN nxb = new NHAXUATBAN();
+            NHAXUATBAN nxb = db.NHAXUATBANs.Where(t => t.MANXB.Equals(ma)).FirstOrDefault();
             nxb.MANXB = item.MANXB;
             nxb.TENNXB = item.TENNXB;
             nxb.DIACHI = item.DIACHI;
-            nxb.SODIENTHOAI = item.SDT;
+            nxb.SODIENTHOAI = item.SODIENTHOAI;
             db.SubmitChanges();
         }
 

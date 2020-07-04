@@ -8,13 +8,12 @@ using System.Web;
 
 namespace BookStoreServices.Repository
 {
-    public class LoaiSachRepository : IRepository<LOAISACH_DTO>
+    public class LoaiSachRepository : IRepository<LOAISACH>
     {
         BookStoreDataContext db = new BookStoreDataContext();
-        public void Add(LOAISACH_DTO item)
+        public void Add(LOAISACH item)
         {
-            LOAISACH ls = convertBackFromDTO(item);
-            db.LOAISACHes.InsertOnSubmit(ls);
+            db.LOAISACHes.InsertOnSubmit(item);
             db.SubmitChanges();
         }
 
@@ -24,17 +23,17 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public LOAISACH_DTO Get(string ma)
+        public LOAISACH Get(string ma)
         {
-            return db.LOAISACHes.Where(t => t.MALS.Equals(ma)).Select(x => convertToDTO(x)).FirstOrDefault();
+            return db.LOAISACHes.Where(t => t.MALS.Equals(ma)).FirstOrDefault();
         }
 
-        public List<LOAISACH_DTO> List()
+        public List<LOAISACH> List()
         {
-            return db.LOAISACHes.Select(x => convertToDTO(x)).ToList();
+            return db.LOAISACHes.ToList();
         }
 
-        public void Update(LOAISACH_DTO item, string ma)
+        public void Update(LOAISACH item, string ma)
         {
             LOAISACH ls = db.LOAISACHes.Where(t => t.MALS.Equals(ma)).FirstOrDefault();
             ls.MALS = item.MALS;

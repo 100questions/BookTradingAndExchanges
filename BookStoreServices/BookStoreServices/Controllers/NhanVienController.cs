@@ -21,7 +21,7 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if (items != null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, _repository.List());
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)).ToList());
             }
             else
             {
@@ -31,12 +31,12 @@ namespace BookStoreServices.Controllers
 
         [HttpGet]
         [Route("api/NhanVien/{ma}")]
-        public HttpResponseMessage GetNhanVien(string ma)
+        public HttpResponseMessage Get(string ma)
         {
             var item = _repository.Get(ma);
             if (item != null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, item);
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.convertToDTO(item));
             }
             else
             {
@@ -48,8 +48,7 @@ namespace BookStoreServices.Controllers
         [Route("api/NhanVien")]
         public HttpResponseMessage Post([FromBody] NHANVIEN item)
         {
-            NHANVIEN_DTO item_dto = _repository.conVertNhanVienToDTO(item);
-            _repository.Add(item_dto);
+            _repository.Add(item);
             return Request.CreateResponse(HttpStatusCode.OK, "Staff is posted");
         }
 
@@ -60,8 +59,7 @@ namespace BookStoreServices.Controllers
             var check = _repository.Get(ma);
             if(check != null)
             {
-                NHANVIEN_DTO item_dto = _repository.conVertNhanVienToDTO(item);
-                _repository.Update(item_dto, ma);
+                _repository.Update(item, ma);
                 return Request.CreateResponse(HttpStatusCode.OK, "Staff is updated");
             }
             else

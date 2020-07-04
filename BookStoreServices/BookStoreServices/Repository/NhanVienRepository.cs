@@ -10,14 +10,13 @@ using System.Web.Http;
 
 namespace BookStoreServices.Repository
 {
-    public class NhanVienRepository : IRepository<NHANVIEN_DTO>
+    public class NhanVienRepository : IRepository<NHANVIEN>
     {
         BookStoreDataContext db = new BookStoreDataContext();
 
-        public void Add(NHANVIEN_DTO item)
+        public void Add(NHANVIEN item)
         {
-            NHANVIEN s = conVertNhanVienBackFromDTO(item);
-            db.NHANVIENs.InsertOnSubmit(s);
+            db.NHANVIENs.InsertOnSubmit(item);
             db.SubmitChanges();
         }
 
@@ -28,21 +27,20 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public NHANVIEN_DTO Get(string manv)
+        public NHANVIEN Get(string manv)
         {
-            return db.NHANVIENs.Where(t => t.MANV.Equals(manv)).Select(x => conVertNhanVienToDTO(x)).FirstOrDefault();
+            return db.NHANVIENs.Where(t => t.MANV.Equals(manv)).FirstOrDefault();
         }
 
 
-        public List<NHANVIEN_DTO> List()
+        public List<NHANVIEN> List()
         {
-            return db.NHANVIENs.Select(x => conVertNhanVienToDTO(x)).ToList();
+            return db.NHANVIENs.ToList();
         }
 
-        public void Update(NHANVIEN_DTO item, string manv)
+        public void Update(NHANVIEN item, string manv)
         {
-            NHANVIEN nv = new NHANVIEN();
-            nv = db.NHANVIENs.FirstOrDefault(t => t.MANV.Equals(manv));
+            NHANVIEN nv = db.NHANVIENs.FirstOrDefault(t => t.MANV.Equals(manv));
             nv.MACV = item.MACV;
             nv.HOTEN = item.HOTEN;
             nv.GIOITINH = item.GIOITINH;
@@ -54,32 +52,32 @@ namespace BookStoreServices.Repository
         }
 
 
-        public NHANVIEN_DTO conVertNhanVienToDTO(NHANVIEN x)
+        public NHANVIEN_DTO convertToDTO(NHANVIEN nv)
         {
-            NHANVIEN_DTO nv = new NHANVIEN_DTO();
-            nv.MANV = x.MANV;
-            nv.MACV = x.MACV;
-            nv.HOTEN = x.HOTEN;
-            nv.GIOITINH = (bool) x.GIOITINH;
-            nv.SODIENTHOAINV = x.SODIENTHOAINV;
-            nv.DIACHI = x.DIACHI;
-            nv.CMND = x.CMND;
-            nv.NGAYSINH = Convert.ToDateTime(x.NGAYSINH);
-            return nv;
+            NHANVIEN_DTO nv_dto = new NHANVIEN_DTO();
+            nv_dto.MANV = nv.MANV;
+            nv_dto.MACV = nv.MACV;
+            nv_dto.HOTEN = nv.HOTEN;
+            nv_dto.GIOITINH = (bool)nv.GIOITINH;
+            nv_dto.SODIENTHOAINV = nv.SODIENTHOAINV;
+            nv_dto.DIACHI = nv.DIACHI;
+            nv_dto.CMND = nv.CMND;
+            nv_dto.NGAYSINH = Convert.ToDateTime(nv.NGAYSINH);
+            return nv_dto;
 
         }
 
-        public NHANVIEN conVertNhanVienBackFromDTO(NHANVIEN_DTO x)
+        public NHANVIEN convertBackFromDTO(NHANVIEN_DTO nv_dto)
         {
             NHANVIEN nv = new NHANVIEN();
-            nv.MANV = x.MANV;
-            nv.MACV = x.MACV;
-            nv.HOTEN = x.HOTEN;
-            nv.GIOITINH = (bool)x.GIOITINH;
-            nv.SODIENTHOAINV = x.SODIENTHOAINV;
-            nv.DIACHI = x.DIACHI;
-            nv.CMND = x.CMND;
-            nv.NGAYSINH = (DateTime)x.NGAYSINH;
+            nv.MANV = nv_dto.MANV;
+            nv.MACV = nv_dto.MACV;
+            nv.HOTEN = nv_dto.HOTEN;
+            nv.GIOITINH = (bool)nv_dto.GIOITINH;
+            nv.SODIENTHOAINV = nv_dto.SODIENTHOAINV;
+            nv.DIACHI = nv_dto.DIACHI;
+            nv.CMND = nv_dto.CMND;
+            nv.NGAYSINH = (DateTime)nv_dto.NGAYSINH;
             return nv;
         }
 

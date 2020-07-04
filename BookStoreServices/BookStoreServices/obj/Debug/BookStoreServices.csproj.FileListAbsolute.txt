@@ -163,10 +163,10 @@ D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAnd
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\bin\System.Web.WebPages.Razor.xml
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\bin\Antlr3.Runtime.pdb
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.csprojAssemblyReference.cache
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.csproj.CoreCompileInputs.cache
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.csproj.CopyComplete
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.dll
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.pdb
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.Properties.Resources.resources
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.csproj.GenerateResource.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\BookStoreServices\BookStoreServices\obj\Debug\BookStoreServices.csprojAssemblyReference.cache
