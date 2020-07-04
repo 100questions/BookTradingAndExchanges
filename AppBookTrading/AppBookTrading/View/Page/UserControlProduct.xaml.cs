@@ -33,6 +33,7 @@ namespace AppBookTrading.View.Page
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             InitializeComponent();
             Load();
+
         }
 
         public async void Load()

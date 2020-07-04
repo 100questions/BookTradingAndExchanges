@@ -112,3 +112,42 @@ D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAnd
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.CopyComplete
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.exe
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.pdb
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.exe.config
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.exe
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.pdb
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignColors.dll
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.dll
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignColors.pdb
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.xml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csprojAssemblyReference.cache
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlProduct.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\ResourceDictionary.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\LoginWindow.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\MainWindow.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlCart.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlProduct.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlStatistical.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlUser.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlWarehouse.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\App.g.cs
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading_MarkupCompile.cache
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading_MarkupCompile.lref
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\App.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\LoginWindow.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\MainWindow.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlCart.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlStatistical.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlUser.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlWarehouse.baml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.g.resources
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.Properties.Resources.resources
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.GenerateResource.cache
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.CoreCompileInputs.cache
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.CopyComplete
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.exe
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.pdb
