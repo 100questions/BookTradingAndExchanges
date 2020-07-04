@@ -73,3 +73,42 @@ D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBoo
 D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.dll
 D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.xml
 D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csprojAssemblyReference.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.exe.config
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.exe
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\AppBookTrading.pdb
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignColors.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignColors.pdb
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\Newtonsoft.Json.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csprojAssemblyReference.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlProduct.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\ResourceDictionary.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\LoginWindow.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\MainWindow.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlCart.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlProduct.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlStatistical.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlUser.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlWarehouse.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\App.g.cs
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading_MarkupCompile.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading_MarkupCompile.lref
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\App.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\LoginWindow.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\MainWindow.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlCart.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlStatistical.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlUser.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\View\Page\UserControlWarehouse.baml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.g.resources
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.Properties.Resources.resources
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.GenerateResource.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.CoreCompileInputs.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.csproj.CopyComplete
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.exe
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\AppBookTrading.pdb
