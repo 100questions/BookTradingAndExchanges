@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center">
         </StackPanel>
-        <Border Grid.Row="1"  BorderThickness="0px" Background="White" BorderBrush="Red" CornerRadius="10">
+        <Border Grid.Row="1"  BorderThickness="0" Background="#FF6E9FAB" BorderBrush="Black" CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth5">
             <StackPanel x:Name="loginForm" Orientation="Vertical" Margin="10">
 
                 <StackPanel.Resources>
@@ -33,17 +33,17 @@
 
                 <!--label-->
 
-                <Label Content="Login" HorizontalAlignment="Center" FontSize="20" ></Label>
+                <Label Content="Đăng Nhập" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" ></Label>
                 <!--userID textbox-->
                 <StackPanel Margin="0 20 0 0" HorizontalAlignment="Center">
-                    <Border BorderThickness="0" BorderBrush="#878787" Width="320" Height="44" Background="#F7F6F6" CornerRadius="7">
+                    <Border BorderThickness="0" BorderBrush="#FFDADADA" Width="320" Height="44" Background="LightGray" CornerRadius="7">
                         <Canvas Height="36" Margin="5 -10 0 0">
-                            <Path Width="20" Height="24" Canvas.Left="288" Canvas.Top="5" Margin="0 7 0 0" 
+                            <Path Width="18" Height="20" Canvas.Left="288" Canvas.Top="5" Margin="0 7 0 0" 
                                   Stretch="Fill" Fill="#878787" 
                                   Data="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"/>
-                            <TextBox Name="txtUserID"
-                                     materialDesign:HintAssist.Hint="UserName"
-                                     Background="#F7F6F6"
+                            <TextBox Name="txtUserID" Margin="0 2 0 0"
+                                     materialDesign:HintAssist.Hint="Tên Đăng Nhập"
+                                     Background="LightGray"
                                      Canvas.Left="3" 
                                      FontSize="18" Height="40" Width="275" Padding="2"  
                                      BorderThickness="0" 
@@ -54,16 +54,16 @@
 
                 <!--Password textbox-->
                 <StackPanel HorizontalAlignment="Center" Margin="0 20">
-                    <Border BorderThickness="0" BorderBrush="#878787" Width="320" Height="44" Background="#F7F6F6" CornerRadius="7">
+                    <Border BorderThickness="0" BorderBrush="#878787" Width="320" Height="44" Background="LightGray" CornerRadius="7">
                         <Canvas Height="36" Margin="5 -10 0 0">
                             <Path Width="18" Height="20" Canvas.Left="288" Canvas.Top="5" Margin="0 7 0 0" 
                                   Stretch="Fill" Fill="#878787" 
                                   Data="M320 48c79.529 0 144 64.471 144 144s-64.471 144-144 144c-18.968 0-37.076-3.675-53.66-10.339L224 368h-32v48h-48v48H48v-96l134.177-134.177A143.96 143.96 0 0 1 176 192c0-79.529 64.471-144 144-144m0-48C213.965 0 128 85.954 128 192c0 8.832.602 17.623 1.799 26.318L7.029 341.088A24.005 24.005 0 0 0 0 358.059V488c0 13.255 10.745 24 24 24h144c13.255 0 24-10.745 24-24v-24h24c13.255 0 24-10.745 24-24v-20l40.049-40.167C293.106 382.604 306.461 384 320 384c106.035 0 192-85.954 192-192C512 85.965 426.046 0 320 0zm0 144c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z"/>
-                            <PasswordBox Name="pbxPassword"
-                                         materialDesign:HintAssist.Hint="PassWord"
-                                         Background="#F7F6F6"
+                            <PasswordBox Name="pbxPassword" Margin="0 2 0 0"
+                                         materialDesign:HintAssist.Hint="Mật Khẩu"
+                                         Background="LightGray"
                                          Canvas.Left="3" 
-                                         FontSize="15" BorderThickness="0" Height="40" Width="275" Padding="2" />
+                                         FontSize="18" BorderThickness="0" Height="40" Width="275" Padding="2" />
                         </Canvas>
                     </Border>
                 </StackPanel>
@@ -73,7 +73,7 @@
                         <Button
                             BorderThickness="0"
                             Height="40" Width="135" 
-                            Content="Login" 
+                            Content="Đăng Nhập" 
                             FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
@@ -102,7 +102,7 @@
                             x:Name="btnClose" Click="btnClose_Click"
                         BorderThickness="0"
                         Background="Transparent"
-                        Height="40" Width="135" Content="Close"
+                        Height="40" Width="135" Content="Thoát"
                         FontSize="20" VerticalAlignment="Stretch" 
                         HorizontalAlignment="Stretch">
                             <Button.Style>

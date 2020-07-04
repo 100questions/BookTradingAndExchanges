@@ -30,13 +30,6 @@ namespace AppBookTrading
             InitializeComponent();
             this.DataContext = this;
             Load();
-            List<model> arr = new List<model>()
-            {
-                new model(1, 1, "a"),
-                new model(2, 2, "b"),
-                new model(3, 3, "c"),
-                new model(3, 3, "c")
-            };
         }
 
         private void Load()
