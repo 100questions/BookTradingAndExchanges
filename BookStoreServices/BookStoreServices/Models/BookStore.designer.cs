@@ -218,9 +218,9 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<int> _SOLUONGMUA;
 		
-		private System.Nullable<int> _DONGIABAN;
+		private System.Nullable<double> _DONGIABAN;
 		
-		private System.Nullable<int> _TIEN;
+		private System.Nullable<double> _TONGTIEN;
 		
 		private EntitySet<CT_PHIEUDOITRA> _CT_PHIEUDOITRAs;
 		
@@ -236,10 +236,10 @@ namespace BookStoreServices.Models
     partial void OnMASPChanged();
     partial void OnSOLUONGMUAChanging(System.Nullable<int> value);
     partial void OnSOLUONGMUAChanged();
-    partial void OnDONGIABANChanging(System.Nullable<int> value);
+    partial void OnDONGIABANChanging(System.Nullable<double> value);
     partial void OnDONGIABANChanged();
-    partial void OnTIENChanging(System.Nullable<int> value);
-    partial void OnTIENChanged();
+    partial void OnTONGTIENChanging(System.Nullable<double> value);
+    partial void OnTONGTIENChanged();
     #endregion
 		
 		public CHITIETHOADON()
@@ -313,8 +313,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DONGIABAN", DbType="Int")]
-		public System.Nullable<int> DONGIABAN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DONGIABAN", DbType="Float")]
+		public System.Nullable<double> DONGIABAN
 		{
 			get
 			{
@@ -333,22 +333,22 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEN", DbType="Int")]
-		public System.Nullable<int> TIEN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONGTIEN", DbType="Float")]
+		public System.Nullable<double> TONGTIEN
 		{
 			get
 			{
-				return this._TIEN;
+				return this._TONGTIEN;
 			}
 			set
 			{
-				if ((this._TIEN != value))
+				if ((this._TONGTIEN != value))
 				{
-					this.OnTIENChanging(value);
+					this.OnTONGTIENChanging(value);
 					this.SendPropertyChanging();
-					this._TIEN = value;
-					this.SendPropertyChanged("TIEN");
-					this.OnTIENChanged();
+					this._TONGTIEN = value;
+					this.SendPropertyChanged("TONGTIEN");
+					this.OnTONGTIENChanged();
 				}
 			}
 		}

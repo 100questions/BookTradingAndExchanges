@@ -1,4 +1,5 @@
-﻿using BookStoreServices.IRepository;
+﻿using BookStoreServices.DTO;
+using BookStoreServices.IRepository;
 using BookStoreServices.Models;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,53 @@ namespace BookStoreServices.Repository
             db.SubmitChanges();
         }
 
-        public void Delete(string ma)
+        public void DeleteCTHDs(string maHD)
         {
-            throw new NotImplementedException();
+            db.CHITIETHOADONs.DeleteAllOnSubmit(db.CHITIETHOADONs.Where(t => t.MAHD.Equals(maHD)).ToList());
+            db.SubmitChanges();
+        }
+
+        public void DeleteCTHD(string maHD, string maSP)
+        {
+            db.CHITIETHOADONs.DeleteOnSubmit(db.CHITIETHOADONs.Where(t => t.MAHD.Equals(maHD)).Where(t => t.MASP.Equals(maSP)).FirstOrDefault());
+            db.SubmitChanges();
+        }
+
+        public List<CHITIETHOADON> GetCTHDs(string ma)
+        {
+            return db.CHITIETHOADONs.Where(t => t.MAHD.Equals(ma)).ToList();
+        }
+
+        public CHITIETHOADON GetCTHD(string maHD, string maSP)
+        {
+            return db.CHITIETHOADONs.Where(t => t.MAHD.Equals(maHD)).Where(t => t.MASP.Equals(maSP)).FirstOrDefault();
+        }
+
+        public List<CHITIETHOADON> List()
+        {
+            return db.CHITIETHOADONs.ToList();
+        }
+
+        public void UpdateCTHD(CHITIETHOADON item, string maHD, string maSP)
+        {
+            CHITIETHOADON cthd = db.CHITIETHOADONs.Where(t => t.MAHD.Equals(maHD)).Where(t => t.MASP.Equals(maSP)).FirstOrDefault();
+            cthd.MAHD = item.MAHD;
+            cthd.MASP = item.MASP;
+            cthd.SOLUONGMUA = item.SOLUONGMUA;
+            cthd.DONGIABAN = item.DONGIABAN;
+            cthd.TONGTIEN = item.TONGTIEN;
+            db.SubmitChanges();
+        }
+
+        public CT_HOADON_DTO convertToDTO(CHITIETHOADON cthd)
+        {
+            CT_HOADON_DTO cthd_dto = new CT_HOADON_DTO();
+            cthd_dto.MAHD = cthd.MAHD;
+            cthd_dto.MASP = cthd.MASP;
+            cthd_dto.SOLUONGMUA = cthd.SOLUONGMUA;
+            cthd_dto.DONGIABAN = cthd.DONGIABAN;
+            cthd_dto.TONGTIEN = cthd.TONGTIEN;
+            return cthd_dto;
         }
 
         public CHITIETHOADON Get(string ma)
@@ -26,7 +71,7 @@ namespace BookStoreServices.Repository
             throw new NotImplementedException();
         }
 
-        public List<CHITIETHOADON> List()
+        public void Delete(string ma)
         {
             throw new NotImplementedException();
         }

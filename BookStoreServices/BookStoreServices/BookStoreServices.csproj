@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ChucVuController.cs" />
+    <Compile Include="Controllers\CT_HoaDonController.cs" />
     <Compile Include="Controllers\CT_PhieuDoiTraSachController.cs" />
     <Compile Include="Controllers\CT_PhieuNhapSachController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Controllers\QL_NguoiDungController.cs" />
     <Compile Include="Controllers\SachController.cs" />
     <Compile Include="DTO\CHUCVU_DTO.cs" />
+    <Compile Include="DTO\CT_HOADON_DTO.cs" />
     <Compile Include="DTO\CT_PHIEUDOITRASACH_DTO.cs" />
     <Compile Include="DTO\HOADON_DTO.cs" />
     <Compile Include="DTO\LOAISACH_DTO.cs" />
