@@ -39,6 +39,7 @@ namespace AppBookTrading.View.Page
         {
             var lstSach = await GetListSach();
             dgvSanPham.ItemsSource = lstSach;
+
         }
 
         public async Task<List<SachDto>> GetListSach()
