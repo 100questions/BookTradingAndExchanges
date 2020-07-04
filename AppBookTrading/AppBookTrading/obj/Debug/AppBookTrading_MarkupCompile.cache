@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\obj\Debug\
 AppBookTrading
 none
 false
 DEBUG;TRACE
-D:\Gitthub\BookTradingAndExchanges\BookTradingAndExchanges\AppBookTrading\AppBookTrading\App.xaml
+D:\BookStoreApp\BookTradingAndExchanges\AppBookTrading\AppBookTrading\App.xaml
 8-1643968053
 
-12350543904
-171228289116
+13-491815463
+17-1391787865
 View\LoginWindow.xaml;View\MainWindow.xaml;View\Page\UserControlCart.xaml;View\Page\UserControlProduct.xaml;View\Page\UserControlStatistical.xaml;View\Page\UserControlUser.xaml;View\Page\UserControlWarehouse.xaml;View\ResourceDictionary.xaml;
 
-False
+True
 
