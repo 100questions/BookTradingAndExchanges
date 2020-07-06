@@ -3,8 +3,8 @@
 ################################################################################
 
 #.vs
-**/AppBookTrading/.vs
-**/BookStoreServices/.vs
+**/AppBookTrading/.vs/AppBookTrading
+**/BookStoreServices/.vs/BookStoreServices
 
 #bin
 **/AppBookTrading/AppBookTrading/bin
