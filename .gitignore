@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+#.vs
+**/AppBookTrading/.vs/AppBookTrading
+**/BookStoreServices/.vs/BookStoreServices
+
+#bin
+**/AppBookTrading/AppBookTrading/bin
+**/BookStoreServices/BookStoreServices/bin
+
+#obj
+**/AppBookTrading/AppBookTrading/obj
+**/BookStoreServices/BookStoreServices/obj
