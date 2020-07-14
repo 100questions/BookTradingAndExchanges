@@ -2626,11 +2626,21 @@ namespace BookStoreServices.Models
 		
 		private string _THELOAI;
 		
-		private System.Nullable<int> _GIABANSACH;
+		private System.Nullable<double> _GIABANSACH;
 		
-		private System.Nullable<int> _GIANHAPSACH;
+		private System.Nullable<double> _GIANHAPSACH;
 		
 		private System.Nullable<int> _SLTON;
+		
+		private string _IMG;
+		
+		private string _LOAIBIA;
+		
+		private string _KICHTHUOC;
+		
+		private System.Nullable<System.DateTime> _NGAYXUATBAN;
+		
+		private System.Nullable<int> _SOTRANG;
 		
 		private EntitySet<CT_PHIEUNHAPSACH> _CT_PHIEUNHAPSACHes;
 		
@@ -2652,12 +2662,22 @@ namespace BookStoreServices.Models
     partial void OnTACGIAChanged();
     partial void OnTHELOAIChanging(string value);
     partial void OnTHELOAIChanged();
-    partial void OnGIABANSACHChanging(System.Nullable<int> value);
+    partial void OnGIABANSACHChanging(System.Nullable<double> value);
     partial void OnGIABANSACHChanged();
-    partial void OnGIANHAPSACHChanging(System.Nullable<int> value);
+    partial void OnGIANHAPSACHChanging(System.Nullable<double> value);
     partial void OnGIANHAPSACHChanged();
     partial void OnSLTONChanging(System.Nullable<int> value);
     partial void OnSLTONChanged();
+    partial void OnIMGChanging(string value);
+    partial void OnIMGChanged();
+    partial void OnLOAIBIAChanging(string value);
+    partial void OnLOAIBIAChanged();
+    partial void OnKICHTHUOCChanging(string value);
+    partial void OnKICHTHUOCChanged();
+    partial void OnNGAYXUATBANChanging(System.Nullable<System.DateTime> value);
+    partial void OnNGAYXUATBANChanged();
+    partial void OnSOTRANGChanging(System.Nullable<int> value);
+    partial void OnSOTRANGChanged();
     #endregion
 		
 		public SACH()
@@ -2776,8 +2796,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABANSACH", DbType="Int")]
-		public System.Nullable<int> GIABANSACH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABANSACH", DbType="Float")]
+		public System.Nullable<double> GIABANSACH
 		{
 			get
 			{
@@ -2796,8 +2816,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIANHAPSACH", DbType="Int")]
-		public System.Nullable<int> GIANHAPSACH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIANHAPSACH", DbType="Float")]
+		public System.Nullable<double> GIANHAPSACH
 		{
 			get
 			{
@@ -2832,6 +2852,106 @@ namespace BookStoreServices.Models
 					this._SLTON = value;
 					this.SendPropertyChanged("SLTON");
 					this.OnSLTONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IMG", DbType="NVarChar(50)")]
+		public string IMG
+		{
+			get
+			{
+				return this._IMG;
+			}
+			set
+			{
+				if ((this._IMG != value))
+				{
+					this.OnIMGChanging(value);
+					this.SendPropertyChanging();
+					this._IMG = value;
+					this.SendPropertyChanged("IMG");
+					this.OnIMGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOAIBIA", DbType="NVarChar(50)")]
+		public string LOAIBIA
+		{
+			get
+			{
+				return this._LOAIBIA;
+			}
+			set
+			{
+				if ((this._LOAIBIA != value))
+				{
+					this.OnLOAIBIAChanging(value);
+					this.SendPropertyChanging();
+					this._LOAIBIA = value;
+					this.SendPropertyChanged("LOAIBIA");
+					this.OnLOAIBIAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KICHTHUOC", DbType="NVarChar(50)")]
+		public string KICHTHUOC
+		{
+			get
+			{
+				return this._KICHTHUOC;
+			}
+			set
+			{
+				if ((this._KICHTHUOC != value))
+				{
+					this.OnKICHTHUOCChanging(value);
+					this.SendPropertyChanging();
+					this._KICHTHUOC = value;
+					this.SendPropertyChanged("KICHTHUOC");
+					this.OnKICHTHUOCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYXUATBAN", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYXUATBAN
+		{
+			get
+			{
+				return this._NGAYXUATBAN;
+			}
+			set
+			{
+				if ((this._NGAYXUATBAN != value))
+				{
+					this.OnNGAYXUATBANChanging(value);
+					this.SendPropertyChanging();
+					this._NGAYXUATBAN = value;
+					this.SendPropertyChanged("NGAYXUATBAN");
+					this.OnNGAYXUATBANChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOTRANG", DbType="Int")]
+		public System.Nullable<int> SOTRANG
+		{
+			get
+			{
+				return this._SOTRANG;
+			}
+			set
+			{
+				if ((this._SOTRANG != value))
+				{
+					this.OnSOTRANGChanging(value);
+					this.SendPropertyChanging();
+					this._SOTRANG = value;
+					this.SendPropertyChanged("SOTRANG");
+					this.OnSOTRANGChanged();
 				}
 			}
 		}

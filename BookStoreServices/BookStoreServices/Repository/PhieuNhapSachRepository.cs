@@ -47,7 +47,7 @@ namespace BookStoreServices.Repository
         public PHIEUNHAPSACH_DTO convertToDTO(PHIEUNHAPSACH pns)
         {
             PHIEUNHAPSACH_DTO pns_dto = new PHIEUNHAPSACH_DTO();
-            pns_dto.MAPHIEUNHAP = pns.MAPHIEU;
+            pns_dto.MAPHIEU = pns.MAPHIEU;
             pns_dto.MANV = pns.MANV;
             DateTime validValue;
             pns_dto.NGAYNHAP = (DateTime.TryParse(pns.NGAYNHAP.ToString(), out validValue) ? validValue : (DateTime?)null);

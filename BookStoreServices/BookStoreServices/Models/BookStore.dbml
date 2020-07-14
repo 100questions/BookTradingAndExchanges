@@ -127,9 +127,14 @@
       <Column Name="TENSACH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TACGIA" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="THELOAI" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="GIABANSACH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GIANHAPSACH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GIABANSACH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GIANHAPSACH" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SLTON" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IMG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOAIBIA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KICHTHUOC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAYXUATBAN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SOTRANG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="SACH_CT_PHIEUNHAPSACH" Member="CT_PHIEUNHAPSACHes" ThisKey="MASACH" OtherKey="MASACH" Type="CT_PHIEUNHAPSACH" />
       <Association Name="LOAISACH_SACH" Member="LOAISACH" ThisKey="THELOAI" OtherKey="MALS" Type="LOAISACH" IsForeignKey="true" />
       <Association Name="NHAXUATBAN_SACH" Member="NHAXUATBAN" ThisKey="MANXB" OtherKey="MANXB" Type="NHAXUATBAN" IsForeignKey="true" />
