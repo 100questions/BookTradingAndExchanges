@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL_BLL_Tier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,31 @@ namespace AppBookTrading.View.Page
     /// </summary>
     public partial class UserControlUser : UserControl
     {
+        Ctl_KhachHang ctl = new Ctl_KhachHang();
         public UserControlUser()
         {
             InitializeComponent();
+            Load();
         }
+
+        public async void Load()
+        {
+            var lstKhachHang = await ctl.GetList();
+            dgvKhachHang.ItemsSource = lstKhachHang;
+        }
+
+        private void dgvKhachHang_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                KHACHHANG_DTO str = (KHACHHANG_DTO)dgvKhachHang.SelectedItem;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        
     }
 }
