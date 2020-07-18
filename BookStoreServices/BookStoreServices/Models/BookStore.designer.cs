@@ -22,7 +22,7 @@ namespace BookStoreServices.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbbookstore")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="onlinebookstore")]
 	public partial class BookStoreDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -75,7 +75,7 @@ namespace BookStoreServices.Models
     #endregion
 		
 		public BookStoreDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbbookstoreConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -260,7 +260,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -284,7 +284,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASP
 		{
 			get
@@ -472,7 +472,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MACV
 		{
 			get
@@ -597,7 +597,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASP
 		{
 			get
@@ -621,7 +621,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEUDOI
 		{
 			get
@@ -645,7 +645,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -819,7 +819,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASACH
 		{
 			get
@@ -843,7 +843,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEU
 		{
 			get
@@ -1035,7 +1035,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -1055,7 +1055,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(100)")]
 		public string MAKH
 		{
 			get
@@ -1243,7 +1243,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAKH
 		{
 			get
@@ -1437,7 +1437,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALS", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALS", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MALS
 		{
 			get
@@ -1619,7 +1619,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="NVarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="NChar(10)")]
 		public string SDT
 		{
 			get
@@ -1746,7 +1746,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANV
 		{
 			get
@@ -1766,7 +1766,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string MACV
 		{
 			get
@@ -2076,7 +2076,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="Char(12) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANXB
 		{
 			get
@@ -2237,7 +2237,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEUDOI
 		{
 			get
@@ -2277,7 +2277,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string MANV
 		{
 			get
@@ -2427,7 +2427,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEU
 		{
 			get
@@ -2447,7 +2447,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100)")]
 		public string MANV
 		{
 			get
@@ -2749,7 +2749,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANV
 		{
 			get
@@ -2926,7 +2926,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASACH
 		{
 			get
@@ -2946,7 +2946,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="Char(12)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="NVarChar(100)")]
 		public string MANXB
 		{
 			get
@@ -3010,7 +3010,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THELOAI", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THELOAI", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string THELOAI
 		{
 			get
