@@ -22,7 +22,7 @@ namespace BookStoreServices.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbbookstore")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="onlinebookstore")]
 	public partial class BookStoreDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -51,6 +51,9 @@ namespace BookStoreServices.Models
     partial void InsertLOAISACH(LOAISACH instance);
     partial void UpdateLOAISACH(LOAISACH instance);
     partial void DeleteLOAISACH(LOAISACH instance);
+    partial void InsertNHACUNGCAP(NHACUNGCAP instance);
+    partial void UpdateNHACUNGCAP(NHACUNGCAP instance);
+    partial void DeleteNHACUNGCAP(NHACUNGCAP instance);
     partial void InsertNHANVIEN(NHANVIEN instance);
     partial void UpdateNHANVIEN(NHANVIEN instance);
     partial void DeleteNHANVIEN(NHANVIEN instance);
@@ -72,7 +75,7 @@ namespace BookStoreServices.Models
     #endregion
 		
 		public BookStoreDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbbookstoreConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -154,6 +157,14 @@ namespace BookStoreServices.Models
 			get
 			{
 				return this.GetTable<LOAISACH>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NHACUNGCAP> NHACUNGCAPs
+		{
+			get
+			{
+				return this.GetTable<NHACUNGCAP>();
 			}
 		}
 		
@@ -249,7 +260,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -273,7 +284,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASP
 		{
 			get
@@ -461,7 +472,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MACV
 		{
 			get
@@ -586,7 +597,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASP
 		{
 			get
@@ -610,7 +621,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEUDOI
 		{
 			get
@@ -634,7 +645,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -808,7 +819,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASACH
 		{
 			get
@@ -832,7 +843,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEU
 		{
 			get
@@ -1024,7 +1035,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -1044,7 +1055,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(100)")]
 		public string MAKH
 		{
 			get
@@ -1232,7 +1243,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAKH
 		{
 			get
@@ -1426,7 +1437,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALS", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALS", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MALS
 		{
 			get
@@ -1512,6 +1523,168 @@ namespace BookStoreServices.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NHACUNGCAP")]
+	public partial class NHACUNGCAP : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MANCC;
+		
+		private string _TENNCC;
+		
+		private string _DIACHI;
+		
+		private string _SDT;
+		
+		private EntitySet<PHIEUNHAPSACH> _PHIEUNHAPSACHes;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMANCCChanging(string value);
+    partial void OnMANCCChanged();
+    partial void OnTENNCCChanging(string value);
+    partial void OnTENNCCChanged();
+    partial void OnDIACHIChanging(string value);
+    partial void OnDIACHIChanged();
+    partial void OnSDTChanging(string value);
+    partial void OnSDTChanged();
+    #endregion
+		
+		public NHACUNGCAP()
+		{
+			this._PHIEUNHAPSACHes = new EntitySet<PHIEUNHAPSACH>(new Action<PHIEUNHAPSACH>(this.attach_PHIEUNHAPSACHes), new Action<PHIEUNHAPSACH>(this.detach_PHIEUNHAPSACHes));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANCC", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MANCC
+		{
+			get
+			{
+				return this._MANCC;
+			}
+			set
+			{
+				if ((this._MANCC != value))
+				{
+					this.OnMANCCChanging(value);
+					this.SendPropertyChanging();
+					this._MANCC = value;
+					this.SendPropertyChanged("MANCC");
+					this.OnMANCCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENNCC", DbType="NVarChar(100)")]
+		public string TENNCC
+		{
+			get
+			{
+				return this._TENNCC;
+			}
+			set
+			{
+				if ((this._TENNCC != value))
+				{
+					this.OnTENNCCChanging(value);
+					this.SendPropertyChanging();
+					this._TENNCC = value;
+					this.SendPropertyChanged("TENNCC");
+					this.OnTENNCCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(500)")]
+		public string DIACHI
+		{
+			get
+			{
+				return this._DIACHI;
+			}
+			set
+			{
+				if ((this._DIACHI != value))
+				{
+					this.OnDIACHIChanging(value);
+					this.SendPropertyChanging();
+					this._DIACHI = value;
+					this.SendPropertyChanged("DIACHI");
+					this.OnDIACHIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="NChar(10)")]
+		public string SDT
+		{
+			get
+			{
+				return this._SDT;
+			}
+			set
+			{
+				if ((this._SDT != value))
+				{
+					this.OnSDTChanging(value);
+					this.SendPropertyChanging();
+					this._SDT = value;
+					this.SendPropertyChanged("SDT");
+					this.OnSDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_PHIEUNHAPSACH", Storage="_PHIEUNHAPSACHes", ThisKey="MANCC", OtherKey="MANCC")]
+		public EntitySet<PHIEUNHAPSACH> PHIEUNHAPSACHes
+		{
+			get
+			{
+				return this._PHIEUNHAPSACHes;
+			}
+			set
+			{
+				this._PHIEUNHAPSACHes.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PHIEUNHAPSACHes(PHIEUNHAPSACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHACUNGCAP = this;
+		}
+		
+		private void detach_PHIEUNHAPSACHes(PHIEUNHAPSACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHACUNGCAP = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NHANVIEN")]
 	public partial class NHANVIEN : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1573,7 +1746,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANV
 		{
 			get
@@ -1593,7 +1766,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACV", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string MACV
 		{
 			get
@@ -1903,7 +2076,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="Char(12) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANXB
 		{
 			get
@@ -2064,7 +2237,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEUDOI", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEUDOI
 		{
 			get
@@ -2104,7 +2277,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string MANV
 		{
 			get
@@ -2222,7 +2395,11 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<double> _THANHTIENPHIEUNHAP;
 		
+		private string _MANCC;
+		
 		private EntitySet<CT_PHIEUNHAPSACH> _CT_PHIEUNHAPSACHes;
+		
+		private EntityRef<NHACUNGCAP> _NHACUNGCAP;
 		
 		private EntityRef<NHANVIEN> _NHANVIEN;
 		
@@ -2238,16 +2415,19 @@ namespace BookStoreServices.Models
     partial void OnNGAYNHAPChanged();
     partial void OnTHANHTIENPHIEUNHAPChanging(System.Nullable<double> value);
     partial void OnTHANHTIENPHIEUNHAPChanged();
+    partial void OnMANCCChanging(string value);
+    partial void OnMANCCChanged();
     #endregion
 		
 		public PHIEUNHAPSACH()
 		{
 			this._CT_PHIEUNHAPSACHes = new EntitySet<CT_PHIEUNHAPSACH>(new Action<CT_PHIEUNHAPSACH>(this.attach_CT_PHIEUNHAPSACHes), new Action<CT_PHIEUNHAPSACH>(this.detach_CT_PHIEUNHAPSACHes));
+			this._NHACUNGCAP = default(EntityRef<NHACUNGCAP>);
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPHIEU", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAPHIEU
 		{
 			get
@@ -2267,7 +2447,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100)")]
 		public string MANV
 		{
 			get
@@ -2331,6 +2511,30 @@ namespace BookStoreServices.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANCC", DbType="NVarChar(100)")]
+		public string MANCC
+		{
+			get
+			{
+				return this._MANCC;
+			}
+			set
+			{
+				if ((this._MANCC != value))
+				{
+					if (this._NHACUNGCAP.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMANCCChanging(value);
+					this.SendPropertyChanging();
+					this._MANCC = value;
+					this.SendPropertyChanged("MANCC");
+					this.OnMANCCChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUNHAPSACH_CT_PHIEUNHAPSACH", Storage="_CT_PHIEUNHAPSACHes", ThisKey="MAPHIEU", OtherKey="MAPHIEU")]
 		public EntitySet<CT_PHIEUNHAPSACH> CT_PHIEUNHAPSACHes
 		{
@@ -2341,6 +2545,40 @@ namespace BookStoreServices.Models
 			set
 			{
 				this._CT_PHIEUNHAPSACHes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_PHIEUNHAPSACH", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true)]
+		public NHACUNGCAP NHACUNGCAP
+		{
+			get
+			{
+				return this._NHACUNGCAP.Entity;
+			}
+			set
+			{
+				NHACUNGCAP previousValue = this._NHACUNGCAP.Entity;
+				if (((previousValue != value) 
+							|| (this._NHACUNGCAP.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHACUNGCAP.Entity = null;
+						previousValue.PHIEUNHAPSACHes.Remove(this);
+					}
+					this._NHACUNGCAP.Entity = value;
+					if ((value != null))
+					{
+						value.PHIEUNHAPSACHes.Add(this);
+						this._MANCC = value.MANCC;
+					}
+					else
+					{
+						this._MANCC = default(string);
+					}
+					this.SendPropertyChanged("NHACUNGCAP");
+				}
 			}
 		}
 		
@@ -2511,7 +2749,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANV", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MANV
 		{
 			get
@@ -2626,11 +2864,21 @@ namespace BookStoreServices.Models
 		
 		private string _THELOAI;
 		
-		private System.Nullable<int> _GIABANSACH;
+		private System.Nullable<double> _GIABANSACH;
 		
-		private System.Nullable<int> _GIANHAPSACH;
+		private System.Nullable<double> _GIANHAPSACH;
 		
 		private System.Nullable<int> _SLTON;
+		
+		private string _IMG;
+		
+		private string _LOAIBIA;
+		
+		private string _KICHTHUOC;
+		
+		private System.Nullable<System.DateTime> _NGAYXUATBAN;
+		
+		private System.Nullable<int> _SOTRANG;
 		
 		private EntitySet<CT_PHIEUNHAPSACH> _CT_PHIEUNHAPSACHes;
 		
@@ -2652,12 +2900,22 @@ namespace BookStoreServices.Models
     partial void OnTACGIAChanged();
     partial void OnTHELOAIChanging(string value);
     partial void OnTHELOAIChanged();
-    partial void OnGIABANSACHChanging(System.Nullable<int> value);
+    partial void OnGIABANSACHChanging(System.Nullable<double> value);
     partial void OnGIABANSACHChanged();
-    partial void OnGIANHAPSACHChanging(System.Nullable<int> value);
+    partial void OnGIANHAPSACHChanging(System.Nullable<double> value);
     partial void OnGIANHAPSACHChanged();
     partial void OnSLTONChanging(System.Nullable<int> value);
     partial void OnSLTONChanged();
+    partial void OnIMGChanging(string value);
+    partial void OnIMGChanged();
+    partial void OnLOAIBIAChanging(string value);
+    partial void OnLOAIBIAChanged();
+    partial void OnKICHTHUOCChanging(string value);
+    partial void OnKICHTHUOCChanged();
+    partial void OnNGAYXUATBANChanging(System.Nullable<System.DateTime> value);
+    partial void OnNGAYXUATBANChanged();
+    partial void OnSOTRANGChanging(System.Nullable<int> value);
+    partial void OnSOTRANGChanged();
     #endregion
 		
 		public SACH()
@@ -2668,7 +2926,7 @@ namespace BookStoreServices.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASACH", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MASACH
 		{
 			get
@@ -2688,7 +2946,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="Char(12)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANXB", DbType="NVarChar(100)")]
 		public string MANXB
 		{
 			get
@@ -2752,7 +3010,7 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THELOAI", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THELOAI", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string THELOAI
 		{
 			get
@@ -2776,8 +3034,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABANSACH", DbType="Int")]
-		public System.Nullable<int> GIABANSACH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABANSACH", DbType="Float")]
+		public System.Nullable<double> GIABANSACH
 		{
 			get
 			{
@@ -2796,8 +3054,8 @@ namespace BookStoreServices.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIANHAPSACH", DbType="Int")]
-		public System.Nullable<int> GIANHAPSACH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIANHAPSACH", DbType="Float")]
+		public System.Nullable<double> GIANHAPSACH
 		{
 			get
 			{
@@ -2832,6 +3090,106 @@ namespace BookStoreServices.Models
 					this._SLTON = value;
 					this.SendPropertyChanged("SLTON");
 					this.OnSLTONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IMG", DbType="NVarChar(500)")]
+		public string IMG
+		{
+			get
+			{
+				return this._IMG;
+			}
+			set
+			{
+				if ((this._IMG != value))
+				{
+					this.OnIMGChanging(value);
+					this.SendPropertyChanging();
+					this._IMG = value;
+					this.SendPropertyChanged("IMG");
+					this.OnIMGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOAIBIA", DbType="NVarChar(50)")]
+		public string LOAIBIA
+		{
+			get
+			{
+				return this._LOAIBIA;
+			}
+			set
+			{
+				if ((this._LOAIBIA != value))
+				{
+					this.OnLOAIBIAChanging(value);
+					this.SendPropertyChanging();
+					this._LOAIBIA = value;
+					this.SendPropertyChanged("LOAIBIA");
+					this.OnLOAIBIAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KICHTHUOC", DbType="NVarChar(50)")]
+		public string KICHTHUOC
+		{
+			get
+			{
+				return this._KICHTHUOC;
+			}
+			set
+			{
+				if ((this._KICHTHUOC != value))
+				{
+					this.OnKICHTHUOCChanging(value);
+					this.SendPropertyChanging();
+					this._KICHTHUOC = value;
+					this.SendPropertyChanged("KICHTHUOC");
+					this.OnKICHTHUOCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYXUATBAN", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYXUATBAN
+		{
+			get
+			{
+				return this._NGAYXUATBAN;
+			}
+			set
+			{
+				if ((this._NGAYXUATBAN != value))
+				{
+					this.OnNGAYXUATBANChanging(value);
+					this.SendPropertyChanging();
+					this._NGAYXUATBAN = value;
+					this.SendPropertyChanged("NGAYXUATBAN");
+					this.OnNGAYXUATBANChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOTRANG", DbType="Int")]
+		public System.Nullable<int> SOTRANG
+		{
+			get
+			{
+				return this._SOTRANG;
+			}
+			set
+			{
+				if ((this._SOTRANG != value))
+				{
+					this.OnSOTRANGChanging(value);
+					this.SendPropertyChanging();
+					this._SOTRANG = value;
+					this.SendPropertyChanged("SOTRANG");
+					this.OnSOTRANGChanged();
 				}
 			}
 		}

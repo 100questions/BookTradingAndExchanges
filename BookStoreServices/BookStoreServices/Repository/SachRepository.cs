@@ -16,7 +16,6 @@ namespace BookStoreServices.Repository
         {
             db.SACHes.InsertOnSubmit(item);
             db.SubmitChanges();
-
         }
 
         public List<SACH> List()
@@ -46,6 +45,11 @@ namespace BookStoreServices.Repository
             sach.GIABANSACH = s.GIABANSACH;
             sach.GIANHAPSACH = s.GIANHAPSACH;
             sach.SLTON = s.SLTON;
+            sach.IMG = s.IMG;
+            sach.LOAIBIA = s.LOAIBIA;
+            sach.KICHTHUOC = s.KICHTHUOC;
+            sach.NGAYXUATBAN = s.NGAYXUATBAN;
+            sach.SOTRANG = s.SOTRANG;
             db.SubmitChanges();
         }
 
@@ -61,6 +65,11 @@ namespace BookStoreServices.Repository
             s_dto.GIABANSACH = s.GIABANSACH;
             s_dto.GIANHAPSACH = s.GIANHAPSACH;
             s_dto.SLTON = s.SLTON;
+            s_dto.IMG = s.IMG;
+            s_dto.LOAIBIA = s.LOAIBIA;
+            s_dto.KICHTHUOC = s.KICHTHUOC;
+            s_dto.NGAYXUATBAN = s.NGAYXUATBAN;
+            s_dto.SOTRANG = s.SOTRANG;
             return s_dto;
         }
 

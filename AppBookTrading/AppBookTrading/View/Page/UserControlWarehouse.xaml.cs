@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL_BLL_Tier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,32 @@ namespace AppBookTrading.View.Page
     /// </summary>
     public partial class UserControlWarehouse : UserControl
     {
+        Ctl_PhieuNhapSach ctl = new Ctl_PhieuNhapSach();
         public UserControlWarehouse()
         {
             InitializeComponent();
+            Load();
+        }
+
+        private void dgvPhieuNhapSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                PHIEUNHAPSACH_DTO str = (PHIEUNHAPSACH_DTO)dgvPhieuNhapSach.SelectedItem;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+
+        public async void Load()
+        {
+            var lstPhieuNhapSach = await ctl.GetList();
+            dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
         }
     }
 }

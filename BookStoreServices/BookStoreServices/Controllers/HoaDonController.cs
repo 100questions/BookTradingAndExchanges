@@ -1,12 +1,9 @@
 ﻿using BookStoreServices.DTO;
 using BookStoreServices.Models;
 using BookStoreServices.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace BookStoreServices.Controllers
@@ -21,11 +18,11 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if (items != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)).ToList());
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)).ToList());
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -36,11 +33,11 @@ namespace BookStoreServices.Controllers
             HOADON_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
             if (item_dto != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -48,8 +45,15 @@ namespace BookStoreServices.Controllers
         [Route("api/HoaDon")]
         public HttpResponseMessage Post([FromBody] HOADON item)
         {
-            _repository.Add(item);
-            return Request.CreateResponse(HttpStatusCode.OK, "The bill is posted");
+            try
+            {
+                _repository.Add(item);
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "NULL");
+            }
         }
 
         [HttpPut]
@@ -60,11 +64,11 @@ namespace BookStoreServices.Controllers
             if (check != null)
             {
                 _repository.Update(item, ma);
-                return Request.CreateResponse(HttpStatusCode.OK, "The bill is updated");
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The bill is not existed");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -76,11 +80,11 @@ namespace BookStoreServices.Controllers
             if (check != null)
             {
                 _repository.Delete(ma);
-                return Request.CreateResponse(HttpStatusCode.OK, "The bill is deleted");
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "The bill is not existed");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
     }

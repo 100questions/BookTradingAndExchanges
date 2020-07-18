@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace AppBookTrading
 {
     /// <summary>
@@ -34,7 +35,7 @@ namespace AppBookTrading
 
         private void Load()
         {
-            UserControlCart uc = new UserControlCart();
+            UserControlBills uc = new UserControlBills();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
         }
@@ -45,7 +46,7 @@ namespace AppBookTrading
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
         {
-            UserControlCart uc = new UserControlCart();
+            UserControlBills uc = new UserControlBills();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
         }

@@ -1,0 +1,6 @@
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\bin\Debug\Util.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\bin\Debug\Util.pdb
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\obj\Debug\Util.csprojAssemblyReference.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\obj\Debug\Util.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\Util\obj\Debug\Util.pdb

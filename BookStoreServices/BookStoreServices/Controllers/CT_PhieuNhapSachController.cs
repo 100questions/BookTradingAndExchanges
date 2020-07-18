@@ -1,6 +1,5 @@
 ﻿using BookStoreServices.Models;
 using BookStoreServices.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,11 +18,11 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if (items != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -31,14 +30,29 @@ namespace BookStoreServices.Controllers
         [Route("api/ChiTietPhieuNhapSach/{ma}")]
         public HttpResponseMessage Get(string ma)
         {
-            CT_PHIEUNHAPSACH_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
-            if (item_dto != null)
+            List<CT_PHIEUNHAPSACH_DTO> items_dto = _repository.GetCTPNSs(ma).Select(t => _repository.convertToDTO(t)).ToList();
+            if (items_dto != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
+                return Request.CreateResponse(HttpStatusCode.OK, items_dto);
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
+        [HttpGet]
+        [Route("api/ChiTietPhieuNhapSach/{maPNS}/{maSach}")]
+        public HttpResponseMessage Get(string maPNS, string maSach)
+        {
+            CT_PHIEUNHAPSACH_DTO item_dto = _repository.convertToDTO(_repository.GetCTPNS(maPNS, maSach));
+            if (item_dto != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -46,23 +60,30 @@ namespace BookStoreServices.Controllers
         [Route("api/ChiTietPhieuNhapSach")]
         public HttpResponseMessage Post([FromBody] CT_PHIEUNHAPSACH item)
         {
-            _repository.Add(item);
-            return Request.CreateResponse(HttpStatusCode.OK, "The book is posted");
+            try
+            {
+                _repository.Add(item);
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "NULL");
+            }
         }
 
         [HttpPut]
-        [Route("api/ChiTietPhieuNhapSach/{ma}")]
-        public HttpResponseMessage Put([FromBody] CT_PHIEUNHAPSACH item, string ma)
+        [Route("api/ChiTietPhieuNhapSach/{maPNS}/{maSach}")]
+        public HttpResponseMessage Put([FromBody] CT_PHIEUNHAPSACH item, string maPNS, string maSach)
         {
-            var check = _repository.Get(ma);
+            var check = _repository.GetCTPNS(maPNS, maSach);
             if (check != null)
             {
-                _repository.Update(item, ma);
-                return Request.CreateResponse(HttpStatusCode.OK, "The book is updated");
+                _repository.UpdateCTPNS(item, maPNS, maSach);
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The book is not existed");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -70,15 +91,31 @@ namespace BookStoreServices.Controllers
         [Route("api/ChiTietPhieuNhapSach/{ma}")]
         public HttpResponseMessage Delete(string ma)
         {
-            var check = _repository.Get(ma);
+            var check = _repository.GetCTPNSs(ma);
             if (check != null)
             {
-                _repository.Delete(ma);
-                return Request.CreateResponse(HttpStatusCode.OK, "The book is deleted");
+                _repository.DeleteCTPNs(ma);
+                return Request.CreateResponse(HttpStatusCode.OK, "The importing bill details is deleted");
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "The book is not existed");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "The importing bill details are not existed");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/ChiTietPhieuNhapSach/{maPNS}/{maSach}")]
+        public HttpResponseMessage Delete(string maPNS, string maSach)
+        {
+            var check = _repository.GetCTPNS(maPNS, maSach);
+            if (check != null)
+            {
+                _repository.DeletePNS(maPNS, maSach);
+                return Request.CreateResponse(HttpStatusCode.OK, "The importing bill detail is deleted");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "The importing bill detail is not existed");
             }
         }
     }

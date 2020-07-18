@@ -22,5 +22,19 @@ namespace AppBookTrading.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=filesandfoldertorage;AccountKey=r5bJ7J" +
+            "dJyJhkKwc+DtRi3qKOmM58fcG5pVYbY9C+WMe0vaCBnegeGvKwYiG9Ybr1ssZgwq16hCLp/ZJq+0h5ew" +
+            "==;EndpointSuffix=core.windows.net")]
+        public string cloudStorageString {
+            get {
+                return ((string)(this["cloudStorageString"]));
+            }
+            set {
+                this["cloudStorageString"] = value;
+            }
+        }
     }
 }

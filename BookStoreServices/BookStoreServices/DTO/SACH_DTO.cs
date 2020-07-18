@@ -12,9 +12,15 @@ namespace BookStoreServices.DTO
         public string TENSACH { get; set; }
         public string TACGIA { get; set; }
         public string THELOAI { get; set; }
-        public int? GIABANSACH { get; set; }
-        public int? GIANHAPSACH { get; set; }
+        public double? GIABANSACH { get; set; }
+        public double? GIANHAPSACH { get; set; }
         public int? SLTON { get; set; }
+        public string IMG { get; set; }
+        public string LOAIBIA { get; set; }
+        public string KICHTHUOC { get; set; }
+        public DateTime? NGAYXUATBAN { get; set; }
+        public int? SOTRANG { get; set; }
+
 
     }
 }
