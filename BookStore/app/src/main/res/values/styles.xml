@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/gradient_start_color</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/gradient_end_color</item>
+    </style>
+
+    <style name="NoAcTionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/gradient_start_color</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/gradient_end_color</item>
+    </style>
+
+    <style name="Theme.Material" parent="Theme.MaterialComponents.Light.Bridge">
+        <item name="android:textColorHint">@color/LightGray</item>
+        <item name="colorControlActivated">@color/gradient_start_color</item>
+        <item name="colorControlHighlight">@color/gradient_start_color</item>
+        <item name="tabIndicatorColor">@color/gradient_start_color</item>
+        <item name="tabIndicatorHeight">1dp</item>
+        <item name="tabTextAppearance">@color/gradient_start_color</item>
+        <item name="tabSelectedTextColor">@color/gradient_start_color</item>
+    </style>
+
+
+</resources>
