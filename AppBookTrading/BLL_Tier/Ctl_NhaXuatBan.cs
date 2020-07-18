@@ -24,7 +24,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<NHAXUATBAN_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/NhaXuatBan", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/NhaXuatBan", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var nhaxuatban_dto = JsonConvert.DeserializeObject<List<NHAXUATBAN_DTO>>(json);
             return nhaxuatban_dto;
@@ -36,12 +36,12 @@ namespace DAL_BLL_Tier
             var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync("https://bookstoreservices.azurewebsites.net/api/Sach", httpContent);
+            HttpResponseMessage response = await client.PostAsync($"api/NhaXuatBan/", httpContent);
         }
 
-        public async Task<NHAXUATBAN_DTO> GetPublisherAsync(string path)
+        public async Task<NHAXUATBAN_DTO> GetPublisherAsync(string ma)
         {
-            HttpResponseMessage response = await _client.GetAsync($"/api/NhaXuatBan" + path);
+            HttpResponseMessage response = await _client.GetAsync($"api/NhaXuatBan"+ ma);
             var json = await response.Content.ReadAsStringAsync();
             var nhaxuatban_dto = JsonConvert.DeserializeObject<NHAXUATBAN_DTO>(json);
             return nhaxuatban_dto;

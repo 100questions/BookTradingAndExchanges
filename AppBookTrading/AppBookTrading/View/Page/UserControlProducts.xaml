@@ -35,11 +35,14 @@
                      materialDesign:HintAssist.Hint="Tên Sản Phẩm" />
 
                     <TextBox Margin="15 25 15 15" MinWidth="150"
-                    x:Name="txtGiaNhap"
+                     PreviewTextInput="withoutNumberValidate"
+                     x:Name="txtGiaNhap"
                      Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Giá Nhập" />
+                     materialDesign:HintAssist.Hint="Giá Nhập" 
+                     />
 
                     <TextBox Margin="15 25 15 15" MinWidth="150"
+                    PreviewTextInput="withoutNumberValidate"
                     x:Name="txtGiaBan"
                      Style="{StaticResource MaterialDesignTextBox}"
                      materialDesign:HintAssist.Hint="Giá Bán" />
@@ -50,7 +53,8 @@
                      materialDesign:HintAssist.Hint="Tác Giả" />
 
                     <TextBox Margin="15 25 15 15" MinWidth="50"
-                    x:Name="txtSoTrang"
+                     PreviewTextInput="withoutNumberValidate"
+                     x:Name="txtSoTrang"
                      Style="{StaticResource MaterialDesignTextBox}"
                      materialDesign:HintAssist.Hint="Số Trang" />
 

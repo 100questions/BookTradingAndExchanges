@@ -92,6 +92,7 @@
     <Compile Include="DTO\HOADON_DTO.cs" />
     <Compile Include="DTO\KHACHHANG_DTO.cs" />
     <Compile Include="DTO\LOAISACH_DTO.cs" />
+    <Compile Include="DTO\NHACUNGCAP_DTO.cs" />
     <Compile Include="DTO\NHANVIEN_DTO.cs" />
     <Compile Include="DTO\NHAXUATBAN_DTO.cs" />
     <Compile Include="DTO\PHIEUDOITRASACH_DTO.cs" />

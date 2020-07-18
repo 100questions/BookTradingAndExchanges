@@ -22,7 +22,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<HOADON_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/HoaDon", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/HoaDon", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var hoadon_dto = JsonConvert.DeserializeObject<List<HOADON_DTO>>(json);
             return hoadon_dto;

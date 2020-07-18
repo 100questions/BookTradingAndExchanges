@@ -24,7 +24,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<SACH_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/Sach", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/Sach", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var sach_dto = JsonConvert.DeserializeObject<List<SACH_DTO>>(json);
             return sach_dto;
@@ -35,19 +35,16 @@ namespace DAL_BLL_Tier
         {
             var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync($"/api/Sach", httpContent);
+            HttpResponseMessage response = await _client.PostAsync($"api/Sach", httpContent);
         }
 
         public async Task<SACH_DTO> GetAsync(string maSP)
         {
-            HttpResponseMessage response = await _client.GetAsync($"/api/Sach/"+maSP);
+            HttpResponseMessage response = await _client.GetAsync($"api/Sach/"+maSP);
             var json = await response.Content.ReadAsStringAsync();
             var sach_dto = JsonConvert.DeserializeObject<SACH_DTO>(json);
             return sach_dto;
         }
-
-
-
 
         public async Task<SACH_DTO> UpdateAsync(SACH_DTO sach)
         {

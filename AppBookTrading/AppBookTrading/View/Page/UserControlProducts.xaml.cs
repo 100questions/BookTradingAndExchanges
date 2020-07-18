@@ -3,15 +3,13 @@ using Microsoft.Win32;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace AppBookTrading.View.Page
 {
@@ -164,6 +162,7 @@ namespace AppBookTrading.View.Page
             txtKichThuoc.Clear();
             txtImageURL.Clear();
             txtMaSP.Focus();
+            dpNgayXuatBan.Text = string.Empty;
         }
 
         private void disableText()
@@ -221,6 +220,8 @@ namespace AppBookTrading.View.Page
             btnHuy.Visibility = Visibility.Visible;
             btnThemSanPham.Visibility = Visibility.Collapsed;
             clearText();
+            Guid maSP = Guid.NewGuid();
+            txtMaSP.Text = maSP.ToString();
         }
 
         private async void btnSua_Click(object sender, RoutedEventArgs e)
@@ -263,9 +264,8 @@ namespace AppBookTrading.View.Page
         {
             if (validateFields())
             {
-                Guid maSP = Guid.NewGuid();
                 SACH_DTO sach_dto = new SACH_DTO();
-                sach_dto.MASACH = maSP.ToString();
+                sach_dto.MASACH = txtMaSP.Text;
                 sach_dto.MANXB = cbbNhaXuatBan.SelectedValue.ToString();
                 sach_dto.TENSACH = txtTenSP.Text;
                 sach_dto.TACGIA = txtTacGia.Text;
@@ -301,6 +301,7 @@ namespace AppBookTrading.View.Page
 
         private void btnHuy_Click(object sender, RoutedEventArgs e)
         {
+            clearText();
             disableText();
             btnLuu.Visibility = Visibility.Collapsed;
             btnHuy.Visibility = Visibility.Collapsed;
@@ -356,6 +357,23 @@ namespace AppBookTrading.View.Page
         {
            txtImageURL.Text =  addImageToProduct("product-images");
         }
+
+
+        private void withoutNumberValidate(object sender, TextCompositionEventArgs e)
+        {
+            if (IsTextAllowed(e.Text))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private static readonly Regex _regex = new Regex("[0-9]"); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
     }
+
+
 
 }

@@ -8,6 +8,7 @@ namespace DAL_BLL_Tier
         public string MANV { get; set; }
         public DateTime? NGAYNHAP { get; set; }
         public double THANHTIENPHIEUNHAP { get; set; }
+        public string MANCC { get; set; }
 
     }
 }

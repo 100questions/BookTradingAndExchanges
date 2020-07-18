@@ -21,7 +21,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<KHACHHANG_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/KhachHang", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/KhachHang", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var khachhang_dto = JsonConvert.DeserializeObject<List<KHACHHANG_DTO>>(json);
             return khachhang_dto;

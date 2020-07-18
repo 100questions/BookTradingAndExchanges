@@ -22,7 +22,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<PHIEUNHAPSACH_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/PhieuNhapSach", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/PhieuNhapSach", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var phieuNhapSach_dto = JsonConvert.DeserializeObject<List<PHIEUNHAPSACH_DTO>>(json);
             return phieuNhapSach_dto;

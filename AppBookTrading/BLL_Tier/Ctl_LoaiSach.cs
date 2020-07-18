@@ -25,7 +25,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<LOAISACH_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"/api/LoaiSach", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/LoaiSach", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var loaisach_dto = JsonConvert.DeserializeObject<List<LOAISACH_DTO>>(json);
             return loaisach_dto;
@@ -40,9 +40,9 @@ namespace DAL_BLL_Tier
             HttpResponseMessage response = await client.PostAsync("https://bookstoreservices.azurewebsites.net/api/Sach", httpContent);
         }
 
-        public async Task<LOAISACH_DTO> GetBookTypeAsync(string path)
+        public async Task<LOAISACH_DTO> GetBookTypeAsync(string ma)
         {
-            HttpResponseMessage response = await _client.GetAsync($"/api/LoaiSach" + path);
+            HttpResponseMessage response = await _client.GetAsync($"api/LoaiSach" + ma);
             var json = await response.Content.ReadAsStringAsync();
             var loaisach_dto = JsonConvert.DeserializeObject<LOAISACH_DTO>(json);
             return loaisach_dto;
