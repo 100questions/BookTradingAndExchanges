@@ -82,6 +82,7 @@
     <Compile Include="Ctl_ChucVu.cs" />
     <Compile Include="Ctl_HoaDon.cs" />
     <Compile Include="Ctl_KhachHang.cs" />
+    <Compile Include="Ctl_NhaXuatBan.cs" />
     <Compile Include="Ctl_PhieuNhapSach.cs" />
     <Compile Include="DTO\CHUCVU_DTO.cs" />
     <Compile Include="Ctl_LoaiSach.cs" />

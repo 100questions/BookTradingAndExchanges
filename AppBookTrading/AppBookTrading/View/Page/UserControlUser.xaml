@@ -52,21 +52,6 @@
                 Content="Tìm kiếm" />
 
                     </WrapPanel>
-                    <ListView
-          ItemsSource="{Binding Items1}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Code}"
-                Header="Mã Nhà Cung Cấp" />
-                                <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Name}"
-                Header="Tên Nhà Cung Cấp" />                               
-                                <GridViewColumn Width="250">
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
                 </StackPanel>
             </TabItem>
         </TabControl>

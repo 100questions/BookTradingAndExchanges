@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -7,7 +6,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
 namespace DAL_BLL_Tier
 {
@@ -21,9 +19,8 @@ namespace DAL_BLL_Tier
 
             _client = new HttpClient();
             _client.BaseAddress = new Uri("https://bookstoreservices.azurewebsites.net/");
-            _client.DefaultRequestHeaders.Accept.Clear();
+            //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
         }
         public async Task<List<SACH_DTO>> GetList()
         {
@@ -33,30 +30,30 @@ namespace DAL_BLL_Tier
             return sach_dto;
         }
 
-        public async Task<Uri> AddBookAsync(SACH_DTO sach)
+
+        public async void AddAsync(SACH_DTO sach)
         {
             var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
-            var buffer = Encoding.UTF8.GetBytes(json);
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await _client.PostAsync("/api/Sach", byteContent);
-            response.EnsureSuccessStatusCode();
-            return response.Headers.Location;
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PostAsync($"/api/Sach", httpContent);
         }
 
-        public async Task<SACH_DTO> GetBookAsync(string path)
+        public async Task<SACH_DTO> GetAsync(string maSP)
         {
-            HttpResponseMessage response = await _client.GetAsync($"/api/Sach"+path);
+            HttpResponseMessage response = await _client.GetAsync($"/api/Sach/"+maSP);
             var json = await response.Content.ReadAsStringAsync();
             var sach_dto = JsonConvert.DeserializeObject<SACH_DTO>(json);
             return sach_dto;
         }
 
-        public async Task<SACH_DTO> UpdateProductAsync(SACH_DTO sach)
+
+
+
+        public async Task<SACH_DTO> UpdateAsync(SACH_DTO sach)
         {
             var json = JsonConvert.SerializeObject(sach);
-            var stringContent = new StringContent(json);
-            HttpResponseMessage response = await _client.PutAsync($"api/products/{sach.MASACH}", stringContent);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PutAsync($"api/Sach/{sach.MASACH}", stringContent);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
@@ -64,9 +61,9 @@ namespace DAL_BLL_Tier
             sach = JsonConvert.DeserializeObject<SACH_DTO>(json);
             return sach;
         }
-        public async Task<HttpStatusCode> DeleteProductAsync(string id)
+        public async Task<HttpStatusCode> DeleteAsync(string maSP)
         {
-            HttpResponseMessage response = await _client.DeleteAsync($"api/products/{id}");
+            HttpResponseMessage response = await _client.DeleteAsync($"api/Sach/{maSP}");
             return response.StatusCode;
         }
 
