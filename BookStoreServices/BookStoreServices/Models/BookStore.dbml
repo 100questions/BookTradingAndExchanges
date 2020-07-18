@@ -66,6 +66,15 @@
       <Association Name="LOAISACH_SACH" Member="SACHes" ThisKey="MALS" OtherKey="THELOAI" Type="SACH" />
     </Type>
   </Table>
+  <Table Name="dbo.NHACUNGCAP" Member="NHACUNGCAPs">
+    <Type Name="NHACUNGCAP">
+      <Column Name="MANCC" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNCC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="NHACUNGCAP_PHIEUNHAPSACH" Member="PHIEUNHAPSACHes" ThisKey="MANCC" OtherKey="MANCC" Type="PHIEUNHAPSACH" />
+    </Type>
+  </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
     <Type Name="NHANVIEN">
       <Column Name="MANV" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -106,7 +115,9 @@
       <Column Name="MANV" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="NGAYNHAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="THANHTIENPHIEUNHAP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MANCC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="PHIEUNHAPSACH_CT_PHIEUNHAPSACH" Member="CT_PHIEUNHAPSACHes" ThisKey="MAPHIEU" OtherKey="MAPHIEU" Type="CT_PHIEUNHAPSACH" />
+      <Association Name="NHACUNGCAP_PHIEUNHAPSACH" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
       <Association Name="NHANVIEN_PHIEUNHAPSACH" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
@@ -130,7 +141,7 @@
       <Column Name="GIABANSACH" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="GIANHAPSACH" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SLTON" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IMG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IMG" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="LOAIBIA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="KICHTHUOC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NGAYXUATBAN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

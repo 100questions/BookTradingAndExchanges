@@ -1,6 +1,5 @@
 ﻿using BookStoreServices.Models;
 using BookStoreServices.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,11 +18,11 @@ namespace BookStoreServices.Controllers
             var items = _repository.List();
             if (items != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
+                return Request.CreateResponse(HttpStatusCode.OK, _repository.List().Select(x => _repository.convertToDTO(x)));
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -34,11 +33,11 @@ namespace BookStoreServices.Controllers
             List<CT_PHIEUNHAPSACH_DTO> items_dto = _repository.GetCTPNSs(ma).Select(t => _repository.convertToDTO(t)).ToList();
             if (items_dto != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, items_dto);
+                return Request.CreateResponse(HttpStatusCode.OK, items_dto);
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -49,11 +48,11 @@ namespace BookStoreServices.Controllers
             CT_PHIEUNHAPSACH_DTO item_dto = _repository.convertToDTO(_repository.GetCTPNS(maPNS, maSach));
             if (item_dto != null)
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, item_dto);
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
             }
             else
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.NotFound, "Không có dữ liệu");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -61,8 +60,15 @@ namespace BookStoreServices.Controllers
         [Route("api/ChiTietPhieuNhapSach")]
         public HttpResponseMessage Post([FromBody] CT_PHIEUNHAPSACH item)
         {
-            _repository.Add(item);
-            return Request.CreateResponse(HttpStatusCode.OK, "The importing bill detail is posted");
+            try
+            {
+                _repository.Add(item);
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "NULL");
+            }
         }
 
         [HttpPut]
@@ -73,11 +79,11 @@ namespace BookStoreServices.Controllers
             if (check != null)
             {
                 _repository.UpdateCTPNS(item, maPNS, maSach);
-                return Request.CreateResponse(HttpStatusCode.OK, "The importing bill detail is updated");
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
             }
             else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The importing bill detail is not existed");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
             }
         }
 
@@ -93,7 +99,7 @@ namespace BookStoreServices.Controllers
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "The importing bill details are not existed");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "The importing bill details are not existed");
             }
         }
 
@@ -109,7 +115,7 @@ namespace BookStoreServices.Controllers
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "The importing bill detail is not existed");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "The importing bill detail is not existed");
             }
         }
     }

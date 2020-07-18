@@ -16,7 +16,6 @@ namespace BookStoreServices.Repository
         {
             db.SACHes.InsertOnSubmit(item);
             db.SubmitChanges();
-
         }
 
         public List<SACH> List()

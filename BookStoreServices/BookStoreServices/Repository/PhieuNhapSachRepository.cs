@@ -38,6 +38,7 @@ namespace BookStoreServices.Repository
             PHIEUNHAPSACH pns = db.PHIEUNHAPSACHes.Where(t => t.MAPHIEU.Equals(ma)).FirstOrDefault();
             pns.MAPHIEU = item.MAPHIEU;
             pns.MANV = item.MANV;
+            pns.MANCC = item.MANCC;
             DateTime validValue;
             pns.NGAYNHAP = DateTime.TryParse(item.NGAYNHAP.ToString(), out validValue) ? validValue : (DateTime?)null;
             pns.THANHTIENPHIEUNHAP = item.THANHTIENPHIEUNHAP;
@@ -49,6 +50,7 @@ namespace BookStoreServices.Repository
             PHIEUNHAPSACH_DTO pns_dto = new PHIEUNHAPSACH_DTO();
             pns_dto.MAPHIEU = pns.MAPHIEU;
             pns_dto.MANV = pns.MANV;
+            pns_dto.MANCC = pns.MANCC;
             DateTime validValue;
             pns_dto.NGAYNHAP = (DateTime.TryParse(pns.NGAYNHAP.ToString(), out validValue) ? validValue : (DateTime?)null);
             pns_dto.THANHTIENPHIEUNHAP = Convert.ToDouble(pns.THANHTIENPHIEUNHAP);

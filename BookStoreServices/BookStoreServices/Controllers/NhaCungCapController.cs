@@ -1,4 +1,5 @@
-﻿using BookStoreServices.Models;
+﻿using BookStoreServices.DTO;
+using BookStoreServices.Models;
 using BookStoreServices.Repository;
 using System.Linq;
 using System.Net;
@@ -7,11 +8,11 @@ using System.Web.Http;
 
 namespace BookStoreServices.Controllers
 {
-    public class KhachHangController : ApiController
+    public class NhaCungCapController : ApiController
     {
-        private KhachHangRepository _repository = new KhachHangRepository();
+        private NhaCungCapRepository _repository = new NhaCungCapRepository();
         [HttpGet]
-        [Route("api/KhachHang")]
+        [Route("api/NhaCungCap")]
         public HttpResponseMessage Get()
         {
             var items = _repository.List();
@@ -26,10 +27,10 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
-        [Route("api/KhachHang/{ma}")]
+        [Route("api/NhaCungCap/{ma}")]
         public HttpResponseMessage Get(string ma)
         {
-            KHACHHANG_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
+            NHACUNGCAP_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
             if (item_dto != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, item_dto);
@@ -41,8 +42,8 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpPost]
-        [Route("api/KhachHang")]
-        public HttpResponseMessage Post([FromBody] KHACHHANG item)
+        [Route("api/NhaCungCap")]
+        public HttpResponseMessage Post([FromBody] NHACUNGCAP item)
         {
             try
             {
@@ -56,8 +57,8 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpPut]
-        [Route("api/KhachHang/{ma}")]
-        public HttpResponseMessage Put([FromBody] KHACHHANG item, string ma)
+        [Route("api/NhaCungCap/{ma}")]
+        public HttpResponseMessage Put([FromBody] NHACUNGCAP item, string ma)
         {
             var check = _repository.Get(ma);
             if (check != null)
@@ -72,7 +73,7 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpDelete]
-        [Route("api/KhachHang/{ma}")]
+        [Route("api/NhaCungCap/{ma}")]
         public HttpResponseMessage Delete(string ma)
         {
             var check = _repository.Get(ma);
