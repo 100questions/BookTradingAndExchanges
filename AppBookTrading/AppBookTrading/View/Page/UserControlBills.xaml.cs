@@ -47,5 +47,40 @@ namespace AppBookTrading.View.Page
             dgvHoaDon.ItemsSource = lstHoaDon;
         }
 
+
+        private async void btnTimKiem_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnTimKiem.Content.Equals("Tìm Kiếm"))
+            {
+                btnTimKiem.Content = "Huỷ Tìm";
+                var lst = await hoadon_ctl.GetList();
+                DateTime? dateFrom = dpFrom.SelectedDate;
+                DateTime? dateTo = dpTo.SelectedDate;
+                List<HOADON_DTO> lstHD = new List<HOADON_DTO>();
+                if (dateFrom.HasValue && dateTo.HasValue)
+                {
+                    string sDateFrom = dateFrom.Value.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    string sDateTo = dateTo.Value.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    lstHD = (List<HOADON_DTO>) lst.Where(t => !String.IsNullOrEmpty(t.NGAYLAPHD.ToString())).Where(t => DateTime.Parse(t.NGAYLAPHD.ToString()) >= dateFrom && DateTime.Parse(t.NGAYLAPHD.ToString()) >= dateTo).ToList();
+                    dgvHoaDon.ItemsSource = lstHD;
+                }                
+                if (!String.IsNullOrEmpty(txtTimKiem.ToString()) && lstHD.Count > 0)
+                {
+                    dgvHoaDon.ItemsSource = lstHD.Where(t => !String.IsNullOrEmpty(t.MAKH) && !String.IsNullOrEmpty(t.MAHD)).Where(t => t.MAHD.ToLower().Contains(txtTimKiem.Text.ToLower()) || t.MAKH.ToLower().Contains(txtTimKiem.Text.ToLower())).ToList();
+                }
+                else
+                {
+                    dgvHoaDon.ItemsSource = lst.Where(t => !String.IsNullOrEmpty(t.MAKH) && !String.IsNullOrEmpty(t.MAHD)).Where(t => t.MAHD.ToLower().Contains(txtTimKiem.Text.ToLower()) || t.MAKH.ToLower().Contains(txtTimKiem.Text.ToLower())).ToList();
+                }
+                return;
+            }
+
+            if (btnTimKiem.Content.ToString().Equals("Huỷ Tìm"))
+            {
+                btnTimKiem.Content = "Tìm Kiếm";
+                txtTimKiem.Clear();
+                dgvHoaDon.ItemsSource = await hoadon_ctl.GetList();
+            }
+        }
     }
 }

@@ -15,8 +15,8 @@
             <TextBlock Text="Khách Hàng" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
             <!--<Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="170" Content="Tạo Khách Hàng" Margin="10 0" />-->
         </Grid>
-        <TabControl Background="White" Margin="10">
-            <TabItem Header="Khách Hàng" Background="LightGray">
+        <TabControl Background="White" Margin="10" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Khách Hàng" Background="LightGray" Name="item1">
                 <StackPanel>
                     <WrapPanel Orientation="Horizontal">
                         <TextBox Margin="15 25 15 15" MinWidth="400"
@@ -39,7 +39,7 @@
                     </WrapPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Nhà Cung Cấp" Background="LightGray">
+            <TabItem Header="Nhà Cung Cấp" Background="LightGray" Name="item2">
                 <StackPanel>
                     <WrapPanel Orientation="Horizontal">
                         <TextBox Margin="15 25 15 15" MinWidth="400"

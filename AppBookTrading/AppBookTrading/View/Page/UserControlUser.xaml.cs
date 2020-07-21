@@ -21,7 +21,8 @@ namespace AppBookTrading.View.Page
     /// </summary>
     public partial class UserControlUser : UserControl
     {
-        Ctl_KhachHang ctl = new Ctl_KhachHang();
+        Ctl_KhachHang ctl_kh = new Ctl_KhachHang();
+        Ctl_NhaCungCap ctl_ncc = new Ctl_NhaCungCap();
         public UserControlUser()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace AppBookTrading.View.Page
 
         public async void Load()
         {
-            var lstKhachHang = await ctl.GetList();
+            var lstKhachHang = await ctl_kh.GetList();
             dgvKhachHang.ItemsSource = lstKhachHang;
         }
 
@@ -46,6 +47,17 @@ namespace AppBookTrading.View.Page
             }
 
         }
-        
+
+        private async void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (item1.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_kh.GetList();
+            }
+            if (item2.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_ncc.GetList();
+            }
+        }
     }
 }

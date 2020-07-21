@@ -18,24 +18,34 @@
             <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Hoàn Thành" Margin="5 0" />
         </Grid>
         <WrapPanel Orientation="Horizontal" Margin="10" Background="White">
-            <TextBox Margin="15" Width="200"
-                    x:Name="NameTextBox"
+            <TextBox Margin="15 30 15 15" Width="250"
+                    x:Name="txtTimKiem"
                      Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Search Mã Đơn Hàng" />
-            <DatePicker Margin="15"
+                     materialDesign:HintAssist.Hint="Tìm kiếm theo mã đơn hàng hoặc mã khách hàng" />
+            <DatePicker Margin="15 15 15 0"
+                  Name="dpFrom"
                   Width="150"
                   materialDesign:HintAssist.Hint="From"
                   Style="{StaticResource MaterialDesignDatePicker}" />
-            <DatePicker Margin="0 15 15 15"
+            <DatePicker Margin="15 15 15 0"
+                  Name="dpTo"
                   Width="150"
                   materialDesign:HintAssist.Hint="To"
                   Style="{StaticResource MaterialDesignDatePicker}" />
+            <ComboBox Name="cbbTrangThai"
+                  materialDesign:HintAssist.Hint="Trạng thái"     
+                  MinWidth="140"
+                  Margin="15 15 15 15"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            </ComboBox>
             <Button
+                x:Name="btnTimKiem"
                 Background="#407d8b"
                 BorderThickness="0"
                 Margin="0 0 10 0"
                 Width="100"
-                Content="Tìm kiếm" />
+                Content="Tìm Kiếm"
+                Click="btnTimKiem_Click"/>
 
         </WrapPanel>
         <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvHoaDon" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="580"
