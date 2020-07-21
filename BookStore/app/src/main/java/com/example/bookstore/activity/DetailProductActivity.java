@@ -1,6 +1,8 @@
 package com.example.bookstore.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,17 +15,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bookstore.api.APIClient;
 import com.example.bookstore.api.RequestAPI;
 import com.example.bookstore.adapter.ProductAdapter;
 import com.example.bookstore.adapter.RecyclerViewTouchListener;
+import com.example.bookstore.model.CartItemModel;
 import com.example.bookstore.model.Entity.Book;
 import com.example.bookstore.R;
 import com.example.bookstore.room.database.AppDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -43,6 +48,7 @@ public class DetailProductActivity extends AppCompatActivity {
     RequestAPI requestAPI;
     Button btnBuy;
     AppDatabase mDB;
+    Book bookCurrentChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +56,14 @@ public class DetailProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_product);
         Objects.requireNonNull(getSupportActionBar()).hide();
         init();
-        mDB = AppDatabase.getInMemoryDatabase(this);
+        mDB = AppDatabase.BuilderDatabase(this);
         requestAPI = APIClient.getClient().create(RequestAPI.class);
 
         // Set Data Detail
         Intent intent = getIntent();
         final Book book = (Book) intent.getSerializableExtra("BookDetail");
         SetBookDetail(book);
+        bookCurrentChoose = book;
         // List Book
         products = new ArrayList<Book>();
         LoadBookAccordingToCategory(book);
@@ -73,6 +80,7 @@ public class DetailProductActivity extends AppCompatActivity {
                 Book book = products.get(position);
                 SetBookDetail(book);
                 LoadBookAccordingToCategory(book);
+                bookCurrentChoose = book;
             }
 
             @Override
@@ -91,7 +99,27 @@ public class DetailProductActivity extends AppCompatActivity {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDB.bookDao().insertBook(book);
+                try {
+                    CartItemModel cartBook = mDB.cartBookDao().getCartBook(bookCurrentChoose.getBookId());
+                    //insert cart book if not exists
+                    if(cartBook == null)
+                    {
+                        CartItemModel cartItemModel = new CartItemModel(bookCurrentChoose);
+                        mDB.cartBookDao().InsertCartBook(cartItemModel);
+                    }
+                    //update cart book if exists
+                    else
+                    {
+                        int currentNum = cartBook.getSoluong();
+                        cartBook.setSoluong(++currentNum);
+                        mDB.cartBookDao().UpdateCartBook(cartBook);
+                    }
+                    Intent intent = new Intent(DetailProductActivity.this,CartActivity.class);
+                    startActivity(intent);
+                }catch (Exception ex)
+                {
+                    Log.i("Error", Objects.requireNonNull(ex.getMessage()));
+                }
             }
         });
     }

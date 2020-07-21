@@ -38,6 +38,7 @@ namespace AppBookTrading
             UserControlBills uc = new UserControlBills();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +50,7 @@ namespace AppBookTrading
             UserControlBills uc = new UserControlBills();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
 
         private void btnProduct_Click(object sender, RoutedEventArgs e)
@@ -56,6 +58,7 @@ namespace AppBookTrading
             UserControlProduct uc = new UserControlProduct();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
@@ -63,6 +66,7 @@ namespace AppBookTrading
             UserControlUser uc = new UserControlUser();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
 
         private void btnDoanhSo_Click(object sender, RoutedEventArgs e)
@@ -70,6 +74,7 @@ namespace AppBookTrading
             UserControlStatistical uc = new UserControlStatistical();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
 
         private void btnNhapKho_Click(object sender, RoutedEventArgs e)
@@ -77,6 +82,7 @@ namespace AppBookTrading
             UserControlWarehouse uc = new UserControlWarehouse();
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
+            MenuToggleButton.IsChecked = false;
         }
     }
 }
