@@ -219,6 +219,7 @@ namespace AppBookTrading.View.Page
             btnLuu.Visibility = Visibility.Visible;
             btnHuy.Visibility = Visibility.Visible;
             btnThemSanPham.Visibility = Visibility.Collapsed;
+            dgvSanPham.IsEnabled = false;
             clearText();
             Guid maSP = Guid.NewGuid();
             txtMaSP.Text = maSP.ToString();
@@ -296,6 +297,7 @@ namespace AppBookTrading.View.Page
                 btnHuy.Visibility = Visibility.Collapsed;
                 btnThemSanPham.Visibility = Visibility.Visible;
                 btnLuu.Visibility = Visibility.Collapsed;
+                dgvSanPham.IsEnabled = true;
             }
         }
 
@@ -306,6 +308,7 @@ namespace AppBookTrading.View.Page
             btnLuu.Visibility = Visibility.Collapsed;
             btnHuy.Visibility = Visibility.Collapsed;
             btnThemSanPham.Visibility = Visibility.Visible;
+            dgvSanPham.IsEnabled = true;
         }
 
         private void btnXoa_Click(object sender, RoutedEventArgs e)

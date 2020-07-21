@@ -5,126 +5,143 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" >
-    <Grid Background="LightGray">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="750"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.ColumnSpan="2" Grid.Row="0" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Danh Sách Sản Phẩm" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
-            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Import Excel" Margin="5 0" />
-            <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Export Excel" Margin="5 0" />
+            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" VerticalAlignment="Center" Width="120" Content="Import Excel" Margin="5 0" />
+            <Button Grid.Column="2"  Background="#407d8b" BorderThickness="0" VerticalAlignment="Center" Width="120" Content="Export Excel" Margin="5 0" />
         </Grid>
-        <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="#407d8b" Padding="10" Margin="10" Background="White">
-            <StackPanel>
-                <WrapPanel Orientation="Horizontal">
-                    <TextBox Margin="15 25 15 15" MinWidth="200"
-                    x:Name="txtMaSP"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Mã Sản Phẩm" />
 
-                    <TextBox Margin="15 25 15 15" MinWidth="200"
-                    x:Name="txtTenSP"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Tên Sản Phẩm" />
+        <Border Grid.Row="1" Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b">
+            <ScrollViewer>
+                <WrapPanel Orientation="Vertical" Background="White" Margin="20 0" MaxWidth="440">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            Margin="15 25 15 15"
+                             Grid.Column="1"
+                             Width="240"
+                            MaxWidth="240"
+                             x:Name="txtTimKiem" 
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Tìm kiếm theo mã, tên, danh mục sản phẩm" />
+                        <Button x:Name="btnTimKiem" Background="#407d8b" BorderThickness="0" Width="100" Content="Tìm Kiếm" Margin="5 0" Click="btnTimKiem_Click" />
+                    </StackPanel>
+                    <TextBox Margin="15 25 15 15" MinWidth="220"
+                            x:Name="txtMaSP"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Mã Sản Phẩm" />
 
+                    <TextBox Margin="15 25 15 15" MinWidth="220"
+                            x:Name="txtTenSP"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Tên Sản Phẩm" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="15 25 15 15" MinWidth="160"
+                             PreviewTextInput="withoutNumberValidate"
+                             x:Name="txtGiaNhap"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Giá Nhập" />
+                        <TextBox Margin="15 25 15 15" MinWidth="160"
+                            PreviewTextInput="withoutNumberValidate"
+                            x:Name="txtGiaBan"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Giá Bán" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="15 25 15 15" MinWidth="160"
+                             PreviewTextInput="withoutNumberValidate"
+                             x:Name="txtSoTrang"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Số Trang" />
+                        <DatePicker Name="dpNgayXuatBan" Margin="15 25 15 15"
+                              Width="160"
+                              materialDesign:HintAssist.Hint="Ngày Xuất Bản"
+                              Style="{StaticResource MaterialDesignDatePicker}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="15 25 15 15" MinWidth="160"
+                            x:Name="txtKichThuoc"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Kích Thước" />
+                        <ComboBox Name="cbbLoaiBia"
+                              materialDesign:HintAssist.Hint="Loại Bìa"         
+                              MinWidth="160"
+                              Margin="15 15 25 15"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </StackPanel>
                     <TextBox Margin="15 25 15 15" MinWidth="150"
-                     PreviewTextInput="withoutNumberValidate"
-                     x:Name="txtGiaNhap"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Giá Nhập" 
-                     />
-
-                    <TextBox Margin="15 25 15 15" MinWidth="150"
-                    PreviewTextInput="withoutNumberValidate"
-                    x:Name="txtGiaBan"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Giá Bán" />
-
-                    <TextBox Margin="15 25 15 15" MinWidth="150"
-                    x:Name="txtTacGia"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Tác Giả" />
-
-                    <TextBox Margin="15 25 15 15" MinWidth="50"
-                     PreviewTextInput="withoutNumberValidate"
-                     x:Name="txtSoTrang"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Số Trang" />
-
-                    <TextBox Margin="15 25 15 15" MinWidth="150"
-                    x:Name="txtKichThuoc"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Kích Thước" />
-
-                    <DatePicker Name="dpNgayXuatBan" Margin="15 25 15 15"
-                      Width="150"
-                      materialDesign:HintAssist.Hint="Ngày Xuất Bản"
-                      Style="{StaticResource MaterialDesignDatePicker}" />
-
-                    <ComboBox Name="cbbLoaiBia"
-                  materialDesign:HintAssist.Hint="Loại Bìa"         
-                  MinWidth="140"
-                  Margin="15 15 25 15"
-                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    </ComboBox>
+                        x:Name="txtTacGia"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Tác Giả" />
                     <ComboBox Name="cbbDanhMucSP"
-                  ItemsSource="{Binding}"
-                  materialDesign:HintAssist.Hint="Danh Mục Sản Phẩm"
-                  MinWidth="140"
-                  Margin="15 15 25 15"
-                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                          ItemsSource="{Binding}"
+                          materialDesign:HintAssist.Hint="Danh Mục Sản Phẩm"
+                          MinWidth="140"
+                          Margin="15 15 25 15"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                     </ComboBox>
                     <ComboBox Name="cbbNhaXuatBan"
-                  materialDesign:HintAssist.Hint="Nhà Xuất Bản"
-                  MinWidth="140"
-                  Margin="15 15 25 15"
-                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                          materialDesign:HintAssist.Hint="Nhà Xuất Bản"
+                          MinWidth="140"
+                          Margin="15 15 25 15"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                     </ComboBox>
-                    <TextBox Margin="15 25 15 15" MinWidth="150"
-                    x:Name="txtImageURL"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="ImageURL" 
-                     IsEnabled="False"/>
-                    <Button x:Name="btnUpload" Click="btnUpload_Click">
-                        <DockPanel HorizontalAlignment="Center" Width="20">
-                            <materialDesign:PackIcon Kind="ImagePlus" Width="20" Height="20" VerticalAlignment="Center" />
-                        </DockPanel>
-                    </Button>
-
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="15 25 15 15" MinWidth="265"
+                                 MaxWidth="265"
+                            x:Name="txtImageURL"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="ImageURL" 
+                             IsEnabled="False"/>
+                        <Button x:Name="btnUpload" Click="btnUpload_Click" Margin="15 25 15 15">
+                            <DockPanel HorizontalAlignment="Center" Width="20">
+                                <materialDesign:PackIcon Kind="ImagePlus" Width="20" Height="20" VerticalAlignment="Center" />
+                            </DockPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Background="White">
+                        <WrapPanel   Background="White" Margin="0" HorizontalAlignment="Left">
+                            <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" Click="btnThemSanPham_Click" />
+                            <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="100" Content="Lưu" Margin="5 0" Click="btnLuu_Click" />
+                            <Button x:Name="btnHuy" Background="#407d8b" BorderThickness="0" Width="100" Content="Huỷ" Margin="5 0" Click="btnHuy_Click" />
+                            <Button x:Name="btnSua" Background="#407d8b" BorderThickness="0" Width="100" Content="Sửa" Margin="5 0" Click="btnSua_Click" />
+                            <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" Width="100" Content="Xóa" Margin="5 0" Click="btnXoa_Click" />
+                        </WrapPanel>
+                    </StackPanel>
                 </WrapPanel>
-                <DockPanel Margin="10 20 10 10" HorizontalAlignment="Right">
-                    <TextBox Margin="15 0 15 0" MinWidth="300"
-                    x:Name="txtTimKiem"
-                     Style="{StaticResource MaterialDesignTextBox}"
-                     materialDesign:HintAssist.Hint="Tìm kiếm theo mã, tên, danh mục sản phẩm" />
-                    <Button x:Name="btnTimKiem" Background="#407d8b" BorderThickness="0" Width="100" Content="Tìm Kiếm" Margin="5 0" Click="btnTimKiem_Click" />
-                    <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" Click="btnThemSanPham_Click" />
-                    <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="100" Content="Lưu" Margin="5 0" Click="btnLuu_Click" />
-                    <Button x:Name="btnHuy" Background="#407d8b" BorderThickness="0" Width="100" Content="Huỷ" Margin="5 0" Click="btnHuy_Click" />
-                    <!--<Button Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Tạo Sản Phẩm" Margin="5 0" Click="Button_Click" />-->
-                    <Button x:Name="btnSua" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="100" Content="Sửa" Margin="5 0" Click="btnSua_Click" />
-                    <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="100" Content="Xóa" Margin="5 0" Click="btnXoa_Click" />
-                </DockPanel>
-            </StackPanel>
+            </ScrollViewer>
         </Border>
-        <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvSanPham" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Visible"  Height="580"
+        <DataGrid BorderThickness="0.5"   
+                  Grid.Column="1"          
+                  Grid.Row="1"      
+                  BorderBrush="#407d8b" 
+                  x:Name="dgvSanPham" 
+                  Background="White" 
+                      VerticalScrollBarVisibility="Visible"
+                      HorizontalScrollBarVisibility="Visible"
+                  ScrollViewer.CanContentScroll="True"
                   SelectionUnit="FullRow"
-                  Padding="5"                 
+                  Padding="15"                 
                   CanUserResizeColumns="False"
                   CanUserReorderColumns="False"
                   SelectionMode="Single"
                   AutoGenerateColumns="True" 
                   SelectionChanged="dgvSanPham_SelectionChanged"
-                  IsReadOnly="True"
-                  Margin="10 0 10 10">
+                  IsReadOnly="True">
         </DataGrid>
-
     </Grid>
 </UserControl>

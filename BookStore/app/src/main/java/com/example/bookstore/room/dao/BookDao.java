@@ -1,5 +1,6 @@
 package com.example.bookstore.room.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -19,7 +20,7 @@ public interface BookDao {
     void insertBook(Book book);
 
     @Insert(onConflict = IGNORE)
-    void insertOrReplaceBook(Book... books);
+    void  insertOrReplaceBook(Book... books);
 
     @Update(onConflict = REPLACE)
     void updateBook(Book book);

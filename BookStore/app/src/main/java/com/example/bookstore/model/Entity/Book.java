@@ -3,6 +3,7 @@ package com.example.bookstore.model.Entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class Book implements Serializable {
 
     @NonNull
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey
     @SerializedName("MASACH")
     @Expose
     private String bookId;
@@ -54,6 +55,26 @@ public class Book implements Serializable {
     @SerializedName("SOTRANG")
     @Expose
     private int numberPage;
+
+    public Book(){}
+
+    @Ignore
+    public Book(Book book)
+    {
+        this.bookId = book.bookId;
+        this.author = book.author;
+        this.bookName = book.bookName;
+        this.categories = book.categories;
+        this.coverTypes = book.coverTypes;
+        this.existingNumber = book.existingNumber;
+        this.imageBook = book.imageBook;
+        this.importingPrice = book.importingPrice;
+        this.numberPage = book.numberPage;
+        this.price = book.price;
+        this.publishDate = book.publishDate;
+        this.publisherId = book.publisherId;
+        this.size = book.size;
+    }
 
     public String getBookId() {
         return bookId;

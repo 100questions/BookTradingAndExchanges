@@ -86,7 +86,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@color/ReadLight"
-            android:text="68.680 đ"
+            android:text="0 đ"
             android:layout_marginHorizontal="20dp"/>
         <Button
             android:id="@+id/btn_buy"

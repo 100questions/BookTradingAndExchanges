@@ -1,11 +1,24 @@
 package com.example.bookstore.model;
 
-public class CartItemModel extends Product {
-    private int soluong = 0;
+import androidx.room.Entity;
+import androidx.room.Ignore;
 
-    public CartItemModel(String productName, double price, int imgProduct,int soLuong) {
-        super(productName, price, imgProduct);
-        this.soluong = soLuong;
+import com.example.bookstore.model.Entity.Book;
+
+import java.io.Serializable;
+
+@Entity
+public class CartItemModel extends Book {
+    private int soluong = 1;
+    private double sumPrice;
+
+    public CartItemModel()
+    {
+    }
+
+    @Ignore
+    public CartItemModel(Book book) {
+        super(book);
     }
 
     public int getSoluong() {
@@ -14,5 +27,14 @@ public class CartItemModel extends Product {
 
     public void setSoluong(int soluong) {
         this.soluong = soluong;
+    }
+
+    public double getSumPrice() {
+        sumPrice = getPrice() * soluong;
+        return sumPrice;
+    }
+
+    public void setSumPrice(double sumPrice) {
+        this.sumPrice = sumPrice;
     }
 }
