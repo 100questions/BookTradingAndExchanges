@@ -1,6 +1,8 @@
 package com.example.bookstore.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +14,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.model.CartItemModel;
 import com.example.bookstore.R;
+import com.example.bookstore.room.database.AppDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     Context context;
     ArrayList<CartItemModel> mCartList;
+    AppDatabase mDB;
 
     public CartAdapter(Context context, ArrayList<CartItemModel> mCartList) {
         this.context = context;
         this.mCartList = mCartList;
+        mDB = AppDatabase.BuilderDatabase(context);
+    }
+
+    public void SetListCartBook(ArrayList<CartItemModel> mCartList) {
+        this.mCartList = mCartList;
+        notifyDataSetChanged();
+    }
+
+    public double SetSumPrice()
+    {
+        double sumPrice = 0;
+        for (CartItemModel cart : mCartList) {
+            sumPrice += cart.getSumPrice();
+        }
+        return  sumPrice;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -43,8 +63,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return mCartList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgCartBook;
         TextView txtTitleBook;
         TextView txtTitleSupplier;
@@ -53,6 +72,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         ImageView btnReduction;
         ImageView btnIncrease;
         TextView txtAmount;
+        ImageView btnDelete;
+
         public ViewHolder(@NonNull View view) {
             super(view);
             imgCartBook = view.findViewById(R.id.img_cart_book);
@@ -63,35 +84,58 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             btnReduction = view.findViewById(R.id.btn_reduction);
             btnIncrease = view.findViewById(R.id.btn_increase);
             txtAmount = view.findViewById(R.id.txt_amount);
-
+            btnDelete = view.findViewById(R.id.btn_delete_cart_book);
         }
 
-        public void bind(final CartItemModel cartItem){
-            imgCartBook.setImageResource(cartItem.getImgProduct());
-            txtTitleBook.setText(cartItem.getProductName());
-            txtPrice.setText(String.valueOf(cartItem.getPrice()) + "đ");
-            txtDisCount.setText(String.valueOf(cartItem.getPrice() * 1.4));
+        @SuppressLint({"DefaultLocale", "SetTextI18n"})
+        public void bind(final CartItemModel cartItem) {
+            if (TextUtils.isEmpty(cartItem.getImageBook())) {
+                Picasso.get().cancelRequest(imgCartBook);
+                imgCartBook.setImageDrawable(null);
+            } else {
+                Picasso.get()
+                        .load(cartItem.getImageBook())
+                        .resize(80, 100)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.drawable.ic_error_red_24dp)
+                        .into(imgCartBook);
+            }
+            txtTitleBook.setText(cartItem.getBookName());
+            txtPrice.setText(String.format("%,.0f", cartItem.getSumPrice()) + "đ");
+            txtDisCount.setText(String.format("%,.0f", cartItem.getSumPrice()*1.4) + "đ");
             txtAmount.setText(String.valueOf(cartItem.getSoluong()));
 
             btnReduction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int amount = cartItem.getSoluong();
-                if(amount > 1)
-                    amount--;
-                cartItem.setSoluong(amount);
-                txtAmount.setText(String.valueOf(amount));
-            }
+                @Override
+                public void onClick(View v) {
+                    int amount = cartItem.getSoluong();
+                    if (amount > 1)
+                        amount--;
+                    cartItem.setSoluong(amount);
+                    txtAmount.setText(String.valueOf(amount));
+                    mDB.cartBookDao().UpdateCartBook(cartItem);
+                    SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                }
             });
 
             btnIncrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int amount = cartItem.getSoluong();
-                amount++;
-                cartItem.setSoluong(amount);
-                txtAmount.setText(String.valueOf(amount));
-            }
+                @Override
+                public void onClick(View v) {
+                    int amount = cartItem.getSoluong();
+                    amount++;
+                    cartItem.setSoluong(amount);
+                    txtAmount.setText(String.valueOf(amount));
+                    mDB.cartBookDao().UpdateCartBook(cartItem);
+                    SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                }
+            });
+
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mDB.cartBookDao().DeleteCartBook(cartItem.getBookId());
+                    SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                }
             });
         }
     }

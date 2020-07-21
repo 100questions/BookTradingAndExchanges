@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView navView;
     boolean status = false;
     MenuItem mItem;
-    AppDatabase mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
         getSupportActionBar().hide();
         LoadFragment( new HomeFragment());
-        mDB = AppDatabase.getInMemoryDatabase(this);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

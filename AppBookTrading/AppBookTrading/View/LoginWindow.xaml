@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center">
         </StackPanel>
-        <Border Grid.Row="1"  BorderThickness="0" Background="#FF6E9FAB" BorderBrush="Black" CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth5">
+        <Border Grid.Row="1"  BorderThickness="0" Background="White" BorderBrush="Black" CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth5">
             <StackPanel x:Name="loginForm" Orientation="Vertical" Margin="10">
 
                 <StackPanel.Resources>

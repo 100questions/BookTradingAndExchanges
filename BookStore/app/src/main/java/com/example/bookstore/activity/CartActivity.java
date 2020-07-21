@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.bookstore.adapter.CartAdapter;
 import com.example.bookstore.model.CartItemModel;
 import com.example.bookstore.R;
+import com.example.bookstore.room.database.AppDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInDownAnimator;
 
@@ -21,6 +24,8 @@ public class CartActivity extends AppCompatActivity {
     CartAdapter cartAdapter;
     ArrayList<CartItemModel> mListItemCart;
     ImageView btnBack;
+    TextView txtSumPrice;
+    AppDatabase mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +48,24 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         });
+        SetSumPrice();
     }
 
     private void init() {
+        mDB = AppDatabase.BuilderDatabase(this);
         cartRecyclerView = findViewById(R.id.list_item_card);
         btnBack = findViewById(R.id.btnBack_cart);
+        txtSumPrice = findViewById(R.id.txtSumPrice);
     }
 
     private void GetData()
     {
-        mListItemCart.add(new CartItemModel("Đắc Nhân Tâm",20000,R.drawable.img1,1));
-        mListItemCart.add(new CartItemModel("Đắc Nhân Tâm",20000,R.drawable.img1,1));
-        mListItemCart.add(new CartItemModel("Đắc Nhân Tâm",20000,R.drawable.img1,1));
-        mListItemCart.add(new CartItemModel("Đắc Nhân Tâm",20000,R.drawable.img1,1));
+        mListItemCart = (ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync();
+    }
+
+    public void SetSumPrice()
+    {
+        double sumPrice = cartAdapter.SetSumPrice();
+        txtSumPrice.setText(String.format("%,.0f", sumPrice) + " đ");
     }
 }
