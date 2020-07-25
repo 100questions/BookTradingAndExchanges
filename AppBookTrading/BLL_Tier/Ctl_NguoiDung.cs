@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace DAL_BLL_Tier
 {
-    public class Ctl_ChucVu
+    public class Ctl_NguoiDung
     {
         public static HttpClient _client;
         public HttpResponseMessage _reponse;
 
-        public Ctl_ChucVu()
+        public Ctl_NguoiDung()
         {
 
             _client = new HttpClient();
@@ -23,47 +23,46 @@ namespace DAL_BLL_Tier
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public async Task<List<CHUCVU_DTO>> GetList()
+        public async Task<List<NGUOIDUNG_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"api/ChucVu", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/NguoiDung", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
-            var cv = JsonConvert.DeserializeObject<List<CHUCVU_DTO>>(json);
-            return cv;
+            var nd_dto = JsonConvert.DeserializeObject<List<NGUOIDUNG_DTO>>(json);
+            return nd_dto;
         }
 
 
-        public async void AddAsync(CHUCVU_DTO cv)
+        public async void AddAsync(NGUOIDUNG_DTO nv_dto)
         {
-            var json = JsonConvert.SerializeObject(cv, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(nv_dto, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync($"api/ChucVu", httpContent);
+            HttpResponseMessage response = await _client.PostAsync($"api/NguoiDung", httpContent);
         }
 
-        public async Task<CHUCVU_DTO> GetAsync(string ma)
+        public async Task<NGUOIDUNG_DTO> GetAsync(string ma)
         {
-            HttpResponseMessage response = await _client.GetAsync($"api/ChucVu/" + ma);
+            HttpResponseMessage response = await _client.GetAsync($"api/NguoiDung/" + ma);
             var json = await response.Content.ReadAsStringAsync();
-            var cv = JsonConvert.DeserializeObject<CHUCVU_DTO>(json);
-            return cv;
+            var nd_dto = JsonConvert.DeserializeObject<NGUOIDUNG_DTO>(json);
+            return nd_dto;
         }
 
-        public async Task<CHUCVU_DTO> UpdateAsync(CHUCVU_DTO cv)
+        public async Task<NGUOIDUNG_DTO> UpdateAsync(NGUOIDUNG_DTO nd_dto)
         {
-            var json = JsonConvert.SerializeObject(cv);
+            var json = JsonConvert.SerializeObject(nd_dto);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PutAsync($"api/ChucVu/{cv.MACV}", stringContent);
+            HttpResponseMessage response = await _client.PutAsync($"api/NguoiDung/{nd_dto.MANV}", stringContent);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
             json = await response.Content.ReadAsStringAsync();
-            cv = JsonConvert.DeserializeObject<CHUCVU_DTO>(json);
-            return cv;
+            nd_dto = JsonConvert.DeserializeObject<NGUOIDUNG_DTO>(json);
+            return nd_dto;
         }
         public async Task<HttpStatusCode> DeleteAsync(string ma)
         {
-            HttpResponseMessage response = await _client.DeleteAsync($"api/ChucVu/{ma}");
+            HttpResponseMessage response = await _client.DeleteAsync($"api/NguoiDung/{ma}");
             return response.StatusCode;
         }
-
     }
 }

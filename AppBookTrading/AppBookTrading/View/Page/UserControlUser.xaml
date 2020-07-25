@@ -54,6 +54,21 @@
                     </WrapPanel>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Nhà xuất bản" Background="LightGray" Name="item3">
+                <StackPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBox Margin="15 25 15 15" MinWidth="400"
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     materialDesign:HintAssist.Hint="Nhập Mã Hoặc Tên xuất bản" />
+                        <Button
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Tìm kiếm" />
+
+                    </WrapPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
         <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvKhachHang" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="580"
                   SelectionUnit="FullRow"
