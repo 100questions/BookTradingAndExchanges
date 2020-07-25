@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DAL_BLL_Tier
 {
-    public class Ctl_ChiTietPhieuNhap
+    public class Ctl_ChiTietPhieuDoiTra
     {
         public static HttpClient _client;
         public HttpResponseMessage _reponse;
 
-        public Ctl_ChiTietPhieuNhap()
+        public Ctl_ChiTietPhieuDoiTra()
         {
 
             _client = new HttpClient();
@@ -22,20 +22,20 @@ namespace DAL_BLL_Tier
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public async Task<List<CT_PHIEUNHAPSACH_DTO>> GetList()
+        public async Task<List<CT_PHIEUDOITRASACH_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"api/ChiTietPhieuNhapSach", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/ChiTietPhieuDoiTraSach", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
-            var ctpn = JsonConvert.DeserializeObject<List<CT_PHIEUNHAPSACH_DTO>>(json);
-            return ctpn;
+            var ctpdt = JsonConvert.DeserializeObject<List<CT_PHIEUDOITRASACH_DTO>>(json);
+            return ctpdt;
         }
 
 
-        public async void AddAsync(Ctl_ChiTietPhieuNhap ctpn)
+        public async void AddAsync(CT_PHIEUDOITRASACH_DTO cthd)
         {
-            var json = JsonConvert.SerializeObject(ctpn, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(cthd, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync($"api/ChiTietPhieuNhapSach", httpContent);
+            HttpResponseMessage response = await _client.PostAsync($"api/ChiTietPhieuDoiTraSach", httpContent);
         }
     }
 }

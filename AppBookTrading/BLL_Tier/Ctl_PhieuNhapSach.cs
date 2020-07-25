@@ -27,5 +27,12 @@ namespace DAL_BLL_Tier
             var phieuNhapSach_dto = JsonConvert.DeserializeObject<List<PHIEUNHAPSACH_DTO>>(json);
             return phieuNhapSach_dto;
         }
+
+        public async void AddAsync(PHIEUNHAPSACH_DTO sach)
+        {
+            var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PostAsync($"api/PhieuNhapSach", httpContent);
+        }
     }
 }

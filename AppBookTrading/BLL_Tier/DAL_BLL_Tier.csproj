@@ -79,7 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChiTietPhieuDoiTra.cs" />
+    <Compile Include="Ctl_ChiTietPhieuDoiTra.cs" />
     <Compile Include="Ctl_ChiTietPhieuNhap.cs" />
     <Compile Include="Ctl_ChitTietHoaDon.cs" />
     <Compile Include="Ctl_ChucVu.cs" />
