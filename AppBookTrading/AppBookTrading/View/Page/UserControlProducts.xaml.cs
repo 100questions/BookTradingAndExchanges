@@ -241,7 +241,7 @@ namespace AppBookTrading.View.Page
                 sach_dto.LOAIBIA = cbbLoaiBia.SelectedValue.ToString();
                 sach_dto.KICHTHUOC = txtKichThuoc.Text;
                 sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
-                sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
+                sach_dto.SOTRANG = int.Parse(txtSoTrang.Text); 
                 try
                 {
                     _ = ctl.UpdateAsync(sach_dto);

@@ -27,6 +27,11 @@ namespace BookStoreServices.Repository
             return db.KHACHHANGs.Where(t => t.MAKH.Equals(ma)).FirstOrDefault();
         }
 
+        public KHACHHANG GetUser(string tk, string mk)
+        {
+            return db.KHACHHANGs.Where(t => t.SODT.Equals(tk) && t.MatKhauDN.Equals(mk)).FirstOrDefault();
+        }
+
         public List<KHACHHANG> List()
         {
             return db.KHACHHANGs.ToList();

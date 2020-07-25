@@ -1,6 +1,6 @@
 ﻿namespace DAL_BLL_Tier
 {
-    public class QL_NGUOIDUNG_DTO
+    public class NGUOIDUNG_DTO
     {
         public string MANV { get; set; }
         public string MATKHAU { get; set; }

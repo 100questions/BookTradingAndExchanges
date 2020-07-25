@@ -21,7 +21,9 @@ namespace AppBookTrading.View.Page
     /// </summary>
     public partial class UserControlUser : UserControl
     {
-        Ctl_KhachHang ctl = new Ctl_KhachHang();
+        Ctl_KhachHang ctl_kh = new Ctl_KhachHang();
+        Ctl_NhaCungCap ctl_ncc = new Ctl_NhaCungCap();
+        Ctl_NhaXuatBan ctl_nxb = new Ctl_NhaXuatBan();
         public UserControlUser()
         {
             InitializeComponent();
@@ -30,22 +32,63 @@ namespace AppBookTrading.View.Page
 
         public async void Load()
         {
-            var lstKhachHang = await ctl.GetList();
+            var lstKhachHang = await ctl_kh.GetList();
             dgvKhachHang.ItemsSource = lstKhachHang;
         }
 
         private void dgvKhachHang_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            try
+            if (item1.IsSelected)
             {
-                KHACHHANG_DTO str = (KHACHHANG_DTO)dgvKhachHang.SelectedItem;
+                try
+                {
+                    KHACHHANG_DTO str = (KHACHHANG_DTO)dgvKhachHang.SelectedItem;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            if (item2.IsSelected)
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    NHACUNGCAP_DTO str = (NHACUNGCAP_DTO)dgvKhachHang.SelectedItem;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+            if (item3.IsSelected)
+            {
+                try
+                {
+                    NHAXUATBAN_DTO str = (NHAXUATBAN_DTO)dgvKhachHang.SelectedItem;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+           
 
         }
-        
+
+        private async void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (item1.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_kh.GetList();
+            }
+            if (item2.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_ncc.GetList();
+            }
+            if (item3.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_nxb.GetList();
+            }
+        }
     }
 }

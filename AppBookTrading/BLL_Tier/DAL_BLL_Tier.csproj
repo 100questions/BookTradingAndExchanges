@@ -79,10 +79,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ctl_ChiTietPhieuDoiTra.cs" />
+    <Compile Include="Ctl_ChiTietPhieuNhap.cs" />
+    <Compile Include="Ctl_ChitTietHoaDon.cs" />
     <Compile Include="Ctl_ChucVu.cs" />
     <Compile Include="Ctl_HoaDon.cs" />
     <Compile Include="Ctl_KhachHang.cs" />
+    <Compile Include="Ctl_NguoiDung.cs" />
+    <Compile Include="Ctl_NhaCungCap.cs" />
+    <Compile Include="Ctl_NhanVien.cs" />
     <Compile Include="Ctl_NhaXuatBan.cs" />
+    <Compile Include="Ctl_PhieuDoiTra.cs" />
     <Compile Include="Ctl_PhieuNhapSach.cs" />
     <Compile Include="DTO\CHUCVU_DTO.cs" />
     <Compile Include="Ctl_LoaiSach.cs" />
@@ -97,7 +104,7 @@
     <Compile Include="DTO\NHAXUATBAN_DTO.cs" />
     <Compile Include="DTO\PHIEUDOITRASACH_DTO.cs" />
     <Compile Include="DTO\PHIEUNHAPSACH_DTO.cs" />
-    <Compile Include="DTO\QL_NGUOIDUNG_DTO.cs" />
+    <Compile Include="DTO\NGUOIDUNG_DTO.cs" />
     <Compile Include="DTO\SACH_DTO.cs" />
     <Compile Include="Ctl_Sach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
