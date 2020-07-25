@@ -40,6 +40,21 @@ namespace BookStoreServices.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/KhachHang/{tk}/{mk}")]
+        public HttpResponseMessage GetUser(string tk, string mk)
+        {
+            KHACHHANG_DTO item_dto = _repository.convertToDTO(_repository.GetUser(tk, mk));
+            if (item_dto != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
         [HttpPost]
         [Route("api/KhachHang")]
         public HttpResponseMessage Post([FromBody] KHACHHANG item)
