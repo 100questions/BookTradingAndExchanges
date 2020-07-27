@@ -40,6 +40,7 @@ namespace BookStoreServices.Repository
             hd.MAKH = item.MAKH;
             hd.NGAYLAPHD = DateTime.Parse(item.NGAYLAPHD.ToString());
             hd.THANHTIEN = Convert.ToDouble(item.THANHTIEN);
+            hd.TRANGTHAI = item.TRANGTHAI;
             db.SubmitChanges();
         }
 
@@ -51,6 +52,7 @@ namespace BookStoreServices.Repository
             DateTime validValue;
             hd_dto.NGAYLAPHD = DateTime.TryParse(hd.NGAYLAPHD.ToString(), out validValue) ? validValue : (DateTime?)null;
             hd_dto.THANHTIEN = Convert.ToDouble(hd.THANHTIEN);
+            hd_dto.TRANGTHAI = hd.TRANGTHAI;
             return hd_dto;
         }
 

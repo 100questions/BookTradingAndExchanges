@@ -75,7 +75,7 @@ namespace BookStoreServices.Models
     #endregion
 		
 		public BookStoreDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1010,6 +1010,8 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<double> _THANHTIEN;
 		
+		private string _TRANGTHAI;
+		
 		private EntitySet<CHITIETHOADON> _CHITIETHOADONs;
 		
 		private EntityRef<KHACHHANG> _KHACHHANG;
@@ -1026,6 +1028,8 @@ namespace BookStoreServices.Models
     partial void OnNGAYLAPHDChanged();
     partial void OnTHANHTIENChanging(System.Nullable<double> value);
     partial void OnTHANHTIENChanged();
+    partial void OnTRANGTHAIChanging(string value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public HOADON()
@@ -1115,6 +1119,26 @@ namespace BookStoreServices.Models
 					this._THANHTIEN = value;
 					this.SendPropertyChanged("THANHTIEN");
 					this.OnTHANHTIENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="NVarChar(100)")]
+		public string TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
 				}
 			}
 		}
@@ -2880,6 +2904,8 @@ namespace BookStoreServices.Models
 		
 		private System.Nullable<int> _SOTRANG;
 		
+		private string _TRANGTHAI;
+		
 		private EntitySet<CT_PHIEUNHAPSACH> _CT_PHIEUNHAPSACHes;
 		
 		private EntityRef<LOAISACH> _LOAISACH;
@@ -2916,6 +2942,8 @@ namespace BookStoreServices.Models
     partial void OnNGAYXUATBANChanged();
     partial void OnSOTRANGChanging(System.Nullable<int> value);
     partial void OnSOTRANGChanged();
+    partial void OnTRANGTHAIChanging(string value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public SACH()
@@ -3190,6 +3218,26 @@ namespace BookStoreServices.Models
 					this._SOTRANG = value;
 					this.SendPropertyChanged("SOTRANG");
 					this.OnSOTRANGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="NVarChar(100)")]
+		public string TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
 				}
 			}
 		}
