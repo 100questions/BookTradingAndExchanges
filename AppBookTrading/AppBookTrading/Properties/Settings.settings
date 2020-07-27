@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="cloudStorageString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=filesandfoldertorage;AccountKey=r5bJ7JdJyJhkKwc+DtRi3qKOmM58fcG5pVYbY9C+WMe0vaCBnegeGvKwYiG9Ybr1ssZgwq16hCLp/ZJq+0h5ew==;EndpointSuffix=core.windows.net</Value>
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=filesandfoldersstorage;AccountKey=ZMCUCB7Q933eTv9TwM2CFIKsiO8ccBjMaK4ZXV4FDA0tqaW0rhAdC1LykrZR9SR09xZ7lJmc6cAcHanU7+CIuw==;EndpointSuffix=core.windows.net</Value>
     </Setting>
   </Settings>
 </SettingsFile>

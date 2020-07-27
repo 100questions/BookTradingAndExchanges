@@ -16,7 +16,7 @@ namespace DAL_BLL_Tier
         public Ctl_HoaDon()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://bookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
         }

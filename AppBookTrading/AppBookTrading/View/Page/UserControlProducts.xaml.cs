@@ -29,10 +29,11 @@ namespace AppBookTrading.View.Page
             InitializeComponent();
             disableText();
             txtMaSP.IsEnabled = false;
+            txtImageURL.IsEnabled = false;
             btnLuu.Visibility = Visibility.Collapsed;
             btnSua.Visibility = Visibility.Collapsed;
             btnXoa.Visibility = Visibility.Collapsed;
-            btnHuy.Visibility = Visibility.Collapsed;
+            btnHuy.Visibility = Visibility.Collapsed;            
             Load();         
             
         }
@@ -186,7 +187,6 @@ namespace AppBookTrading.View.Page
             txtSoTrang.IsEnabled = true;
             txtTacGia.IsEnabled = true;
             txtKichThuoc.IsEnabled = true;
-            txtImageURL.IsEnabled = true;
             dpNgayXuatBan.IsEnabled = true;
         }
 
@@ -348,6 +348,10 @@ namespace AppBookTrading.View.Page
                 txtKichThuoc.Text = row.KICHTHUOC;
                 txtSoTrang.Text = row.SOTRANG.ToString();
                 txtTacGia.Text = row.TACGIA;
+                dpNgayXuatBan.SelectedDate = Convert.ToDateTime(row.NGAYXUATBAN);
+                cbbDanhMucSP.SelectedValue = row.THELOAI.ToString();
+                cbbLoaiBia.SelectedValue = row.LOAIBIA.ToString();
+                cbbNhaXuatBan.SelectedValue = row.MANXB.ToString();
             }
             else
             {
