@@ -208,6 +208,8 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\BookStoreServices - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\BookStoreServices20200725163723 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\OnlineBookStoreServices - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

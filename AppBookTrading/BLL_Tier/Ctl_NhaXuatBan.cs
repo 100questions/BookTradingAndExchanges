@@ -18,7 +18,7 @@ namespace DAL_BLL_Tier
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://bookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -41,7 +41,7 @@ namespace DAL_BLL_Tier
 
         public async Task<NHAXUATBAN_DTO> GetPublisherAsync(string ma)
         {
-            HttpResponseMessage response = await _client.GetAsync($"api/NhaXuatBan"+ ma);
+            HttpResponseMessage response = await _client.GetAsync($"api/NhaXuatBan/"+ ma);
             var json = await response.Content.ReadAsStringAsync();
             var nhaxuatban_dto = JsonConvert.DeserializeObject<NHAXUATBAN_DTO>(json);
             return nhaxuatban_dto;

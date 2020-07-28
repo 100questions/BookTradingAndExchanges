@@ -19,6 +19,7 @@ namespace DAL_BLL_Tier
         public string KICHTHUOC { get; set; }
         public DateTime? NGAYXUATBAN { get; set; }
         public int? SOTRANG { get; set; }
+        public string TRANGTHAI { get; set; }
 
         public static implicit operator List<object>(SACH_DTO v)
         {

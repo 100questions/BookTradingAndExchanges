@@ -20,7 +20,7 @@ namespace BookStoreServices.DTO
         public string KICHTHUOC { get; set; }
         public DateTime? NGAYXUATBAN { get; set; }
         public int? SOTRANG { get; set; }
-
+        public string TRANGTHAI { get; set; }
 
     }
 }

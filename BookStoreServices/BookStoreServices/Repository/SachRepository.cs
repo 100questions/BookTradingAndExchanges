@@ -50,6 +50,7 @@ namespace BookStoreServices.Repository
             sach.KICHTHUOC = s.KICHTHUOC;
             sach.NGAYXUATBAN = s.NGAYXUATBAN;
             sach.SOTRANG = s.SOTRANG;
+            sach.TRANGTHAI = s.TRANGTHAI;
             db.SubmitChanges();
         }
 
@@ -70,6 +71,7 @@ namespace BookStoreServices.Repository
             s_dto.KICHTHUOC = s.KICHTHUOC;
             s_dto.NGAYXUATBAN = s.NGAYXUATBAN;
             s_dto.SOTRANG = s.SOTRANG;
+            s_dto.TRANGTHAI = s.TRANGTHAI;
             return s_dto;
         }
 

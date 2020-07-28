@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="onlinebookstore" Class="BookStoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=bookstore-server.database.windows.net;Initial Catalog=onlinebookstore;User ID=bookstoreservices;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="onlinebookstoreConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=onlinebookstore-server.database.windows.net;Initial Catalog=onlinebookstore;User ID=bookstoreservices;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="onlinebookstoreConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CHITIETHOADON" Member="CHITIETHOADONs">
     <Type Name="CHITIETHOADON">
       <Column Name="MAHD" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -44,6 +44,7 @@
       <Column Name="MAKH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="NGAYLAPHD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="THANHTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="HOADON_CHITIETHOADON" Member="CHITIETHOADONs" ThisKey="MAHD" OtherKey="MAHD" Type="CHITIETHOADON" />
       <Association Name="KHACHHANG_HOADON" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
     </Type>
@@ -146,6 +147,7 @@
       <Column Name="KICHTHUOC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NGAYXUATBAN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="SOTRANG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="SACH_CT_PHIEUNHAPSACH" Member="CT_PHIEUNHAPSACHes" ThisKey="MASACH" OtherKey="MASACH" Type="CT_PHIEUNHAPSACH" />
       <Association Name="LOAISACH_SACH" Member="LOAISACH" ThisKey="THELOAI" OtherKey="MALS" Type="LOAISACH" IsForeignKey="true" />
       <Association Name="NHAXUATBAN_SACH" Member="NHAXUATBAN" ThisKey="MANXB" OtherKey="MANXB" Type="NHAXUATBAN" IsForeignKey="true" />

@@ -25,9 +25,9 @@ namespace AppBookTrading.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=filesandfoldertorage;AccountKey=r5bJ7J" +
-            "dJyJhkKwc+DtRi3qKOmM58fcG5pVYbY9C+WMe0vaCBnegeGvKwYiG9Ybr1ssZgwq16hCLp/ZJq+0h5ew" +
-            "==;EndpointSuffix=core.windows.net")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=filesandfoldersstorage;AccountKey=ZMCU" +
+            "CB7Q933eTv9TwM2CFIKsiO8ccBjMaK4ZXV4FDA0tqaW0rhAdC1LykrZR9SR09xZ7lJmc6cAcHanU7+CI" +
+            "uw==;EndpointSuffix=core.windows.net")]
         public string cloudStorageString {
             get {
                 return ((string)(this["cloudStorageString"]));

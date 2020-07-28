@@ -11,6 +11,7 @@ namespace BookStoreServices.DTO
         public string MAKH { get; set; }
         public DateTime? NGAYLAPHD { get; set; }
         public double THANHTIEN { get; set; }
+        public string TRANGTHAI { get; set; }
     }
 
 
