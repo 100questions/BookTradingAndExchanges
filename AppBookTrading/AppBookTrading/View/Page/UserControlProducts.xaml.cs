@@ -1,4 +1,5 @@
-﻿using DAL_BLL_Tier;
+﻿using AppBookTrading.View.Modals;
+using DAL_BLL_Tier;
 using Microsoft.Win32;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -10,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace AppBookTrading.View.Page
 {
@@ -40,9 +42,14 @@ namespace AppBookTrading.View.Page
 
         public async void Load()
         {
+
+            String[] lstTrangThai = { "Đang kinh doanh", "Hết hàng", "Ngừng kinh doanh"};
+            cbbTrangThai.ItemsSource = lstTrangThai ;
+            cbbTrangThai.SelectedIndex = 0;
+
             String[] lstLoaiBia = { "Bìa cứng", "Bìa mềm" };
             cbbLoaiBia.ItemsSource = lstLoaiBia;
-            cbbLoaiBia.SelectedIndex = 1;
+            cbbLoaiBia.SelectedIndex = 0;
 
             var lstLoaiSach = await ctl_ls.GetList();
             cbbDanhMucSP.ItemsSource = lstLoaiSach;
@@ -241,7 +248,8 @@ namespace AppBookTrading.View.Page
                 sach_dto.LOAIBIA = cbbLoaiBia.SelectedValue.ToString();
                 sach_dto.KICHTHUOC = txtKichThuoc.Text;
                 sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
-                sach_dto.SOTRANG = int.Parse(txtSoTrang.Text); 
+                sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
+                sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                 try
                 {
                     _ = ctl.UpdateAsync(sach_dto);
@@ -332,6 +340,12 @@ namespace AppBookTrading.View.Page
             
         }
 
+        private bool checkNull(SACH_DTO s)
+        {
+
+            return true;
+        }
+
         private void dgvSanPham_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             enableText();
@@ -352,6 +366,7 @@ namespace AppBookTrading.View.Page
                 cbbDanhMucSP.SelectedValue = row.THELOAI.ToString();
                 cbbLoaiBia.SelectedValue = row.LOAIBIA.ToString();
                 cbbNhaXuatBan.SelectedValue = row.MANXB.ToString();
+                //cbbTrangThai.SelectedValue = row.TRANGTHAI.ToString();
             }
             else
             {
@@ -378,6 +393,20 @@ namespace AppBookTrading.View.Page
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
+        }
+
+        private void btnViewIMG_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtImageURL.Text))
+            {
+                ImgWindow modalWindow = new ImgWindow();
+                modalWindow.getIMG(txtImageURL.Text);
+                modalWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Link ảnh trống");
+            }
         }
     }
 

@@ -26,8 +26,16 @@ namespace DAL_BLL_Tier
         {
             _reponse = await _client.GetAsync($"api/ChiTietPhieuNhapSach", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
-            var ctpn = JsonConvert.DeserializeObject<List<CT_PHIEUNHAPSACH_DTO>>(json);
-            return ctpn;
+            var ctpns = JsonConvert.DeserializeObject<List<CT_PHIEUNHAPSACH_DTO>>(json);
+            return ctpns;
+        }
+
+        public async Task<List<CT_PHIEUNHAPSACH_DTO>> Get(String maPN)
+        {
+            _reponse = await _client.GetAsync($"api/ChiTietPhieuNhapSach/" + maPN, HttpCompletionOption.ResponseHeadersRead);
+            var json = await _reponse.Content.ReadAsStringAsync();
+            var ctpns = JsonConvert.DeserializeObject<List<CT_PHIEUNHAPSACH_DTO>>(json);
+            return ctpns;
         }
 
 

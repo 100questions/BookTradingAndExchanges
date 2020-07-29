@@ -109,6 +109,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\Modals\BillDetailsWindow.xaml.cs">
+      <DependentUpon>BillDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ImgWindow.xaml.cs">
+      <DependentUpon>ImgWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ImportCreatingWindow.xaml.cs">
+      <DependentUpon>ImportCreatingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ImportDetailsWindow.xaml.cs">
+      <DependentUpon>ImportDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\RefundDetailsWindow.xaml.cs">
+      <DependentUpon>RefundDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Page\UserControlBills.xaml.cs">
       <DependentUpon>UserControlBills.xaml</DependentUpon>
     </Compile>
@@ -143,6 +158,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Modals\BillDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ImgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ImportCreatingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ImportDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\RefundDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Page\UserControlBills.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

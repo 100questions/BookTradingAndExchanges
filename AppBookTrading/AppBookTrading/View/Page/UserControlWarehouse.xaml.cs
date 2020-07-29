@@ -1,18 +1,8 @@
-﻿using DAL_BLL_Tier;
+﻿using AppBookTrading.View.Modals;
+using DAL_BLL_Tier;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AppBookTrading.View.Page
 {
@@ -22,6 +12,7 @@ namespace AppBookTrading.View.Page
     public partial class UserControlWarehouse : UserControl
     {
         Ctl_PhieuNhapSach ctl = new Ctl_PhieuNhapSach();
+        PHIEUNHAPSACH_DTO pns;
         public UserControlWarehouse()
         {
             InitializeComponent();
@@ -32,7 +23,7 @@ namespace AppBookTrading.View.Page
         {
             try
             {
-                PHIEUNHAPSACH_DTO str = (PHIEUNHAPSACH_DTO)dgvPhieuNhapSach.SelectedItem;
+                pns = (PHIEUNHAPSACH_DTO)dgvPhieuNhapSach.SelectedItem;
             }
             catch (Exception ex)
             {
@@ -47,6 +38,26 @@ namespace AppBookTrading.View.Page
         {
             var lstPhieuNhapSach = await ctl.GetList();
             dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
+        }
+
+        private void btnTaoPhieuNhap_Click(object sender, RoutedEventArgs e)
+        {
+            ImportCreatingWindow Icw = new ImportCreatingWindow();
+            Icw.ShowDialog();
+        }
+
+        private void btnXemPhieuNhap_Click(object sender, RoutedEventArgs e)
+        {
+            if(pns != null)
+            {
+                ImportDetailsWindow Idw = new ImportDetailsWindow();
+                Idw.getCTPN(pns.MAPHIEU);
+                Idw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn một phiếu nhập!");
+            }
         }
     }
 }
