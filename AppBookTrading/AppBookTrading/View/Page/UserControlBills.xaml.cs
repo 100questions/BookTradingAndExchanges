@@ -2,17 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using AppBookTrading.View.Modals;
 
 namespace AppBookTrading.View.Page
 {
@@ -20,6 +12,7 @@ namespace AppBookTrading.View.Page
     public partial class UserControlBills : UserControl
     {
         Ctl_HoaDon hoadon_ctl = new Ctl_HoaDon();
+        HOADON_DTO hd;
         public UserControlBills()
         {
             InitializeComponent();
@@ -30,7 +23,7 @@ namespace AppBookTrading.View.Page
         {
             try
             {
-                HOADON_DTO str = (HOADON_DTO)dgvHoaDon.SelectedItem;
+                hd = (HOADON_DTO)dgvHoaDon.SelectedItem;
             }
             catch (Exception ex)
             {
@@ -45,6 +38,11 @@ namespace AppBookTrading.View.Page
         {
             var lstHoaDon = await hoadon_ctl.GetList();
             dgvHoaDon.ItemsSource = lstHoaDon;
+
+            String[] lstTrangThai = { "Tạm Giữ", "Đang Vận Chuyển", "Đã Giao", "Đã Huỷ" };
+            cbbTrangThai.ItemsSource = lstTrangThai;
+            cbbTrangThai.SelectedIndex = 0;
+
         }
 
 
@@ -80,6 +78,41 @@ namespace AppBookTrading.View.Page
                 btnTimKiem.Content = "Tìm Kiếm";
                 txtTimKiem.Clear();
                 dgvHoaDon.ItemsSource = await hoadon_ctl.GetList();
+            }
+        }
+
+        private void XemHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            if (hd != null)
+            {
+                BillDetailsWindow bdw = new BillDetailsWindow();
+                bdw.getBillDetails(hd.MAHD);
+                bdw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn một hoá đơn!");
+            }
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(hd != null)
+            {
+                hd.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
+                try
+                {
+                    hd = await hoadon_ctl.UpadateAsync(hd);
+                    MessageBox.Show("Cập nhật hoá đơn thành công");
+                }
+                catch
+                {
+                    MessageBox.Show("Cập nhật hoá đơn thất bại");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hoá đơn trước khi cập nhật");
             }
         }
     }

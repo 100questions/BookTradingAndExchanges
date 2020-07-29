@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    public static String BASE_URL = "https://bookstoreservices.azurewebsites.net/";
+    public static String BASE_URL = "https://onlinebookstoreservices.azurewebsites.net/";
 
     private static Retrofit retrofit;
     public static Retrofit getClient(){

@@ -14,8 +14,8 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Danh Sách Đơn Hàng" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
-            <Button Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Hủy Đơn" Margin="5 0" />
-            <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Hoàn Thành" Margin="5 0" />
+            <Button Grid.Column="1" x:Name="XemHoaDon" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="120" Content="Xem Hoá Đơn" Margin="5 0" Click="XemHoaDon_Click"/>
+            <Button Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="170" Content="Cập nhật trạng thái" Margin="5 0" Click="Button_Click" />
         </Grid>
         <WrapPanel Orientation="Horizontal" Margin="10" Background="White">
             <TextBox Margin="15 30 15 15" Width="250"
