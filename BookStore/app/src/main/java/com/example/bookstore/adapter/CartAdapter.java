@@ -3,6 +3,7 @@ package com.example.bookstore.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookstore.activity.CartActivity;
 import com.example.bookstore.model.CartItemModel;
 import com.example.bookstore.R;
 import com.example.bookstore.room.database.AppDatabase;
@@ -23,6 +25,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     Context context;
     ArrayList<CartItemModel> mCartList;
     AppDatabase mDB;
+    Onclick SumPriceOnClick;
+
+    public void setSumPriceOnClick(Onclick sumPriceOnClick) {
+        SumPriceOnClick = sumPriceOnClick;
+    }
+
+    public interface Onclick
+    {
+        void onclick(double SumPrice);
+    }
 
     public CartAdapter(Context context, ArrayList<CartItemModel> mCartList) {
         this.context = context;
@@ -115,6 +127,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     txtAmount.setText(String.valueOf(amount));
                     mDB.cartBookDao().UpdateCartBook(cartItem);
                     SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                    double TotalPrice = 0;
+                    for(CartItemModel cart : mCartList)
+                    {
+                        TotalPrice += cart.getSumPrice();
+                    }
+                    SumPriceOnClick.onclick(TotalPrice);
                 }
             });
 
@@ -127,6 +145,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     txtAmount.setText(String.valueOf(amount));
                     mDB.cartBookDao().UpdateCartBook(cartItem);
                     SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                    double TotalPrice = 0;
+                    for(CartItemModel cart : mCartList)
+                    {
+                        TotalPrice += cart.getSumPrice();
+                    }
+                    SumPriceOnClick.onclick(TotalPrice);
                 }
             });
 
@@ -135,6 +159,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 public void onClick(View v) {
                     mDB.cartBookDao().DeleteCartBook(cartItem.getBookId());
                     SetListCartBook((ArrayList<CartItemModel>) mDB.cartBookDao().findAllCartBookSync());
+                    double TotalPrice = 0;
+                    for(CartItemModel cart : mCartList)
+                    {
+                        TotalPrice += cart.getSumPrice();
+                    }
+                    SumPriceOnClick.onclick(TotalPrice);
                 }
             });
         }

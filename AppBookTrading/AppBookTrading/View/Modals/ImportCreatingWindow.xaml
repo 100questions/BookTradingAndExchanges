@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppBookTrading.View.Modals" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ImportCreatingWindow" Height="450" Width="800"
+        Title="ImportCreatingWindow" Height="auto" Width="640"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -21,6 +21,59 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="Chi Tiết Phiếu Nhập" FontWeight="Bold" />
             </DockPanel>
         </materialDesign:ColorZone>
-        <StackPanel x:Name="LayoutUserControl" Background="LightGray" />
+        <WrapPanel Orientation="Horizontal" x:Name="LayoutUserControl" Background="LightGray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b" Margin="10 10 10 10" Width="620">
+                    <ScrollViewer>
+                        <WrapPanel Orientation="Vertical" Background="White" Margin="20 0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Margin="15 25 15 15" MinWidth="190"
+                            x:Name="txtMaPhieuNhap"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Mã Phiếu Nhập" />
+                                <ComboBox Name="cbbSanPham"
+                              materialDesign:HintAssist.Hint="Tên Sản Phẩm"         
+                              MinWidth="190"
+                              Margin="15 15 25 15"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                </ComboBox>
+                                <TextBox Margin="15 25 15 15" MinWidth="50"
+                             x:Name="txtSoLuong"
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             materialDesign:HintAssist.Hint="Số Lượng" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Height="10" />
+                            <StackPanel  Background="White" HorizontalAlignment="Right">
+                                <WrapPanel   Background="White" Margin="0" HorizontalAlignment="Left">
+                                    <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" />
+                                    <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" Width="100" Content="Xóa" Margin="5 0"  />
+                                    <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="135" Content="Lưu Phiếu Nhập" Margin="5 0" Click="btnLuu_Click" />
+                                </WrapPanel>
+                            </StackPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Grid.Row="1" Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b" Margin="10 10 10 10" Width="620">
+                    <DataGrid
+                              BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvCT_PhieuNhap" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="580"
+                              SelectionUnit="FullRow"
+                              Padding="5"                 
+                              CanUserResizeColumns="False"
+                              CanUserReorderColumns="False"
+                              SelectionMode="Single"
+                              AutoGenerateColumns="True" 
+                              SelectionChanged="dgvCT_PhieuNhap_SelectionChanged"
+                              ColumnWidth="*"
+                              IsReadOnly="True"
+                              Margin="10 0 10 10">
+
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </WrapPanel>
     </DockPanel>
 </Window>

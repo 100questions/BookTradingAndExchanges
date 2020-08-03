@@ -112,6 +112,9 @@
     <Compile Include="View\Modals\BillDetailsWindow.xaml.cs">
       <DependentUpon>BillDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modals\CustomerCreatingWindow.xaml.cs">
+      <DependentUpon>CustomerCreatingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\ImgWindow.xaml.cs">
       <DependentUpon>ImgWindow.xaml</DependentUpon>
     </Compile>
@@ -121,8 +124,14 @@
     <Compile Include="View\Modals\ImportDetailsWindow.xaml.cs">
       <DependentUpon>ImportDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modals\PublisherCreatingWindow.xaml.cs">
+      <DependentUpon>PublisherCreatingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\RefundDetailsWindow.xaml.cs">
       <DependentUpon>RefundDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\SupplierCreatingWindow.xaml.cs">
+      <DependentUpon>SupplierCreatingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Page\UserControlBills.xaml.cs">
       <DependentUpon>UserControlBills.xaml</DependentUpon>
@@ -162,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Modals\CustomerCreatingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Modals\ImgWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,7 +187,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Modals\PublisherCreatingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Modals\RefundDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\SupplierCreatingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

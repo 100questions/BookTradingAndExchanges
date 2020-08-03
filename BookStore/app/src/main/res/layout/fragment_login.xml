@@ -17,6 +17,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_phone_number_login"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:hint="@string/PhoneNumber" />
@@ -28,6 +29,7 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:hint="@string/PassWord"
@@ -35,7 +37,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/containedButton"
+            android:id="@+id/btnAuthentication"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"

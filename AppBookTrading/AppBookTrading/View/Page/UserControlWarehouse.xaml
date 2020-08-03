@@ -14,57 +14,43 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Danh Sách Phiếu Nhập" Foreground="#407d8b" FontSize="20" FontWeight="Bold" Margin="10" />
-            <Button x:Name="btnTaoPhieuNhap" Grid.Column="1" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Tạo Phiếu Nhập" Margin="10 0" Click="btnTaoPhieuNhap_Click" />
-            <Button x:Name="btnXemPhieuNhap" Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Xem phiếu nhập" Margin="10 0" Click="btnXemPhieuNhap_Click" />
+            
         </Grid>
-        <WrapPanel Orientation="Horizontal" Background="White" Margin="10 0 10 10">
-            <TextBox Margin="15 25 15 15" MinWidth="400"
+        <WrapPanel Orientation="Vertical" Background="White" Margin="10 0 10 10" >
+            <StackPanel Orientation="Horizontal"  Margin="10 20 10 10">
+                <ComboBox Name="cbbNhaCungCap"
+                              materialDesign:HintAssist.Hint="Nhà Cung Cấp"         
+                              MinWidth="190"
+                              Margin="15 15 25 15"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                </ComboBox>
+
+                <Button x:Name="btnThemNhaCungCap" Grid.Column="1"  Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="170" Content="Thêm Nhà Cung Cấp" Margin="10 0" Click="btnThemNhaCungCap_Click" />
+                <Button x:Name="btnTaoPhieuNhap" Grid.Column="1"  Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Tạo Phiếu Nhập" Margin="10 0" Click="btnTaoPhieuNhap_Click" />
+                <Button x:Name="btnXemPhieuNhap" Grid.Column="2" Background="#407d8b" BorderThickness="0" HorizontalAlignment="Right" Width="150" Content="Xem phiếu nhập" Margin="10 0" Click="btnXemPhieuNhap_Click" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10 0 10 10">
+                <TextBox Margin="15 25 15 15" MinWidth="400"
                     x:Name="txtTimSanPham"
                      Style="{StaticResource MaterialDesignTextBox}"
                      materialDesign:HintAssist.Hint="Nhập Mã Phiếu Nhập" />
-            <DatePicker Margin="15"
+                <DatePicker Margin="15"
                   Width="150"
                   materialDesign:HintAssist.Hint="From"
                   Style="{StaticResource MaterialDesignDatePicker}" />
-            <DatePicker Margin="0 15 15 15"
+                <DatePicker Margin="0 15 15 15"
                   Width="150"
                   materialDesign:HintAssist.Hint="To"
                   Style="{StaticResource MaterialDesignDatePicker}" />
-            <Button
+                <Button
                 x:Name="btnTimKiem"
                 Background="#407d8b"
                 BorderThickness="0"
                 Width="100"
                 Content="Tìm kiếm" />
-
+            </StackPanel>
         </WrapPanel>
-        <!--<ListView
-          ItemsSource="{Binding Items1}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Code}"
-                Header="Mã phiếu Nhập" />
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Name}"
-                Header="Kho Nhập" />
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Description}"
-                Header="Tình trạng" />
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Description}"
-                Header="Ngày Nhập" />
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Description}"
-                Header="Người Nhập" />
-                    <GridViewColumn Width="150"
-                DisplayMemberBinding="{Binding Description}"
-                Header="Tổng Tiền" />
-                    <GridViewColumn Width="250">
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>-->
+        
         <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvPhieuNhapSach" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="580"
                   SelectionUnit="FullRow"
                   Padding="5"                 

@@ -28,6 +28,11 @@ namespace BookStoreServices.Repository
             return db.QL_NguoiDungs.Where(t => t.MANV.Equals(ma)).FirstOrDefault();
         }
 
+        public QL_NguoiDung GetUser(string userName, string passWord)
+        {
+            return db.QL_NguoiDungs.Where(t => t.TenDangNhap.Equals(userName) && t.MatKhau.Equals(passWord)).FirstOrDefault();
+        }
+
         public List<QL_NguoiDung> List()
         {
             return db.QL_NguoiDungs.ToList();

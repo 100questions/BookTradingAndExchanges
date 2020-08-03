@@ -12,7 +12,9 @@ namespace AppBookTrading.View.Page
     public partial class UserControlWarehouse : UserControl
     {
         Ctl_PhieuNhapSach ctl = new Ctl_PhieuNhapSach();
+        Ctl_NhaCungCap ctl_ncc = new Ctl_NhaCungCap();
         PHIEUNHAPSACH_DTO pns;
+        public NGUOIDUNG_DTO nd;
         public UserControlWarehouse()
         {
             InitializeComponent();
@@ -38,11 +40,21 @@ namespace AppBookTrading.View.Page
         {
             var lstPhieuNhapSach = await ctl.GetList();
             dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
+
+            var lstNhaCungCap = await ctl_ncc.GetList();
+            cbbNhaCungCap.ItemsSource = lstNhaCungCap;
+            cbbNhaCungCap.SelectedValuePath = "MANCC";
+            cbbNhaCungCap.DisplayMemberPath = "TENNCC";
+            cbbNhaCungCap.SelectedIndex = 0;
+
         }
 
         private void btnTaoPhieuNhap_Click(object sender, RoutedEventArgs e)
         {
             ImportCreatingWindow Icw = new ImportCreatingWindow();
+            string s = cbbNhaCungCap.SelectedValue.ToString();
+            Icw.maNCC = cbbNhaCungCap.SelectedValue.ToString(); 
+            Icw.maNV = nd.MANV;
             Icw.ShowDialog();
         }
 
@@ -58,6 +70,11 @@ namespace AppBookTrading.View.Page
             {
                 MessageBox.Show("Hãy chọn một phiếu nhập!");
             }
+        }
+
+        private void btnThemNhaCungCap_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

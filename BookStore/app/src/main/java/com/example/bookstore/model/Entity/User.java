@@ -1,10 +1,18 @@
 package com.example.bookstore.model.Entity;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class User {
 
+    @NonNull
+    @PrimaryKey
     @SerializedName("MAKH")
     @Expose
     private String maKH;
@@ -29,6 +37,11 @@ public class User {
     @Expose
     private String matKhauDN;
 
+    public User(){
+
+    };
+
+    @Ignore
     public User(String maKH, String tenKH, String soDT, String diaChi, Boolean gioiTinh, String matKhauDN) {
         this.maKH = maKH;
         this.tenKH = tenKH;
@@ -38,52 +51,51 @@ public class User {
         this.matKhauDN = matKhauDN;
     }
 
-    public String getMAKH() {
+    public String getMaKH() {
         return maKH;
     }
 
-    public void setMAKH(String mAKH) {
-        this.maKH = mAKH;
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
     }
 
-    public String getTENKH() {
+    public String getTenKH() {
         return tenKH;
     }
 
-    public void setTENKH(String tENKH) {
-        this.tenKH = tENKH;
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
-    public String getSODT() {
+    public String getSoDT() {
         return soDT;
     }
 
-    public void setSODT(String sODT) {
-        this.soDT = sODT;
+    public void setSoDT(String soDT) {
+        this.soDT = soDT;
     }
 
-    public String getDIACHI() {
+    public String getDiaChi() {
         return diaChi;
     }
 
-    public void setDIACHI(String dIACHI) {
-        this.diaChi = dIACHI;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
-    public Boolean getGIOITINH() {
+    public Boolean getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGIOITINH(Boolean gIOITINH) {
-        this.gioiTinh = gIOITINH;
+    public void setGioiTinh(Boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public String getMATKHAUDN() {
+    public String getMatKhauDN() {
         return matKhauDN;
     }
 
-    public void setMATKHAUDN(String mATKHAUDN) {
-        this.matKhauDN = mATKHAUDN;
+    public void setMatKhauDN(String matKhauDN) {
+        this.matKhauDN = matKhauDN;
     }
-
 }

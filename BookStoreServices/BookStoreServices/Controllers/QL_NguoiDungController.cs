@@ -41,6 +41,21 @@ namespace BookStoreServices.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/QuanLyNguoiDung/{username}/{password}")]
+        public HttpResponseMessage GetUser(string username, string password)
+        {
+            QL_NGUOIDUNG_DTO item_dto = _repository.convertToDTO(_repository.GetUser(username, password));
+            if (item_dto != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
         [HttpPost]
         [Route("api/QuanLyNguoiDung")]
         public HttpResponseMessage Post([FromBody] QL_NguoiDung item)

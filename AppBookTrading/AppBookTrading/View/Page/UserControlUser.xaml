@@ -29,13 +29,29 @@
                   Margin="15 15 25 15"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
-                        <Button
-                x:Name="btnTimKiem"
+                <Button
+                x:Name="btnTimKiemKH"
                 Background="#407d8b"
                 BorderThickness="0"
                 Width="100"
-                Content="Tìm kiếm" />
+                Content="Tìm kiếm"
+                Margin="10 0 10 0"/>
 
+                <Button
+                x:Name="btnThemKH"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Thêm" 
+                Margin="10 0 10 0" Click="btnThemKH_Click"/>
+
+                <Button
+                x:Name="btnSuaKH"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Sửa" 
+                Margin="10 0 10 0"/>
                     </WrapPanel>
                 </StackPanel>
             </TabItem>
@@ -45,11 +61,28 @@
                         <TextBox Margin="15 25 15 15" MinWidth="400"
                      Style="{StaticResource MaterialDesignTextBox}"
                      materialDesign:HintAssist.Hint="Nhập Mã Hoặc Tên Nhà Cung Cấp" />
-                        <Button
+                <Button
+                x:Name="btnTimKiemNCC"
                 Background="#407d8b"
                 BorderThickness="0"
                 Width="100"
                 Content="Tìm kiếm" />
+
+                        <Button
+                x:Name="btnThemNCC"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Thêm" 
+                Margin="10 0 10 0" Click="btnThemNCC_Click"/>
+
+                        <Button
+                x:Name="btnSuaNCC"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Sửa" 
+                Margin="10 0 10 0"/>
 
                     </WrapPanel>
                 </StackPanel>
@@ -61,11 +94,27 @@
                      Style="{StaticResource MaterialDesignTextBox}"
                      materialDesign:HintAssist.Hint="Nhập Mã Hoặc Tên xuất bản" />
                         <Button
+                            x:Name="btnTimKiemNXB"
                 Background="#407d8b"
                 BorderThickness="0"
                 Width="100"
                 Content="Tìm kiếm" />
 
+                        <Button
+                x:Name="btnThemNXB"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Thêm" 
+                Margin="10 0 10 0" Click="btnThemNXB_Click"/>
+
+                        <Button
+                x:Name="btnSuaNXB"
+                Background="#407d8b"
+                BorderThickness="0"
+                Width="100"
+                Content="Sửa" 
+                Margin="10 0 10 0"/>
                     </WrapPanel>
                 </StackPanel>
             </TabItem>
@@ -77,10 +126,10 @@
                   CanUserReorderColumns="False"
                   SelectionMode="Single"
                   AutoGenerateColumns="True" 
-                  SelectedCellsChanged="dgvKhachHang_SelectedCellsChanged"
                   ColumnWidth="*"
                   IsReadOnly="True"
-                  Margin="10 0 10 10">
+                  Margin="10 0 10 10"
+                  SelectionChanged="dgvKhachHang_SelectionChanged">
         </DataGrid>
         
     </StackPanel>

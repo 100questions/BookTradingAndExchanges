@@ -84,10 +84,10 @@
                                             Mode="PrimaryMid" DockPanel.Dock="Top">
                     <DockPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                            <Button VerticalAlignment="Center" Background="Transparent" BorderBrush="White" Margin="10 0" BorderThickness="1">
+                            <Button x:Name="btnLogout" VerticalAlignment="Center" Background="Transparent" BorderBrush="White" Margin="10 0" BorderThickness="1" Click="btnLogout_Click">
                                 <materialDesign:PackIcon Kind="LogoutVariant" />
                             </Button>
-                            <Button VerticalAlignment="Center" Background="Transparent" BorderBrush="White" BorderThickness="1" Click="Button_Click">
+                            <Button x:Name="btnExit" VerticalAlignment="Center" Background="Transparent" BorderBrush="White" BorderThickness="1" Click="btnExit_Click">
                                 <materialDesign:PackIcon Kind="WindowClose" />
                             </Button>
                         </StackPanel>

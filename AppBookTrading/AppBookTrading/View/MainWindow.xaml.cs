@@ -1,4 +1,5 @@
 ﻿using AppBookTrading.View.Page;
+using DAL_BLL_Tier;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -25,7 +26,19 @@ namespace AppBookTrading
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        public NGUOIDUNG_DTO nd;
+        public MainWindow (NGUOIDUNG_DTO nd)
+        {
+            this.nd = nd;
+            InitializeComponent();
+            this.DataContext = this;
+            Load();
+            if(nd.QUYEN == 0)
+            {
+                btnDoanhSo.Visibility = Visibility.Collapsed;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,10 +52,6 @@ namespace AppBookTrading
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
             MenuToggleButton.IsChecked = false;
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
@@ -80,9 +89,24 @@ namespace AppBookTrading
         private void btnNhapKho_Click(object sender, RoutedEventArgs e)
         {
             UserControlWarehouse uc = new UserControlWarehouse();
+            uc.nd = nd;
             LayoutUserControl.Children.Clear();
             LayoutUserControl.Children.Add(uc);
             MenuToggleButton.IsChecked = false;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            LoginWindow frmLogin = new LoginWindow();
+            frmLogin.Show();
+            this.Close();
         }
     }
 }
