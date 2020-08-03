@@ -14,9 +14,9 @@
         Background="LightGray">
     <Grid Width="460" Height="470">
         <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center">
         </StackPanel>
@@ -41,12 +41,13 @@
                             <Path Width="18" Height="20" Canvas.Left="288" Canvas.Top="5" Margin="0 7 0 0" 
                                   Stretch="Fill" Fill="#878787" 
                                   Data="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"/>
-                            <TextBox Name="txtUserID" Margin="0 2 0 0"
+                            <TextBox Name="txtUserName" Margin="0 2 0 0"
                                      materialDesign:HintAssist.Hint="Tên Đăng Nhập"
                                      Background="LightGray"
                                      Canvas.Left="3" 
                                      FontSize="18" Height="40" Width="275" Padding="2"  
                                      BorderThickness="0" 
+                                     TabIndex="0"
                                      />
                         </Canvas>
                     </Border>
@@ -63,7 +64,9 @@
                                          materialDesign:HintAssist.Hint="Mật Khẩu"
                                          Background="LightGray"
                                          Canvas.Left="3" 
-                                         FontSize="18" BorderThickness="0" Height="40" Width="275" Padding="2" />
+                                         FontSize="18" BorderThickness="0" Height="40" Width="275" Padding="2" 
+                                         TabIndex="1"/>
+                                        
                         </Canvas>
                     </Border>
                 </StackPanel>
@@ -71,10 +74,14 @@
                 <StackPanel HorizontalAlignment="Center" Height="40" Margin="0 10 0 0">
                     <Border Margin="7 0 7 0" Background="#407d8b" CornerRadius="7" BorderThickness="0">
                         <Button
+                            x:Name="btnDangNhap"
                             BorderThickness="0"
                             Height="40" Width="135" 
                             Content="Đăng Nhập" 
-                            FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            Click="btnDangNhap_Click"
+                            IsDefault="True"
+                            TabIndex="2">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -99,12 +106,14 @@
 
                     <Border Margin="7 0 7 0" Background="#FF99433F" CornerRadius="7" BorderThickness="0">
                         <Button 
-                            x:Name="btnClose" Click="btnClose_Click"
+                        x:Name="btnClose"
+                        Click="btnClose_Click"
                         BorderThickness="0"
                         Background="Transparent"
                         Height="40" Width="135" Content="Thoát"
                         FontSize="20" VerticalAlignment="Stretch" 
-                        HorizontalAlignment="Stretch">
+                        HorizontalAlignment="Stretch"
+                        TabIndex="3">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="Transparent"/>

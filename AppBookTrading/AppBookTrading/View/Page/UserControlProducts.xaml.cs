@@ -29,20 +29,17 @@ namespace AppBookTrading.View.Page
         {
 
             InitializeComponent();
-            disableText();
             txtMaSP.IsEnabled = false;
             txtImageURL.IsEnabled = false;
+            disableText();
             btnLuu.Visibility = Visibility.Collapsed;
-            btnSua.Visibility = Visibility.Collapsed;
-            btnXoa.Visibility = Visibility.Collapsed;
-            btnHuy.Visibility = Visibility.Collapsed;            
+            btnHuy.Visibility = Visibility.Collapsed;
             Load();         
             
         }
 
         public async void Load()
-        {
-
+        {             
             String[] lstTrangThai = { "Đang kinh doanh", "Hết hàng", "Ngừng kinh doanh"};
             cbbTrangThai.ItemsSource = lstTrangThai ;
             cbbTrangThai.SelectedIndex = 0;
@@ -55,22 +52,19 @@ namespace AppBookTrading.View.Page
             cbbDanhMucSP.ItemsSource = lstLoaiSach;
             cbbDanhMucSP.SelectedValuePath = "MALS";
             cbbDanhMucSP.DisplayMemberPath = "TENLS";
-            cbbDanhMucSP.SelectedIndex = 1;
+            cbbDanhMucSP.SelectedIndex = 0;
 
 
             var lstNXB = await ctl_nxb.GetList();
             cbbNhaXuatBan.ItemsSource = lstNXB;
             cbbNhaXuatBan.SelectedValuePath = "MANXB";
             cbbNhaXuatBan.DisplayMemberPath = "TENNXB";
-            cbbNhaXuatBan.SelectedIndex = 1;
+            cbbNhaXuatBan.SelectedIndex = 0;
 
             
 
             var lstSach = await ctl.GetList();
             dgvSanPham.ItemsSource = lstSach;
-            
-
-
         }
 
 
@@ -234,37 +228,42 @@ namespace AppBookTrading.View.Page
 
         private async void btnSua_Click(object sender, RoutedEventArgs e)
         {
-            if (validateFields())
+            if(dgvSanPham.SelectedItem != null)
             {
-                SACH_DTO sach_dto = await ctl.GetAsync(txtMaSP.Text);
-                sach_dto.MANXB = cbbNhaXuatBan.SelectedValue.ToString();
-                sach_dto.TENSACH = txtTenSP.Text;
-                sach_dto.TACGIA = txtTacGia.Text;
-                sach_dto.THELOAI = cbbDanhMucSP.SelectedValue.ToString();
-                sach_dto.GIABANSACH = Convert.ToDouble(txtGiaBan.Text);
-                sach_dto.GIANHAPSACH = 50000;
-                sach_dto.SLTON = 10;
-                sach_dto.IMG = txtImageURL.Text;
-                sach_dto.LOAIBIA = cbbLoaiBia.SelectedValue.ToString();
-                sach_dto.KICHTHUOC = txtKichThuoc.Text;
-                sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
-                sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
-                sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
-                try
+                if (validateFields())
                 {
-                    _ = ctl.UpdateAsync(sach_dto);
-                    MessageBox.Show("Update successful");
-                    dgvSanPham.SelectedIndex = 1;
-                    clearText();
-                    disableText();
-                    btnSua.Visibility = Visibility.Collapsed;
-                    btnXoa.Visibility = Visibility.Collapsed;
-                    Load();
+                    SACH_DTO sach_dto = await ctl.GetAsync(txtMaSP.Text);
+                    sach_dto.MANXB = cbbNhaXuatBan.SelectedValue.ToString();
+                    sach_dto.TENSACH = txtTenSP.Text;
+                    sach_dto.TACGIA = txtTacGia.Text;
+                    sach_dto.THELOAI = cbbDanhMucSP.SelectedValue.ToString();
+                    sach_dto.GIABANSACH = Convert.ToDouble(txtGiaBan.Text);
+                    sach_dto.GIANHAPSACH = 50000;
+                    sach_dto.SLTON = 10;
+                    sach_dto.IMG = txtImageURL.Text;
+                    sach_dto.LOAIBIA = cbbLoaiBia.SelectedValue.ToString();
+                    sach_dto.KICHTHUOC = txtKichThuoc.Text;
+                    sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
+                    sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
+                    sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
+                    try
+                    {
+                        _ = ctl.UpdateAsync(sach_dto);
+                        MessageBox.Show("Update successful");
+                        dgvSanPham.SelectedIndex = 1;
+                        clearText();
+                        disableText();
+                        Load();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Fail to update");
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Fail to update");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm!");
             }
 
         }
@@ -320,24 +319,29 @@ namespace AppBookTrading.View.Page
         }
 
         private void btnXoa_Click(object sender, RoutedEventArgs e)
-        {
-            SACH_DTO s = (SACH_DTO)dgvSanPham.SelectedItem;
-            MessageBoxResult result = MessageBox.Show("Bạn có muốn xoá sách "+s.TENSACH+"?", "Thông báo", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                try
+        {   
+            if(dgvSanPham.SelectedItem != null) {
+                SACH_DTO s = (SACH_DTO)dgvSanPham.SelectedItem;
+                MessageBoxResult result = MessageBox.Show("Bạn có muốn xoá sách " + s.TENSACH + "?", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    _ = ctl.DeleteAsync(txtMaSP.Text);
-                    MessageBox.Show("Delete successful");
-                    clearText();
-                    Load();
-                }
-                catch
-                {
-                    MessageBox.Show("Fail to delte");
+                    try
+                    {
+                        _ = ctl.DeleteAsync(txtMaSP.Text);
+                        MessageBox.Show("Delete successful");
+                        clearText();
+                        Load();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Fail to delte");
+                    }
                 }
             }
-            
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm!");
+            }            
         }
 
         private bool checkNull(SACH_DTO s)

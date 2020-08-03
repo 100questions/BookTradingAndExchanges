@@ -25,4 +25,5 @@
     <string name="Pay">Đặt Hàng</string>
     <string name="NewProduct">Sản Phẩm Mới</string>
     <string name="AllProduct">Tất Cả Sản Phẩm</string>
+    <string name="Logout">Đăng Xuất</string>
 </resources>

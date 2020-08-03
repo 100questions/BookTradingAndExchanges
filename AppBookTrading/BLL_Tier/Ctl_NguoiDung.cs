@@ -25,7 +25,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<List<NGUOIDUNG_DTO>> GetList()
         {
-            _reponse = await _client.GetAsync($"api/NguoiDung", HttpCompletionOption.ResponseHeadersRead);
+            _reponse = await _client.GetAsync($"api/QuanLyNguoiDung", HttpCompletionOption.ResponseHeadersRead);
             var json = await _reponse.Content.ReadAsStringAsync();
             var nd_dto = JsonConvert.DeserializeObject<List<NGUOIDUNG_DTO>>(json);
             return nd_dto;
@@ -36,12 +36,20 @@ namespace DAL_BLL_Tier
         {
             var json = JsonConvert.SerializeObject(nv_dto, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync($"api/NguoiDung", httpContent);
+            HttpResponseMessage response = await _client.PostAsync($"api/QuanLyNguoiDung", httpContent);
         }
 
         public async Task<NGUOIDUNG_DTO> GetAsync(string ma)
         {
-            HttpResponseMessage response = await _client.GetAsync($"api/NguoiDung/" + ma);
+            HttpResponseMessage response = await _client.GetAsync($"api/QuanLyNguoiDung/" + ma);
+            var json = await response.Content.ReadAsStringAsync();
+            var nd_dto = JsonConvert.DeserializeObject<NGUOIDUNG_DTO>(json);
+            return nd_dto;
+        }
+
+        public async Task<NGUOIDUNG_DTO> GetUerAsync(string userName, string passWord)
+        {
+            HttpResponseMessage response = await _client.GetAsync($"api/QuanLyNguoiDung/" + userName + "/" + passWord);
             var json = await response.Content.ReadAsStringAsync();
             var nd_dto = JsonConvert.DeserializeObject<NGUOIDUNG_DTO>(json);
             return nd_dto;
@@ -51,7 +59,7 @@ namespace DAL_BLL_Tier
         {
             var json = JsonConvert.SerializeObject(nd_dto);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PutAsync($"api/NguoiDung/{nd_dto.MANV}", stringContent);
+            HttpResponseMessage response = await _client.PutAsync($"api/QuanLyNguoiDung/{nd_dto.MANV}", stringContent);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
@@ -61,7 +69,7 @@ namespace DAL_BLL_Tier
         }
         public async Task<HttpStatusCode> DeleteAsync(string ma)
         {
-            HttpResponseMessage response = await _client.DeleteAsync($"api/NguoiDung/{ma}");
+            HttpResponseMessage response = await _client.DeleteAsync($"api/QuanLyNguoiDung/{ma}");
             return response.StatusCode;
         }
     }

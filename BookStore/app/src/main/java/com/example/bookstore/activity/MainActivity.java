@@ -8,6 +8,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -26,10 +29,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        SharedPreferences sharedPreferences = getSharedPreferences("Logged",MODE_PRIVATE);
         navView = findViewById(R.id.nav_view);
         getSupportActionBar().hide();
-        LoadFragment( new HomeFragment());
+        Intent intent = getIntent();
+        boolean isLogged = intent.getBooleanExtra("IsLogged",false);
+
+        if(isLogged)
+        {
+            LoadFragment(new AccountFragment());
+            navView.setSelectedItemId(R.id.account_navigation);
+            getSupportActionBar().show();
+        }
+        else {
+            LoadFragment(new HomeFragment());
+        }
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

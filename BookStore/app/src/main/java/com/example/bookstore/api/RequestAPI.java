@@ -1,6 +1,8 @@
 package com.example.bookstore.api;
 
 
+import com.example.bookstore.model.Entity.Bill;
+import com.example.bookstore.model.Entity.BillDetail;
 import com.example.bookstore.model.Entity.Book;
 import com.example.bookstore.model.Entity.Category;
 import com.example.bookstore.model.Entity.User;
@@ -28,5 +30,15 @@ public interface RequestAPI {
     //User
     @POST("api/KhachHang")
     Call<String> createUser(@Body User user);
+
+    @GET("api/KhachHang/{tk}/{mk}")
+    Call<User> Login(@Path("tk") String tk,@Path("mk") String mk);
+
+    //Hoa Don
+    @POST("api/HoaDon")
+    Call<String> CreateBill(@Body Bill bill);
+
+    @POST("api/ChiTietHoaDon")
+    Call<String> CreateBillDetail(@Body BillDetail billDetail);
 
 }

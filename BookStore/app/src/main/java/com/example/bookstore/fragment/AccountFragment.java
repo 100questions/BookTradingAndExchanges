@@ -1,6 +1,8 @@
 package com.example.bookstore.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,9 @@ import android.widget.Button;
 
 import com.example.bookstore.activity.LoginRegisterActivity;
 import com.example.bookstore.R;
+import com.example.bookstore.activity.MainActivity;
+import com.example.bookstore.model.Entity.User;
+import com.example.bookstore.room.database.AppDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +26,10 @@ import com.example.bookstore.R;
 public class AccountFragment extends Fragment {
 
     Button btnLogin;
+    Button btnLogged;
+    Button btnLogout;
+    AppDatabase mDB;
+    SharedPreferences sharedPreferences;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -38,11 +47,37 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         init(view);
+        sharedPreferences = getActivity().getSharedPreferences("Logged", Context.MODE_PRIVATE);
 
+        boolean isLogged = sharedPreferences.getBoolean("IsLogged",false);
+        if(isLogged)
+        {
+            btnLogged.setVisibility(View.VISIBLE);
+            btnLogin.setVisibility(View.GONE);
+            User user = mDB.UseDao().getUser().get(0);
+            btnLogged.setText("Xin Chào : " + user.getTenKH());
+        }
+        else
+        {
+            btnLogged.setVisibility(View.GONE);
+            btnLogin.setVisibility(View.VISIBLE);
+        }
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(requireContext(), LoginRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+                mDB.UseDao().Logout();
+                Intent intent = new Intent(requireContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,6 +91,9 @@ public class AccountFragment extends Fragment {
 
     private void init(View view)
     {
+        btnLogout = view.findViewById(R.id.btnLogout);
+        mDB = AppDatabase.BuilderDatabase(requireContext());
+        btnLogged = view.findViewById(R.id.btnLogged);
         btnLogin = view.findViewById(R.id.btnLogin);
     }
 }
