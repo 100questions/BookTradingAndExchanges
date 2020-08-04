@@ -56,6 +56,18 @@ public class SearchProductActivity extends AppCompatActivity {
             Toast.makeText(this,ex.getMessage(),Toast.LENGTH_LONG).show();
         }
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         imgSearchBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
