@@ -27,9 +27,10 @@
 
         <Border Grid.Row="1" Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b">
             <ScrollViewer>
-                <WrapPanel Orientation="Vertical" Background="White" Margin="20 0" MaxWidth="440">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox
+                <Grid>
+                    <WrapPanel Orientation="Vertical" Background="White" Margin="20 0" MaxWidth="440">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox
                             Margin="15 25 15 15"
                              Grid.Column="1"
                              Width="240"
@@ -37,103 +38,104 @@
                              x:Name="txtTimKiem" 
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Tìm kiếm theo mã, tên, danh mục sản phẩm" />
-                        <Button x:Name="btnTimKiem" Background="#407d8b" BorderThickness="0" Width="100" Content="Tìm Kiếm" Margin="5 0" Click="btnTimKiem_Click" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="15 25 15 15" MinWidth="190"
+                            <Button x:Name="btnTimKiem" Background="#407d8b" BorderThickness="0" Width="100" Content="Tìm Kiếm" Margin="5 0" Click="btnTimKiem_Click" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="15 25 15 15" MinWidth="190"
                             x:Name="txtMaSP"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Mã Sản Phẩm" />
-                        <ComboBox Name="cbbTrangThai"
+                            <ComboBox Name="cbbTrangThai"
                               materialDesign:HintAssist.Hint="Trạng Thái"         
                               MinWidth="190"
                               Margin="15 15 25 15"
                               Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                        </ComboBox>
-                    </StackPanel>
+                            </ComboBox>
+                        </StackPanel>
 
-                    <TextBox Margin="15 25 15 15" MinWidth="220"
+                        <TextBox Margin="15 25 15 15" MinWidth="220"
                             x:Name="txtTenSP"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Tên Sản Phẩm" />
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="15 25 15 15" MinWidth="190"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="15 25 15 15" MinWidth="190"
                              PreviewTextInput="withoutNumberValidate"
                              x:Name="txtGiaNhap"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Giá Nhập" />
-                        <TextBox Margin="15 25 15 15" MinWidth="190"
+                            <TextBox Margin="15 25 15 15" MinWidth="190"
                             PreviewTextInput="withoutNumberValidate"
                             x:Name="txtGiaBan"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Giá Bán" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="15 25 15 15" MinWidth="190"
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="15 25 15 15" MinWidth="190"
                              PreviewTextInput="withoutNumberValidate"
                              x:Name="txtSoTrang"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Số Trang" />
-                        <DatePicker Name="dpNgayXuatBan" Margin="15 25 15 15"
+                            <DatePicker Name="dpNgayXuatBan" Margin="15 25 15 15"
                               Width="190"
                               materialDesign:HintAssist.Hint="Ngày Xuất Bản"
                               Style="{StaticResource MaterialDesignDatePicker}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="15 25 15 15" MinWidth="190"
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="15 25 15 15" MinWidth="190"
                             x:Name="txtKichThuoc"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="Kích Thước" />
-                        <ComboBox Name="cbbLoaiBia"
+                            <ComboBox Name="cbbLoaiBia"
                               materialDesign:HintAssist.Hint="Loại Bìa"         
                               MinWidth="190"
                               Margin="15 15 25 15"
                               Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                        </ComboBox>
-                    </StackPanel>
-                    <TextBox Margin="15 25 15 15" MinWidth="150"
+                            </ComboBox>
+                        </StackPanel>
+                        <TextBox Margin="15 25 15 15" MinWidth="150"
                         x:Name="txtTacGia"
                          Style="{StaticResource MaterialDesignTextBox}"
                          materialDesign:HintAssist.Hint="Tác Giả" />
-                    <ComboBox Name="cbbDanhMucSP"
+                        <ComboBox Name="cbbDanhMucSP"
                           ItemsSource="{Binding}"
                           materialDesign:HintAssist.Hint="Danh Mục Sản Phẩm"
                           Margin="15 15 25 15"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    </ComboBox>
-                    <ComboBox Name="cbbNhaXuatBan"
+                        </ComboBox>
+                        <ComboBox Name="cbbNhaXuatBan"
                           materialDesign:HintAssist.Hint="Nhà Xuất Bản"
                           Margin="15 15 25 15"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    </ComboBox>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="15 25 15 15" MinWidth="280"
+                        </ComboBox>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Margin="15 25 15 15" MinWidth="280"
                                  MaxWidth="280"
                             x:Name="txtImageURL"
                              Style="{StaticResource MaterialDesignTextBox}"
                              materialDesign:HintAssist.Hint="ImageURL" 
                              IsEnabled="False"/>
-                        <Button x:Name="btnUpload" Click="btnUpload_Click" Margin="5 25 5 15">
-                            <DockPanel HorizontalAlignment="Center" Width="20">
-                                <materialDesign:PackIcon Kind="ImagePlus" Width="20" Height="20" VerticalAlignment="Center" />
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="btnViewIMG" Click="btnViewIMG_Click" Margin="5 25 5 15">
-                            <DockPanel HorizontalAlignment="Center" Width="20">
-                                <materialDesign:PackIcon Kind="Eye" Width="20" Height="20" VerticalAlignment="Center" />
-                            </DockPanel>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Background="White">
-                        <WrapPanel   Background="White" Margin="0" HorizontalAlignment="Left">
-                            <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" Click="btnThemSanPham_Click" />
-                            <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="100" Content="Lưu" Margin="5 0" Click="btnLuu_Click" />
-                            <Button x:Name="btnHuy" Background="#407d8b" BorderThickness="0" Width="100" Content="Huỷ" Margin="5 0" Click="btnHuy_Click" />
-                            <Button x:Name="btnSua" Background="#407d8b" BorderThickness="0" Width="100" Content="Sửa" Margin="5 0" Click="btnSua_Click" />
-                            <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" Width="100" Content="Xóa" Margin="5 0" Click="btnXoa_Click" />
-                        </WrapPanel>
-                    </StackPanel>
-                </WrapPanel>
+                            <Button x:Name="btnUpload" Click="btnUpload_Click" Margin="5 25 5 15">
+                                <DockPanel HorizontalAlignment="Center" Width="20">
+                                    <materialDesign:PackIcon Kind="ImagePlus" Width="20" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Button>
+                            <Button x:Name="btnViewIMG" Click="btnViewIMG_Click" Margin="5 25 5 15">
+                                <DockPanel HorizontalAlignment="Center" Width="20">
+                                    <materialDesign:PackIcon Kind="Eye" Width="20" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Background="White">
+                            <WrapPanel   Background="White" Margin="0" HorizontalAlignment="Left">
+                                <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" Click="btnThemSanPham_Click" />
+                                <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="100" Content="Lưu" Margin="5 0" Click="btnLuu_Click" />
+                                <Button x:Name="btnHuy" Background="#407d8b" BorderThickness="0" Width="100" Content="Huỷ" Margin="5 0" Click="btnHuy_Click" />
+                                <Button x:Name="btnSua" Background="#407d8b" BorderThickness="0" Width="100" Content="Sửa" Margin="5 0" Click="btnSua_Click" />
+                                <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" Width="100" Content="Xóa" Margin="5 0" Click="btnXoa_Click" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </WrapPanel>
+                </Grid>
             </ScrollViewer>
         </Border>
         <DataGrid BorderThickness="0.5"   
