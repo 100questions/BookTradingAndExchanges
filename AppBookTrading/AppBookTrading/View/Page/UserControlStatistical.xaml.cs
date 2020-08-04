@@ -25,7 +25,6 @@ namespace AppBookTrading.View.Page
         {
             InitializeComponent();
             LoadAreaChartData();
-            LoadPieChartData();
         }
 
         private void LoadAreaChartData()
@@ -41,16 +40,5 @@ namespace AppBookTrading.View.Page
             };
         }
 
-        private void LoadPieChartData()
-        {
-            ((PieSeries)eclipCharts.Series[0]).ItemsSource =
-                new KeyValuePair<string, int>[]{
-        new KeyValuePair<string,int>("Project Manager", 12),
-        new KeyValuePair<string,int>("CEO", 25),
-        new KeyValuePair<string,int>("Software Engg.", 5),
-        new KeyValuePair<string,int>("Team Leader", 6),
-        new KeyValuePair<string,int>("Project Leader", 10),
-        new KeyValuePair<string,int>("Developer", 4) };
-        }
     }
 }

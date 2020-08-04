@@ -48,7 +48,7 @@
                 Click="btnTimKiem_Click"/>
 
         </WrapPanel>
-        <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvHoaDon" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="580"
+        <DataGrid BorderThickness="0.5" BorderBrush="#407d8b" Grid.Row="2" x:Name="dgvHoaDon" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="650"
                   SelectionUnit="FullRow"
                   Padding="5"                 
                   CanUserResizeColumns="False"

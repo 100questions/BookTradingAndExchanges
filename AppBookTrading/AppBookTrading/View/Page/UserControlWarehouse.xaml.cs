@@ -43,7 +43,7 @@ namespace AppBookTrading.View.Page
 
             var lstNhaCungCap = await ctl_ncc.GetList();
             cbbNhaCungCap.ItemsSource = lstNhaCungCap;
-            cbbNhaCungCap.SelectedValuePath = "MANCC";
+            cbbNhaCungCap.SelectedValuePath = "MACCC";
             cbbNhaCungCap.DisplayMemberPath = "TENNCC";
             cbbNhaCungCap.SelectedIndex = 0;
 
