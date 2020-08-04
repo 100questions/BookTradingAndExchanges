@@ -75,13 +75,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.Oncli
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mDB.UseDao().getUser().get(0) == null)
+                if(mDB.UseDao().getUser().size() == 0)
                 {
-                    Toast.makeText(CartActivity.this, "Please Login !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CartActivity.this,LoginRegisterActivity.class);
                     startActivity(intent);
                 }
-                if(mListItemCart.size() > 0)
+                else if(mListItemCart.size() > 0)
                 {
                     User user = mDB.UseDao().getUser().get(0);
                     Date date = new Date();
@@ -131,6 +130,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.Oncli
                             Log.i("CreateBill",t.getMessage());
                         }
                     });
+                    txtSumPrice.setText("0 đ");
                 }
             }
         });
