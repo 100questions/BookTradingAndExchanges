@@ -152,11 +152,19 @@
                 </materialDesign:Flipper.BackContent>
             </materialDesign:Flipper>
         </StackPanel>
-        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Height="300" Width="1000" Name="mcChart" Background="Transparent" BorderThickness="0" Margin="10" 
-                   Title="Doanh Số Sản Phẩm"  
-                   LegendTitle="Doanh Số Sản Phẩm">
+        <ComboBox Name="cbbFillter"
+                  SelectionChanged="cbbFillter_SelectionChanged"
+                  materialDesign:HintAssist.Hint="Năm"     
+                  MinWidth="140"
+                  MaxWidth="200"
+                  Margin="15 15 15 15"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+        </ComboBox>
+        <DVC:Chart Canvas.Top="80" Canvas.Left="10" Height="300" Width="1000" Name="mcChart" Background="White" BorderThickness="0" Margin="10" 
+                   Title="Doanh Số Đơn Hàng"  
+                   LegendTitle="Doanh Số Đơn Hàng Theo Tháng/Năm">
             <DVC:Chart.Series>
-                <DVC:AreaSeries Title="Tổng SL Sản Phẩm / Ngày" IndependentValuePath="Key"  DependentValuePath="Value">
+                <DVC:AreaSeries Title="Tổng Doanh Thu Đơn Hàng / Tháng" IndependentValuePath="Key"  DependentValuePath="Value">
                 </DVC:AreaSeries>
             </DVC:Chart.Series>
         </DVC:Chart>
