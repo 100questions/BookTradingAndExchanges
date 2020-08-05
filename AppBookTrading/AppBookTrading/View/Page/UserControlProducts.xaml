@@ -25,6 +25,9 @@
             <Button Grid.Column="2"  Background="#407d8b" BorderThickness="0" VerticalAlignment="Center" Width="120" Content="Export Excel" Margin="5 0" />
         </Grid>
 
+        <Border Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b">
+            
+        </Border>
         <Border Grid.Row="1" Background="White" BorderThickness="0 0.5" BorderBrush="#407d8b">
             <ScrollViewer>
                 <Grid>

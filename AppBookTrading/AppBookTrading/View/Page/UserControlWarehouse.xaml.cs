@@ -38,21 +38,20 @@ namespace AppBookTrading.View.Page
 
         public async void Load()
         {
-            var lstPhieuNhapSach = await ctl.GetList();
-            dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
-
             var lstNhaCungCap = await ctl_ncc.GetList();
             cbbNhaCungCap.ItemsSource = lstNhaCungCap;
-            cbbNhaCungCap.SelectedValuePath = "MACCC";
+            cbbNhaCungCap.SelectedValuePath = "MANCC";
             cbbNhaCungCap.DisplayMemberPath = "TENNCC";
             cbbNhaCungCap.SelectedIndex = 0;
+
+            var lstPhieuNhapSach = await ctl.GetList();
+            dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
 
         }
 
         private void btnTaoPhieuNhap_Click(object sender, RoutedEventArgs e)
         {
             ImportCreatingWindow Icw = new ImportCreatingWindow();
-            string s = cbbNhaCungCap.SelectedValue.ToString();
             Icw.maNCC = cbbNhaCungCap.SelectedValue.ToString(); 
             Icw.maNV = nd.MANV;
             Icw.ShowDialog();
