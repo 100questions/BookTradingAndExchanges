@@ -84,7 +84,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.Oncli
                 {
                     User user = mDB.UseDao().getUser().get(0);
                     Date date = new Date();
-                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+                    SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyy HH:mm:ss");
                     String dateNow = format.format(date).toString();
                     String strSumPrice = txtSumPrice.getText().toString().replace(",","").replace(" đ","");
                     Double SumPrice = Double.parseDouble(strSumPrice);
