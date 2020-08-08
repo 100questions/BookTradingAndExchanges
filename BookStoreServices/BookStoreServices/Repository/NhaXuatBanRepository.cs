@@ -39,7 +39,7 @@ namespace BookStoreServices.Repository
             nxb.MANXB = item.MANXB;
             nxb.TENNXB = item.TENNXB;
             nxb.DIACHI = item.DIACHI;
-            nxb.SODIENTHOAI = item.SODIENTHOAI;
+            nxb.SDT = item.SDT;
             db.SubmitChanges();
         }
 
@@ -49,7 +49,7 @@ namespace BookStoreServices.Repository
             nxb_dto.MANXB = nxb.MANXB;
             nxb_dto.TENNXB = nxb.TENNXB;
             nxb_dto.DIACHI = nxb.DIACHI;
-            nxb_dto.SDT = nxb.SODIENTHOAI;
+            nxb_dto.SDT = nxb.SDT;
             return nxb_dto;
         }
         public NHAXUATBAN convertBackFromDTO(NHAXUATBAN_DTO nxb_dto)
@@ -58,7 +58,7 @@ namespace BookStoreServices.Repository
             nxb.MANXB = nxb_dto.MANXB;
             nxb.TENNXB = nxb_dto.TENNXB;
             nxb.DIACHI = nxb_dto.DIACHI;
-            nxb.SODIENTHOAI = nxb_dto.SDT;
+            nxb.SDT = nxb_dto.SDT;
             return nxb;
         }
     }

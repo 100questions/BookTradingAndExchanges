@@ -39,7 +39,7 @@ namespace DAL_BLL_Tier
         }
 
 
-        public async void AddAsync(Ctl_ChiTietPhieuNhap ctpn)
+        public async void AddAsync(CT_PHIEUNHAPSACH_DTO ctpn)
         {
             var json = JsonConvert.SerializeObject(ctpn, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");

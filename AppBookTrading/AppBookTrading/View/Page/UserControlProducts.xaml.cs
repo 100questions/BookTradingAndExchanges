@@ -248,7 +248,7 @@ namespace AppBookTrading.View.Page
                     sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                     try
                     {
-                        _ = ctl.UpdateAsync(sach_dto);
+                        ctl.UpdateAsync(sach_dto);
                         MessageBox.Show("Update successful");
                         dgvSanPham.SelectedIndex = 1;
                         clearText();
@@ -286,6 +286,7 @@ namespace AppBookTrading.View.Page
                 sach_dto.KICHTHUOC = txtKichThuoc.Text;
                 sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
                 sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
+                sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                 try
                 {
                     ctl.AddAsync(sach_dto);

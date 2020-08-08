@@ -47,7 +47,7 @@ namespace BookStoreServices.Repository
         public NHACUNGCAP_DTO convertToDTO(NHACUNGCAP ncc)
         {
             NHACUNGCAP_DTO ncc_dto = new NHACUNGCAP_DTO();
-            ncc_dto.MACCC = ncc.MANCC;
+            ncc_dto.MANCC = ncc.MANCC;
             ncc_dto.TENNCC = ncc.TENNCC;
             ncc_dto.DIACHI = ncc.DIACHI;
             ncc_dto.SDT = ncc.SDT;

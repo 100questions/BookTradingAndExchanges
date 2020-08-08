@@ -36,6 +36,7 @@ namespace AppBookTrading
             if(nd.QUYEN == 0)
             {
                 btnDoanhSo.Visibility = Visibility.Collapsed;
+                btnNhapKho.Visibility = Visibility.Collapsed;
             }
         }
 
