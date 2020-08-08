@@ -26,8 +26,11 @@ namespace AppBookTrading.View.Page
         Ctl_KhachHang ctl_kh = new Ctl_KhachHang();
         Ctl_NhaCungCap ctl_ncc = new Ctl_NhaCungCap();
         Ctl_NhaXuatBan ctl_nxb = new Ctl_NhaXuatBan();
+        private NHAXUATBAN_DTO nxb;
+        private NHACUNGCAP_DTO ncc;
         public UserControlUser()
         {
+            nxb = new NHAXUATBAN_DTO();
             InitializeComponent();
             hideButton();
             Load();
@@ -39,15 +42,27 @@ namespace AppBookTrading.View.Page
             dgvKhachHang.ItemsSource = lstKhachHang;
         }
 
+        public async void LoadAgain()
+        {
+            if (item1.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_kh.GetList();
+            }
+            if (item2.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_ncc.GetList();
+            }
+            if (item3.IsSelected)
+            {
+                dgvKhachHang.ItemsSource = await ctl_nxb.GetList();
+            }
+        }
+
         private void hideButton()
         {
-            btnThemKH.Visibility = Visibility.Collapsed;
-            btnSuaKH.Visibility = Visibility.Collapsed;
 
-            btnThemNCC.Visibility = Visibility.Collapsed;
             btnSuaNCC.Visibility = Visibility.Collapsed;
 
-            btnThemNXB.Visibility = Visibility.Collapsed;
             btnSuaNXB.Visibility = Visibility.Collapsed;
         }
 
@@ -70,26 +85,24 @@ namespace AppBookTrading.View.Page
 
         private void dgvKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (item1.IsSelected)
-            {
-                btnThemKH.Visibility = Visibility.Visible;
-                btnSuaKH.Visibility = Visibility.Visible;
-                try
-                {
-                    KHACHHANG_DTO str = (KHACHHANG_DTO)dgvKhachHang.SelectedItem;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //if (item1.IsSelected)
+            //{
+            //    try
+            //    {
+            //        KHACHHANG_DTO ncc = (KHACHHANG_DTO)dgvKhachHang.SelectedValue;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
             if (item2.IsSelected)
             {
                 btnThemNCC.Visibility = Visibility.Visible;
                 btnSuaNCC.Visibility = Visibility.Visible;
                 try
                 {
-                    NHACUNGCAP_DTO str = (NHACUNGCAP_DTO)dgvKhachHang.SelectedItem;
+                    ncc = (NHACUNGCAP_DTO)dgvKhachHang.SelectedValue;
                 }
                 catch (Exception ex)
                 {
@@ -102,7 +115,7 @@ namespace AppBookTrading.View.Page
                 btnSuaNXB.Visibility = Visibility.Visible;
                 try
                 {
-                    NHAXUATBAN_DTO str = (NHAXUATBAN_DTO)dgvKhachHang.SelectedItem;
+                    nxb = (NHAXUATBAN_DTO)dgvKhachHang.SelectedValue;
                 }
                 catch (Exception ex)
                 {
@@ -111,22 +124,40 @@ namespace AppBookTrading.View.Page
             }
         }
 
-        private void btnThemKH_Click(object sender, RoutedEventArgs e)
-        {
-            CustomerCreatingWindow frmCustomer = new CustomerCreatingWindow();
-            frmCustomer.ShowDialog();
-        }
 
         private void btnThemNCC_Click(object sender, RoutedEventArgs e)
         {
             SupplierCreatingWindow frmSupplier = new SupplierCreatingWindow();
+            frmSupplier.getState(false);
             frmSupplier.ShowDialog();
+        }
+
+        private void btnSuaNCC_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierCreatingWindow frmSupplier = new SupplierCreatingWindow();
+            frmSupplier.getNCC(ncc);
+            frmSupplier.getState(true);
+            frmSupplier.ShowDialog();
+            LoadAgain();
         }
 
         private void btnThemNXB_Click(object sender, RoutedEventArgs e)
         {
             PublisherCreatingWindow frmPublisher = new PublisherCreatingWindow();
+            frmPublisher.getState(false);
             frmPublisher.ShowDialog();
+            LoadAgain();
         }
+
+        private void btnSuaNXB_Click(object sender, RoutedEventArgs e)
+        {
+            PublisherCreatingWindow frmPublisher = new PublisherCreatingWindow();
+            frmPublisher.getNXB(nxb);
+            frmPublisher.getState(true);
+            frmPublisher.ShowDialog();
+            LoadAgain();
+        }
+
+      
     }
 }

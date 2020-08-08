@@ -49,7 +49,7 @@
                             <StackPanel Orientation="Horizontal" Height="10" />
                             <StackPanel  Background="White" HorizontalAlignment="Right">
                                 <WrapPanel   Background="White" Margin="0" HorizontalAlignment="Left">
-                                    <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" />
+                                    <Button x:Name="btnThemSanPham" Background="#407d8b" BorderThickness="0" Width="150" Content="Thêm Sản Phẩm" Margin="5 0" Click="btnThemSanPham_Click" />
                                     <Button x:Name="btnXoa" Background="#407d8b" BorderThickness="0" Width="100" Content="Xóa" Margin="5 0"  />
                                     <Button x:Name="btnLuu" Background="#407d8b" BorderThickness="0" Width="135" Content="Lưu Phiếu Nhập" Margin="5 0" Click="btnLuu_Click" />
                                 </WrapPanel>
@@ -67,6 +67,7 @@
                               SelectionMode="Single"
                               AutoGenerateColumns="True" 
                               SelectionChanged="dgvCT_PhieuNhap_SelectionChanged"
+                              
                               ColumnWidth="*"
                               IsReadOnly="True"
                               Margin="10 0 10 10">

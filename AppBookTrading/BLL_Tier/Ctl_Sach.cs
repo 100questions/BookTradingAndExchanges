@@ -46,17 +46,12 @@ namespace DAL_BLL_Tier
             return sach_dto;
         }
 
-        public async Task<SACH_DTO> UpdateAsync(SACH_DTO sach)
+        public async void UpdateAsync(SACH_DTO sach)
         {
             var json = JsonConvert.SerializeObject(sach);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _client.PutAsync($"api/Sach/{sach.MASACH}", stringContent);
             response.EnsureSuccessStatusCode();
-
-            // Deserialize the updated product from the response body.
-            json = await response.Content.ReadAsStringAsync();
-            sach = JsonConvert.DeserializeObject<SACH_DTO>(json);
-            return sach;
         }
         public async Task<HttpStatusCode> DeleteAsync(string maSP)
         {

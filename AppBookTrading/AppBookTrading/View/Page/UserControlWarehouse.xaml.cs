@@ -18,7 +18,8 @@ namespace AppBookTrading.View.Page
         public UserControlWarehouse()
         {
             InitializeComponent();
-            Load();
+            LoadPNS();
+            LoadNCC();
         }
 
         private void dgvPhieuNhapSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,17 +37,19 @@ namespace AppBookTrading.View.Page
 
 
 
-        public async void Load()
+        public async void LoadNCC()
         {
             var lstNhaCungCap = await ctl_ncc.GetList();
             cbbNhaCungCap.ItemsSource = lstNhaCungCap;
             cbbNhaCungCap.SelectedValuePath = "MANCC";
             cbbNhaCungCap.DisplayMemberPath = "TENNCC";
             cbbNhaCungCap.SelectedIndex = 0;
+        }
 
+        public async void LoadPNS()
+        {
             var lstPhieuNhapSach = await ctl.GetList();
             dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
-
         }
 
         private void btnTaoPhieuNhap_Click(object sender, RoutedEventArgs e)
@@ -55,6 +58,7 @@ namespace AppBookTrading.View.Page
             Icw.maNCC = cbbNhaCungCap.SelectedValue.ToString(); 
             Icw.maNV = nd.MANV;
             Icw.ShowDialog();
+            LoadPNS();
         }
 
         private void btnXemPhieuNhap_Click(object sender, RoutedEventArgs e)
@@ -64,6 +68,7 @@ namespace AppBookTrading.View.Page
                 ImportDetailsWindow Idw = new ImportDetailsWindow();
                 Idw.getCTPN(pns.MAPHIEU);
                 Idw.ShowDialog();
+                LoadPNS();
             }
             else
             {
@@ -73,7 +78,10 @@ namespace AppBookTrading.View.Page
 
         private void btnThemNhaCungCap_Click(object sender, RoutedEventArgs e)
         {
-
+            SupplierCreatingWindow Sc = new SupplierCreatingWindow();
+            Sc.getState(false);
+            Sc.ShowDialog();
+            LoadNCC();
         }
     }
 }
