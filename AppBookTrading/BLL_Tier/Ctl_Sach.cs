@@ -60,6 +60,15 @@ namespace DAL_BLL_Tier
         }
 
 
+        public bool validateTextBox(string text)
+        {
+            if (!string.IsNullOrEmpty(text))
+                return true;
+            return false;
+
+        }
+
+
 
 
 

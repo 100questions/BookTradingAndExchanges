@@ -130,6 +130,7 @@ namespace AppBookTrading.View.Page
             SupplierCreatingWindow frmSupplier = new SupplierCreatingWindow();
             frmSupplier.getState(false);
             frmSupplier.ShowDialog();
+            LoadAgain();
         }
 
         private void btnSuaNCC_Click(object sender, RoutedEventArgs e)

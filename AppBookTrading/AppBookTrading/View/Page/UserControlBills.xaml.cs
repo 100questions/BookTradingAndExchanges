@@ -95,7 +95,7 @@ namespace AppBookTrading.View.Page
             }
             else
             {
-                MessageBox.Show("Hãy chọn một hoá đơn!");
+                MessageBox.Show("Hãy chọn một hoá đơn!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -107,17 +107,17 @@ namespace AppBookTrading.View.Page
                 {
                     hd.TRANGTHAI = cbbTrangThai.Text;
                     hoadon_ctl.UpadateAsync(hd);
-                    MessageBox.Show("Cập nhật hoá đơn thành công");
+                    MessageBox.Show("Cập nhật hoá đơn thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     loadHoaDon();
                 }
                 catch
                 {
-                    MessageBox.Show("Cập nhật hoá đơn thất bại");
+                    MessageBox.Show("Cập nhật hoá đơn thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn hoá đơn trước khi cập nhật");
+                MessageBox.Show("Vui lòng chọn hoá đơn trước khi cập nhật", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

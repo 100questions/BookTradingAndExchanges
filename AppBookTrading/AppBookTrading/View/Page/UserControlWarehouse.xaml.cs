@@ -72,7 +72,7 @@ namespace AppBookTrading.View.Page
             }
             else
             {
-                MessageBox.Show("Hãy chọn một phiếu nhập!");
+                MessageBox.Show("Hãy chọn một phiếu nhập!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
