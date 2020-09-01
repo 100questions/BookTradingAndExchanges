@@ -38,7 +38,7 @@ namespace AppBookTrading
                 NGUOIDUNG_DTO nd = await ctl_nd.GetUerAsync(txtUserName.Text, pbxPassword.Password.ToString());
                 if (nd.MANV is null)
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác");
+                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace AppBookTrading
             }
             else
             {
-                MessageBox.Show("Fill the blank");
+                MessageBox.Show("Fill the blank", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
