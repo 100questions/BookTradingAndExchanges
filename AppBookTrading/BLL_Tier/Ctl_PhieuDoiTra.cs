@@ -16,7 +16,7 @@ namespace DAL_BLL_Tier
         public Ctl_PhieuDoiTra()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri("https://localhost:44365/");
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
         }
