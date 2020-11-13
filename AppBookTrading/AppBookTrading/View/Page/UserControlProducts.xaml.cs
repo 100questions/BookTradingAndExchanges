@@ -1,17 +1,14 @@
 ﻿using AppBookTrading.View.Modals;
 using DAL_BLL_Tier;
 using Microsoft.Win32;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace AppBookTrading.View.Page
 {
@@ -68,48 +65,71 @@ namespace AppBookTrading.View.Page
         }
 
 
-        private CloudBlobContainer GetCloudBlobs(string storageConnectionString, string blockClientString)
+        //private CloudBlobContainer GetCloudBlobs(string storageConnectionString, string blockClientString)
+        //{
+
+        //    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+
+        //    // connect to container
+        //    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+        //    CloudBlobContainer container = blobClient.GetContainerReference(blockClientString);
+        //    if (container.CreateIfNotExists())
+        //    {
+        //        var permissions = container.GetPermissions();
+        //        permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
+        //        container.SetPermissions(permissions);
+        //    }
+        //    return container;
+        //}
+
+        //private string addImageToProduct(string containerName)
+        //{
+        //    string imageURL = "", imageFileName = "", cloudProdutURL = "";
+        //    CloudBlobContainer cbc = GetCloudBlobs(Properties.Settings.Default.cloudStorageString, containerName);
+
+        //    var dialog = new OpenFileDialog();
+        //    dialog.Title = "Open Image";
+        //    dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+
+        //    if (dialog.ShowDialog() == true)
+        //    {
+        //        //Create stream file from local image url
+        //        imageURL = dialog.FileName.ToString();
+        //        imageFileName = imageURL.Substring(imageURL.LastIndexOf('\\') + 1);
+        //        // get block reference to put image on
+        //        CloudBlockBlob blockBlob = cbc.GetBlockBlobReference(imageFileName);
+        //        blockBlob.Properties.ContentType = "image/jpg";
+        //        cloudProdutURL = blockBlob.Uri.AbsoluteUri;
+        //        using (var fileStream = File.OpenRead(imageURL))
+        //        {
+        //            blockBlob.UploadFromFile(imageURL);
+        //        }
+        //    }
+        //    return cloudProdutURL;
+        //}
+
+
+        private async void AddImageToProductAsync()
         {
-
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-
-            // connect to container
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference(blockClientString);
-            if (container.CreateIfNotExists())
-            {
-                var permissions = container.GetPermissions();
-                permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
-                container.SetPermissions(permissions);
-            }
-            return container;
-        }
-
-        private string addImageToProduct(string containerName)
-        {
-            string imageURL = "", imageFileName = "", cloudProdutURL = "";
-            CloudBlobContainer cbc = GetCloudBlobs(Properties.Settings.Default.cloudStorageString, containerName);
-
+            string imageURL = String.Empty;
+            string path = String.Empty;
             var dialog = new OpenFileDialog();
+
             dialog.Title = "Open Image";
             dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
 
             if (dialog.ShowDialog() == true)
             {
-                //Create stream file from local image url
-                imageURL = dialog.FileName.ToString();
-                imageFileName = imageURL.Substring(imageURL.LastIndexOf('\\') + 1);
-                // get block reference to put image on
-                CloudBlockBlob blockBlob = cbc.GetBlockBlobReference(imageFileName);
-                blockBlob.Properties.ContentType = "image/jpg";
-                cloudProdutURL = blockBlob.Uri.AbsoluteUri;
-                using (var fileStream = File.OpenRead(imageURL))
-                {
-                    blockBlob.UploadFromFile(imageURL);
-                }
+                path = dialog.FileName;
             }
-            return cloudProdutURL;
+
+            if (!string.IsNullOrEmpty(path))
+            {
+                imageURL = await ctl.addProductImage(path);
+                txtImageURL.Text = imageURL;
+            }
         }
+
 
         private bool validateFields()
         {
@@ -380,11 +400,6 @@ namespace AppBookTrading.View.Page
 
         }
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
-        {
-           txtImageURL.Text =  addImageToProduct("product-images");
-        }
-
 
         private void withoutNumberValidate(object sender, TextCompositionEventArgs e)
         {
@@ -412,6 +427,11 @@ namespace AppBookTrading.View.Page
             {
                 MessageBox.Show("Link ảnh trống", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            AddImageToProductAsync();
         }
     }
 

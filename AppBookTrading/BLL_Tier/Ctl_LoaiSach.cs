@@ -19,7 +19,7 @@ namespace DAL_BLL_Tier
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri("https://localhost:44365/");
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
