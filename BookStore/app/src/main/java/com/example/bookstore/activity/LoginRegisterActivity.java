@@ -12,6 +12,8 @@ import com.example.bookstore.adapter.PagerAdapter;
 import com.example.bookstore.R;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 public class LoginRegisterActivity extends AppCompatActivity {
     Toolbar toolbar;
     TabLayout tabLayout;
@@ -20,7 +22,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         init();
 
         tabLayout.addTab(tabLayout.newTab().setText("Đăng Nhập"));
