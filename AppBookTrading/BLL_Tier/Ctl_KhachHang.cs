@@ -1,4 +1,5 @@
 ﻿using DAL_BLL_Tier;
+using DAL_BLL_Tier.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace DAL_BLL_Tier
         public Ctl_KhachHang()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:44365/");
+            _client.BaseAddress = new Uri(Contants.URL);
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
         }
