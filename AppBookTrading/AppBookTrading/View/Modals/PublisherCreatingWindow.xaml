@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppBookTrading.View.Modals" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AppBookTrading.View.Modals"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="PublisherCreatingWindow" Height="450" Width="800"
+        Title="PublisherCreatingWindow" Height="270" Width="800"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -21,7 +22,23 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="Nhà Xuất Bản" FontWeight="Bold" />
             </DockPanel>
         </materialDesign:ColorZone>
-        <StackPanel x:Name="LayoutPublisherControl" Background="LightGray" >
+        <StackPanel  x:Name="LayoutPublisherControl" Background="LightGray" >
+            <Grid Background="White" Margin="10 10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBox x:Name="txtMaNXB" Grid.Row="0" Grid.Column="0" materialDesign:HintAssist.Hint="Mã Nhà Xuất Bản" MaxWidth="350" Margin="0 20" />
+                <TextBox x:Name="txtTenNXB" Grid.Row="0" Grid.Column="1" materialDesign:HintAssist.Hint="Tên Nhà Xuất Bản" MaxWidth="350" Margin="0 20" />
+                <TextBox x:Name="txtDiaChi" Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Địa Chỉ" MaxWidth="350" Margin="0 20" />
+                <TextBox x:Name="txtSDT" Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Số Điện Thoại" MaxWidth="350" Margin="0 20" />
+                <Button  x:Name="btnLuu" Grid.Row="2" Grid.ColumnSpan="2" MaxWidth="150" Content="Lưu" Height="40" Margin="10" Click="btnLuu_Click"/>
+            </Grid>
 
         </StackPanel>
     </DockPanel>

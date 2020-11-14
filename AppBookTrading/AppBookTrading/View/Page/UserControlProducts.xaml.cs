@@ -1,17 +1,14 @@
 ﻿using AppBookTrading.View.Modals;
 using DAL_BLL_Tier;
 using Microsoft.Win32;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace AppBookTrading.View.Page
 {
@@ -68,82 +65,105 @@ namespace AppBookTrading.View.Page
         }
 
 
-        private CloudBlobContainer GetCloudBlobs(string storageConnectionString, string blockClientString)
+        //private CloudBlobContainer GetCloudBlobs(string storageConnectionString, string blockClientString)
+        //{
+
+        //    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+
+        //    // connect to container
+        //    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+        //    CloudBlobContainer container = blobClient.GetContainerReference(blockClientString);
+        //    if (container.CreateIfNotExists())
+        //    {
+        //        var permissions = container.GetPermissions();
+        //        permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
+        //        container.SetPermissions(permissions);
+        //    }
+        //    return container;
+        //}
+
+        //private string addImageToProduct(string containerName)
+        //{
+        //    string imageURL = "", imageFileName = "", cloudProdutURL = "";
+        //    CloudBlobContainer cbc = GetCloudBlobs(Properties.Settings.Default.cloudStorageString, containerName);
+
+        //    var dialog = new OpenFileDialog();
+        //    dialog.Title = "Open Image";
+        //    dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+
+        //    if (dialog.ShowDialog() == true)
+        //    {
+        //        //Create stream file from local image url
+        //        imageURL = dialog.FileName.ToString();
+        //        imageFileName = imageURL.Substring(imageURL.LastIndexOf('\\') + 1);
+        //        // get block reference to put image on
+        //        CloudBlockBlob blockBlob = cbc.GetBlockBlobReference(imageFileName);
+        //        blockBlob.Properties.ContentType = "image/jpg";
+        //        cloudProdutURL = blockBlob.Uri.AbsoluteUri;
+        //        using (var fileStream = File.OpenRead(imageURL))
+        //        {
+        //            blockBlob.UploadFromFile(imageURL);
+        //        }
+        //    }
+        //    return cloudProdutURL;
+        //}
+
+
+        private async void AddImageToProductAsync()
         {
-
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-
-            // connect to container
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference(blockClientString);
-            if (container.CreateIfNotExists())
-            {
-                var permissions = container.GetPermissions();
-                permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
-                container.SetPermissions(permissions);
-            }
-            return container;
-        }
-
-        private string addImageToProduct(string containerName)
-        {
-            string imageURL = "", imageFileName = "", cloudProdutURL = "";
-            CloudBlobContainer cbc = GetCloudBlobs(Properties.Settings.Default.cloudStorageString, containerName);
-
+            string imageURL = String.Empty;
+            string path = String.Empty;
             var dialog = new OpenFileDialog();
+
             dialog.Title = "Open Image";
             dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
 
             if (dialog.ShowDialog() == true)
             {
-                //Create stream file from local image url
-                imageURL = dialog.FileName.ToString();
-                imageFileName = imageURL.Substring(imageURL.LastIndexOf('\\') + 1);
-                // get block reference to put image on
-                CloudBlockBlob blockBlob = cbc.GetBlockBlobReference(imageFileName);
-                blockBlob.Properties.ContentType = "image/jpg";
-                cloudProdutURL = blockBlob.Uri.AbsoluteUri;
-                using (var fileStream = File.OpenRead(imageURL))
-                {
-                    blockBlob.UploadFromFile(imageURL);
-                }
+                path = dialog.FileName;
             }
-            return cloudProdutURL;
+
+            if (!string.IsNullOrEmpty(path))
+            {
+                imageURL = await ctl.addProductImage(path);
+                txtImageURL.Text = imageURL;
+            }
         }
+
 
         private bool validateFields()
         {
-            if (String.IsNullOrEmpty(txtTenSP.Text))
+            if (!ctl.validateTextBox(txtTenSP.Text))
             {
-                MessageBox.Show("Tên sản phẩm không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Tên sản phẩm không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(txtGiaNhap.Text))
+            else if (!ctl.validateTextBox(txtGiaNhap.Text))
             {
-                MessageBox.Show("Giá nhập không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Giá nhập không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(txtGiaBan.Text))
+            else if (!ctl.validateTextBox(txtGiaBan.Text))
             {
-                MessageBox.Show("Giá bán không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Giá bán không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(txtTacGia.Text))
+            else if (!ctl.validateTextBox(txtTacGia.Text))
             {
-                MessageBox.Show("Tên tác giả không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Tên tác giả không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(txtSoTrang.Text))
+            else if (!ctl.validateTextBox(txtSoTrang.Text))
             {
-                MessageBox.Show("Số trang không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Số trang không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(dpNgayXuatBan.Text))
+            else if (!ctl.validateTextBox(dpNgayXuatBan.Text))
             {
-                MessageBox.Show("Ngày xuất bản không được trống!!!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Ngày xuất bản không được trống!!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(txtImageURL.Text))
+            else if (!ctl.validateTextBox(txtImageURL.Text))
             {
                 MessageBox.Show("Link sản phẩm không được trống!!!", "Thông báo", MessageBoxButton.OK);
                 return false;
@@ -248,8 +268,8 @@ namespace AppBookTrading.View.Page
                     sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                     try
                     {
-                        _ = ctl.UpdateAsync(sach_dto);
-                        MessageBox.Show("Update successful");
+                        ctl.UpdateAsync(sach_dto);
+                        MessageBox.Show("Cập nhật sản phẩm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                         dgvSanPham.SelectedIndex = 1;
                         clearText();
                         disableText();
@@ -257,7 +277,7 @@ namespace AppBookTrading.View.Page
                     }
                     catch
                     {
-                        MessageBox.Show("Fail to update");
+                        MessageBox.Show("Cập nhật sản phẩm thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -286,17 +306,18 @@ namespace AppBookTrading.View.Page
                 sach_dto.KICHTHUOC = txtKichThuoc.Text;
                 sach_dto.NGAYXUATBAN = dpNgayXuatBan.SelectedDate;
                 sach_dto.SOTRANG = int.Parse(txtSoTrang.Text);
+                sach_dto.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                 try
                 {
                     ctl.AddAsync(sach_dto);
-                    MessageBox.Show("Inserting product successful");
+                    MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     clearText();
                     disableText();
                     Load();
                 }
                 catch
                 {
-                    MessageBox.Show("Inserting product fail");
+                    MessageBox.Show("Thêm sản phẩm thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                     disableText();
                 }
 
@@ -322,13 +343,13 @@ namespace AppBookTrading.View.Page
         {   
             if(dgvSanPham.SelectedItem != null) {
                 SACH_DTO s = (SACH_DTO)dgvSanPham.SelectedItem;
-                MessageBoxResult result = MessageBox.Show("Bạn có muốn xoá sách " + s.TENSACH + "?", "Thông báo", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Bạn có muốn xoá sách " + s.TENSACH + "?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
                         _ = ctl.DeleteAsync(txtMaSP.Text);
-                        MessageBox.Show("Delete successful");
+                        MessageBox.Show("Xoá sản phẩm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                         clearText();
                         Load();
                     }
@@ -340,15 +361,15 @@ namespace AppBookTrading.View.Page
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một sản phẩm!");
+                MessageBox.Show("Vui lòng chọn một sản phẩm!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }            
         }
 
-        private bool checkNull(SACH_DTO s)
-        {
+        //private bool checkNull(SACH_DTO s)
+        //{
 
-            return true;
-        }
+        //    return true;
+        //}
 
         private void dgvSanPham_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -379,11 +400,6 @@ namespace AppBookTrading.View.Page
 
         }
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
-        {
-           txtImageURL.Text =  addImageToProduct("product-images");
-        }
-
 
         private void withoutNumberValidate(object sender, TextCompositionEventArgs e)
         {
@@ -401,7 +417,7 @@ namespace AppBookTrading.View.Page
 
         private void btnViewIMG_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtImageURL.Text))
+            if (ctl.validateTextBox(txtImageURL.Text))
             {
                 ImgWindow modalWindow = new ImgWindow();
                 modalWindow.getIMG(txtImageURL.Text);
@@ -409,8 +425,13 @@ namespace AppBookTrading.View.Page
             }
             else
             {
-                MessageBox.Show("Link ảnh trống");
+                MessageBox.Show("Link ảnh trống", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            AddImageToProductAsync();
         }
     }
 

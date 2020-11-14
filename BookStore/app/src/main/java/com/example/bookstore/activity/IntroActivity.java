@@ -63,9 +63,9 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img1));
-        mList.add(new ScreenItem("Fast Delivery","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img2));
-        mList.add(new ScreenItem("Easy Payment","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img3));
+        mList.add(new ScreenItem("Book","Hãy để chúng tôi mang lại trải nghiệm tuyệt vời nhất cho bạn. Cùng tận hưởng nhé!",R.drawable.img1));
+        mList.add(new ScreenItem("Fast Delivery","Giao hàng nhanh chỉ trong 2 giờ. Thời gian một khi đã trôi qua sẽ không bao giờ quay lại, hãy trân trọng nó!",R.drawable.img2));
+        mList.add(new ScreenItem("Easy Payment","Thanh toán trực tuyến qua internet banking.",R.drawable.img3));
 
         // setup viewpager
         screenPager = findViewById(R.id.screen_viewpager);

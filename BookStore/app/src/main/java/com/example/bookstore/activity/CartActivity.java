@@ -89,7 +89,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.Oncli
                     String strSumPrice = txtSumPrice.getText().toString().replace(",","").replace(" đ","");
                     Double SumPrice = Double.parseDouble(strSumPrice);
                     final String BillId = UUID.randomUUID().toString();
-                    Bill bill = new Bill(BillId,user.getMaKH(),dateNow,SumPrice,null);
+                    Bill bill = new Bill(BillId,user.getMaKH(),dateNow,SumPrice,"Tạm Giữ");
                     Call<String> call = requestAPI.CreateBill(bill);
                     call.enqueue(new Callback<String>() {
                         @Override

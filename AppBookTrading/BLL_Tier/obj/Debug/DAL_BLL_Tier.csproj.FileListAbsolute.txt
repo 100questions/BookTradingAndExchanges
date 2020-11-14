@@ -28,3 +28,11 @@ D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAnd
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\System.Numerics.Vectors.xml
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\Firebase.Auth.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\Firebase.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\Firebase.Storage.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\LiteDB.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\System.Reactive.dll
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\Firebase.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\LiteDB.xml
+D:\Hufi Documents\DoAn\Phat trien phan mem va ung dung thong minh\BookTradingAndExchanges\AppBookTrading\BLL_Tier\bin\Debug\System.Reactive.xml

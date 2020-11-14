@@ -1,4 +1,5 @@
 ﻿using DAL_BLL_Tier;
+using DAL_BLL_Tier.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace DAL_BLL_Tier
         public Ctl_HoaDon()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri(Contants.URL);
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
         }
@@ -36,17 +37,12 @@ namespace DAL_BLL_Tier
             return hoadon_dto;
         }
 
-        public async Task<HOADON_DTO> UpadateAsync(HOADON_DTO hd)
+        public async void UpadateAsync(HOADON_DTO hd)
         {
             var json = JsonConvert.SerializeObject(hd);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PutAsync($"api/HoaDon/{hd.MAHD}", stringContent);
+            HttpResponseMessage response = await _client.PutAsync($"api/HoaDon/" + hd.MAHD, stringContent);
             response.EnsureSuccessStatusCode();
-
-            // Deserialize the updated product from the response body.
-            json = await response.Content.ReadAsStringAsync();
-            hd = JsonConvert.DeserializeObject<HOADON_DTO>(json);
-            return hd;
         }
     }
 }

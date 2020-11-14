@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DAL_BLL_Tier.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace DAL_BLL_Tier
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri(Contants.URL);
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -31,12 +32,11 @@ namespace DAL_BLL_Tier
         }
 
 
-        public async void AddPublisherAsync(NHAXUATBAN_DTO sach)
+        public async void AddPublisherAsync(NHAXUATBAN_DTO nxb)
         {
-            var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(nxb, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync($"api/NhaXuatBan/", httpContent);
+            HttpResponseMessage response = await _client.PostAsync($"api/NhaXuatBan", httpContent);
         }
 
         public async Task<NHAXUATBAN_DTO> GetPublisherAsync(string ma)
@@ -45,6 +45,14 @@ namespace DAL_BLL_Tier
             var json = await response.Content.ReadAsStringAsync();
             var nhaxuatban_dto = JsonConvert.DeserializeObject<NHAXUATBAN_DTO>(json);
             return nhaxuatban_dto;
+        }
+
+        public async void UpdateAsync(NHAXUATBAN_DTO nxb)
+        {
+            var json = JsonConvert.SerializeObject(nxb);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PutAsync($"api/NhaXuatBan/{nxb.MANXB}", stringContent);
+            response.EnsureSuccessStatusCode();
         }
 
     }

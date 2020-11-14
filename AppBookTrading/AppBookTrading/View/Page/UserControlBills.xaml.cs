@@ -16,7 +16,8 @@ namespace AppBookTrading.View.Page
         public UserControlBills()
         {
             InitializeComponent();
-            Load();
+            LoadCBBTrangThai();
+            loadHoaDon();
         }
 
         private void dgvHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,15 +35,18 @@ namespace AppBookTrading.View.Page
 
 
 
-        public async void Load()
+        public async void LoadCBBTrangThai()
         {
-            var lstHoaDon = await hoadon_ctl.GetList();
-            dgvHoaDon.ItemsSource = lstHoaDon;
-
             String[] lstTrangThai = { "Tạm Giữ", "Đang Vận Chuyển", "Đã Giao", "Đã Huỷ" };
             cbbTrangThai.ItemsSource = lstTrangThai;
             cbbTrangThai.SelectedIndex = 0;
 
+        }
+
+        public async void loadHoaDon()
+        {
+            var lstHoaDon = await hoadon_ctl.GetList();
+            dgvHoaDon.ItemsSource = lstHoaDon;
         }
 
 
@@ -91,28 +95,29 @@ namespace AppBookTrading.View.Page
             }
             else
             {
-                MessageBox.Show("Hãy chọn một hoá đơn!");
+                MessageBox.Show("Hãy chọn một hoá đơn!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(hd != null)
             {
-                hd.TRANGTHAI = cbbTrangThai.SelectedValue.ToString();
                 try
                 {
-                    hd = await hoadon_ctl.UpadateAsync(hd);
-                    MessageBox.Show("Cập nhật hoá đơn thành công");
+                    hd.TRANGTHAI = cbbTrangThai.Text;
+                    hoadon_ctl.UpadateAsync(hd);
+                    MessageBox.Show("Cập nhật hoá đơn thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    loadHoaDon();
                 }
                 catch
                 {
-                    MessageBox.Show("Cập nhật hoá đơn thất bại");
+                    MessageBox.Show("Cập nhật hoá đơn thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn hoá đơn trước khi cập nhật");
+                MessageBox.Show("Vui lòng chọn hoá đơn trước khi cập nhật", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

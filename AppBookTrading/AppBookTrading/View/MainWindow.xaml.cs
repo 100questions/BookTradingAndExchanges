@@ -36,6 +36,15 @@ namespace AppBookTrading
             if(nd.QUYEN == 0)
             {
                 btnDoanhSo.Visibility = Visibility.Collapsed;
+                btnNhapKho.Visibility = Visibility.Collapsed;
+            }
+            else if(nd.QUYEN == 2)
+            {
+                this.btnNhapKho.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                btnCart.Visibility = Visibility.Collapsed;
+                btnUser.Visibility = Visibility.Collapsed;
+                btnDoanhSo.Visibility = Visibility.Collapsed;
+                
             }
         }
 

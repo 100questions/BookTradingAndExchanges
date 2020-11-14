@@ -23,7 +23,12 @@ namespace AppBookTrading.View.Page
     public partial class UserControlStatistical : UserControl
     {
         Ctl_HoaDon hoadon_ctl = new Ctl_HoaDon();
+        Ctl_Sach sach_ctl = new Ctl_Sach();
         List<HOADON_DTO> lstHoaDon;
+        List<SACH_DTO> lstSach;
+        private const string DANG_KINH_DOANH = "Đang kinh doanh";
+        private const string HET_HANG = "Hết hàng";
+        private const string NGUNG_KINH_DOANH = "Ngừng kinh doanh";
         public UserControlStatistical()
         {
             InitializeComponent();
@@ -43,11 +48,71 @@ namespace AppBookTrading.View.Page
             };
         }
 
+        /// <summary>
+        /// Load data
+        /// </summary>
         public async void Load() {
-            lstHoaDon = await hoadon_ctl.GetList();
-            cbbFillter.ItemsSource = new string[] {"2018","2019","2020","2021" };
+            try
+            {
+                lstHoaDon = await hoadon_ctl.GetList();
+                lstSach = await sach_ctl.GetList();
+                int slSPDangKD = 0;
+                int slSPHetHang = 0;
+                int slSPNgungKD = 0;
+                if (lstSach != null)
+                {
+                    lstSach.ForEach(s => {
+                        if (s.TRANGTHAI == DANG_KINH_DOANH)
+                        {
+                            slSPDangKD++;
+                        }
+                        else if (s.TRANGTHAI == HET_HANG)
+                        {
+                            slSPHetHang++;
+                        }
+                        else
+                        {
+                            slSPNgungKD++;
+                        }
+                        
+                    });
+                    txtSanPhamNgungKD.Text = slSPNgungKD.ToString();
+                    txtSanPhamHetHang.Text = slSPHetHang.ToString();
+                    txtSanPhamDangKinhDoanh.Text = slSPDangKD.ToString();
+
+                }
+                cbbFillter.ItemsSource = new string[] { "2018", "2019", "2020", "2021" };
+                double doanhThuThang = 0;
+                double doanhThuNam = 0;
+                int soDonTrongThang = 0;
+                lstHoaDon.ForEach(hd =>
+                {
+                    if (hd.NGAYLAPHD.Value.Month == DateTime.Now.Month)
+                    {
+                        doanhThuThang += hd.THANHTIEN;
+                        soDonTrongThang++;
+                    }
+                    if (hd.NGAYLAPHD.Value.Year == DateTime.Now.Year)
+                    {
+                        doanhThuNam += hd.THANHTIEN;
+                    }
+                });
+                txtDoanhThuThang.Text = doanhThuThang.ToString();
+                txtDoanhThuNam.Text = doanhThuNam.ToString();
+                txtTongDonHang.Text = lstHoaDon.Count().ToString();
+                txtDonHangTrongThang.Text = soDonTrongThang.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        /// <summary>
+        /// Loc thanh tien theo nam
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public Dictionary<string, double> FilterData(int year)
         {
             Dictionary<string, double> datas = new Dictionary<string, double>();

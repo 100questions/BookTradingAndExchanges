@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DAL_BLL_Tier.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,14 @@ namespace DAL_BLL_Tier
 {
     public class Ctl_ChiTietPhieuNhap
     {
-        public static HttpClient _client;
+        public HttpClient _client;
         public HttpResponseMessage _reponse;
 
         public Ctl_ChiTietPhieuNhap()
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://onlinebookstoreservices.azurewebsites.net/");
+            _client.BaseAddress = new Uri(Contants.URL);
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -39,7 +40,7 @@ namespace DAL_BLL_Tier
         }
 
 
-        public async void AddAsync(Ctl_ChiTietPhieuNhap ctpn)
+        public async void AddAsync(CT_PHIEUNHAPSACH_DTO ctpn)
         {
             var json = JsonConvert.SerializeObject(ctpn, Formatting.Indented);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");

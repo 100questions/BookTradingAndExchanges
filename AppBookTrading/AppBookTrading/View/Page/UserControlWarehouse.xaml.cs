@@ -18,7 +18,8 @@ namespace AppBookTrading.View.Page
         public UserControlWarehouse()
         {
             InitializeComponent();
-            Load();
+            LoadPNS();
+            LoadNCC();
         }
 
         private void dgvPhieuNhapSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,26 +37,28 @@ namespace AppBookTrading.View.Page
 
 
 
-        public async void Load()
+        public async void LoadNCC()
+        {
+            var lstNhaCungCap = await ctl_ncc.GetList();
+            cbbNhaCungCap.ItemsSource = lstNhaCungCap;
+            cbbNhaCungCap.SelectedValuePath = "MANCC";
+            cbbNhaCungCap.DisplayMemberPath = "TENNCC";
+            cbbNhaCungCap.SelectedIndex = 0;
+        }
+
+        public async void LoadPNS()
         {
             var lstPhieuNhapSach = await ctl.GetList();
             dgvPhieuNhapSach.ItemsSource = lstPhieuNhapSach;
-
-            var lstNhaCungCap = await ctl_ncc.GetList();
-            cbbNhaCungCap.ItemsSource = lstNhaCungCap;
-            cbbNhaCungCap.SelectedValuePath = "MACCC";
-            cbbNhaCungCap.DisplayMemberPath = "TENNCC";
-            cbbNhaCungCap.SelectedIndex = 0;
-
         }
 
         private void btnTaoPhieuNhap_Click(object sender, RoutedEventArgs e)
         {
             ImportCreatingWindow Icw = new ImportCreatingWindow();
-            string s = cbbNhaCungCap.SelectedValue.ToString();
             Icw.maNCC = cbbNhaCungCap.SelectedValue.ToString(); 
             Icw.maNV = nd.MANV;
             Icw.ShowDialog();
+            LoadPNS();
         }
 
         private void btnXemPhieuNhap_Click(object sender, RoutedEventArgs e)
@@ -65,16 +68,20 @@ namespace AppBookTrading.View.Page
                 ImportDetailsWindow Idw = new ImportDetailsWindow();
                 Idw.getCTPN(pns.MAPHIEU);
                 Idw.ShowDialog();
+                LoadPNS();
             }
             else
             {
-                MessageBox.Show("Hãy chọn một phiếu nhập!");
+                MessageBox.Show("Hãy chọn một phiếu nhập!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
         private void btnThemNhaCungCap_Click(object sender, RoutedEventArgs e)
         {
-
+            SupplierCreatingWindow Sc = new SupplierCreatingWindow();
+            Sc.getState(false);
+            Sc.ShowDialog();
+            LoadNCC();
         }
     }
 }
