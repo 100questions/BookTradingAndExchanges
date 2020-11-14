@@ -25,11 +25,11 @@ import com.example.bookstore.room.database.AppDatabase;
  */
 public class AccountFragment extends Fragment {
 
-    Button btnLogin;
-    Button btnLogged;
-    Button btnLogout;
-    AppDatabase mDB;
-    SharedPreferences sharedPreferences;
+    private Button btnLogin;
+    private Button btnLogged;
+    private Button btnLogout;
+    private AppDatabase mDB;
+    private SharedPreferences sharedPreferences;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -47,7 +47,7 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         init(view);
-        sharedPreferences = getActivity().getSharedPreferences("Logged", Context.MODE_PRIVATE);
+        sharedPreferences = requireActivity().getSharedPreferences("Logged", Context.MODE_PRIVATE);
 
         boolean isLogged = sharedPreferences.getBoolean("IsLogged",false);
         if(isLogged)
@@ -56,9 +56,11 @@ public class AccountFragment extends Fragment {
             btnLogin.setVisibility(View.GONE);
             User user = mDB.UseDao().getUser().get(0);
             btnLogged.setText("Xin Chào : " + user.getTenKH());
+            btnLogout.setVisibility(View.VISIBLE);
         }
         else
         {
+            btnLogout.setVisibility(View.GONE);
             btnLogged.setVisibility(View.GONE);
             btnLogin.setVisibility(View.VISIBLE);
         }
@@ -84,7 +86,7 @@ public class AccountFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_cart,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }

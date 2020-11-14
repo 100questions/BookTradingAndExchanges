@@ -2,8 +2,11 @@ package com.example.bookstore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +17,28 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.bookstore.R;
+import com.example.bookstore.adapter.SearchBookAdapter;
+import com.example.bookstore.api.APIClient;
+import com.example.bookstore.api.RequestAPI;
+import com.example.bookstore.model.Entity.Book;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SearchProductActivity extends AppCompatActivity {
 
     ChipGroup chipGroup;
     ImageView imgSearchBack;
     SearchView searchView;
+    RequestAPI requestAPI;
+    SearchBookAdapter searchBookAdapter;
+    RecyclerView rcvSearchBook;
+    ArrayList<Book> books = new ArrayList<Book>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +75,34 @@ public class SearchProductActivity extends AppCompatActivity {
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public boolean onQueryTextSubmit(final String query) {
+                Call<ArrayList<Book>> call = requestAPI.getAllBook();
+                call.enqueue(new Callback<ArrayList<Book>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Book>> call, Response<ArrayList<Book>> response) {
+                        if(response.isSuccessful())
+                        {
+                            ArrayList<Book> list = response.body();
+                            Log.i("aaa",list.toString());
+                            for (Book book: list) {
+                                if(book.getBookName().contains(query)){
+                                    books.add(book);
+                                }
+                            }
+                            Log.i("aaa",books.toString());
+                            searchBookAdapter = new SearchBookAdapter(rcvSearchBook.getContext(),books);
+                            rcvSearchBook.setAdapter(searchBookAdapter);
+                            rcvSearchBook.setLayoutManager(new LinearLayoutManager(rcvSearchBook.getContext(), LinearLayoutManager.VERTICAL, false));
+                            searchBookAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Book>> call, Throwable t) {
+                        Log.d("TAG","Book = "+t.toString());
+                    }
+                });
+                return true;
             }
 
             @Override
@@ -81,6 +124,8 @@ public class SearchProductActivity extends AppCompatActivity {
         chipGroup = (ChipGroup) findViewById(R.id.chipGroup);
         imgSearchBack = (ImageView) findViewById(R.id.btnSearchBack);
         searchView = (SearchView) findViewById(R.id.product_search_view);
+        requestAPI = APIClient.getClient().create(RequestAPI.class);
+        rcvSearchBook = findViewById(R.id.rcvSearch);
     }
 
     private Chip addNewChip(String key)

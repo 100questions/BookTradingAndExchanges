@@ -1,12 +1,16 @@
 package com.example.bookstore.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +19,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.bookstore.activity.LoginRegisterActivity;
+import com.example.bookstore.activity.MainActivity;
 import com.example.bookstore.api.APIClient;
 import com.example.bookstore.api.RequestAPI;
 import com.example.bookstore.model.Entity.User;
 import com.example.bookstore.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.UUID;
 
@@ -30,10 +37,10 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class RegisterFragment extends Fragment {
-    EditText edtName,edtPhoneNumber, edtAddress, edtPassword;
-    RadioButton rdMale, rdFeMale;
-    Button btnRegister;
-    RequestAPI requestAPI;
+    private EditText edtName,edtPhoneNumber, edtAddress, edtPassword;
+    private RadioButton rdMale, rdFeMale;
+    private Button btnRegister;
+    private RequestAPI requestAPI;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -70,7 +77,10 @@ public class RegisterFragment extends Fragment {
                     public void onResponse(Call<String> call, Response<String> response) {
                         if(response.isSuccessful())
                         {
-                            Toast.makeText(requireContext(),"isSuccessful",Toast.LENGTH_LONG);
+                            Intent intent = new Intent(requireContext(), LoginRegisterActivity.class);
+                            startActivity(intent);
+                            View view = requireActivity().findViewById(R.id.btn_register);
+                            ShowSnackBar(view,"Dat Hang Thanh Cong",Snackbar.LENGTH_LONG);
                         }
                         Log.d("TAG","Response = "+ response.body());
                     }
@@ -78,10 +88,17 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
                         Log.d("TAG","Response = "+t.toString());
+                        View view = requireActivity().findViewById(R.id.btn_register);
+                        ShowSnackBar(view,"Dat Hang That Bai",Snackbar.LENGTH_LONG);
                     }
                 });
             }
         });
+    }
+
+    private void ShowSnackBar(View view, String message, int duration)
+    {
+        Snackbar.make(view,message,duration).show();
     }
 
     private void init(View view)
