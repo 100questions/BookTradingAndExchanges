@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DAL_BLL_Tier.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,14 @@ namespace DAL_BLL_Tier
 {
     public class Ctl_ChucVu
     {
-        public static HttpClient _client;
+        public HttpClient _client;
         public HttpResponseMessage _reponse;
 
         public Ctl_ChucVu()
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:44365/");
+            _client.BaseAddress = new Uri(Contants.URL);
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }

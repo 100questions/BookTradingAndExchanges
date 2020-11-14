@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DAL_BLL_Tier.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,15 @@ namespace DAL_BLL_Tier
 {
     public class Ctl_LoaiSach
     {
-        public static HttpClient _client;
+        public HttpClient _client;
         public HttpResponseMessage _reponse;
 
         public Ctl_LoaiSach()
         {
 
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:44365/");
-            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.BaseAddress = new Uri(Contants.URL);
+            //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         public async Task<List<LOAISACH_DTO>> GetList()
@@ -32,13 +33,13 @@ namespace DAL_BLL_Tier
         }
 
 
-        public async void AddBookTypeAsync(LOAISACH_DTO sach)
-        {
-            var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
-            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync("https://bookstoreservices.azurewebsites.net/api/Sach", httpContent);
-        }
+        //public async void AddBookTypeAsync(LOAISACH_DTO sach)
+        //{
+        //    var json = JsonConvert.SerializeObject(sach, Formatting.Indented);
+        //    var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+        //    HttpClient client = new HttpClient();
+        //    HttpResponseMessage response = await client.PostAsync("https://bookstoreservices.azurewebsites.net/api/Sach", httpContent);
+        //}
 
         public async Task<LOAISACH_DTO> GetBookTypeAsync(string ma)
         {

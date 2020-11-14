@@ -252,6 +252,7 @@
     <Compile Include="DTO\SACH_DTO.cs" />
     <Compile Include="Ctl_Sach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Contants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

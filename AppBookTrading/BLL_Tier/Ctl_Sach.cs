@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Firebase.Storage;
 using System.IO;
+using DAL_BLL_Tier.Utils;
 
 namespace DAL_BLL_Tier
 {
     public class Ctl_Sach
     {
-        public static HttpClient _client;
+        public HttpClient _client;
         public HttpResponseMessage _reponse;
 
 
@@ -22,7 +23,7 @@ namespace DAL_BLL_Tier
         public Ctl_Sach()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:44365/");
+            _client.BaseAddress = new Uri(Contants.URL);
             //_client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
