@@ -28,6 +28,26 @@ namespace BookStoreServices.Repository
             return db.SACHes.Where(t => t.MASACH.Equals(maSach)).FirstOrDefault();
         }
 
+        public List<SACH> GetList(string maKH)
+        {
+            List<HOADON> lstHD = db.HOADONs.Where(hd => hd.MAKH == maKH).ToList();
+
+            Func<CHITIETHOADON, bool> func = (ct) =>
+            {
+                return Array.Exists(lstHD.ToArray(), hd => hd.MAHD == ct.MAHD);
+            };
+
+            List<CHITIETHOADON> lstCTHD = db.CHITIETHOADONs.Where(func).ToList();
+
+            Func<SACH, bool> func1 = (s) =>
+            {
+                return Array.Exists(lstCTHD.ToArray(), ct => ct.MASP == s.MASACH);
+            };
+
+
+            return db.SACHes.Where(func1).ToList();
+        }
+
         public void Delete(string maSach)
         {
             db.SACHes.DeleteOnSubmit(db.SACHes.FirstOrDefault(t => t.MASACH.Equals(maSach)));

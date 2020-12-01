@@ -75,7 +75,7 @@ namespace BookStoreServices.Models
     #endregion
 		
 		public BookStoreDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString2"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["onlinebookstoreConnectionString3"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

@@ -8,6 +8,7 @@ import com.example.bookstore.model.Entity.Category;
 import com.example.bookstore.model.Entity.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -19,6 +20,9 @@ public interface RequestAPI {
     // Book
     @GET("api/Sach")
     Call<ArrayList<Book>> getAllBook();
+
+    @GET("api/Sach/ChiTiet/{maKH}")
+    Call<ArrayList<Book>> getListBook(@Path("maKH") String maKH);
 
     @GET("api/Sach/{ma}")
     Call<Book> GetBook(@Path("ma") String ma);
@@ -33,6 +37,12 @@ public interface RequestAPI {
 
     @GET("api/KhachHang/{tk}/{mk}")
     Call<User> Login(@Path("tk") String tk,@Path("mk") String mk);
+
+    @GET("api/HoaDon/{maKH}")
+    Call<ArrayList<Bill>> GetListBill(@Path("maKH") String maKH);
+
+    @GET("api/ChiTietHoaDon/{maHD}")
+    Call<List<BillDetail>> GetListBillDetail(@Path("maHD") String maHD);
 
     //Hoa Don
     @POST("api/HoaDon")

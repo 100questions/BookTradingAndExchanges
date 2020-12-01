@@ -1,6 +1,7 @@
 ﻿using BookStoreServices.DTO;
 using BookStoreServices.Models;
 using BookStoreServices.Repository;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -31,6 +32,21 @@ namespace BookStoreServices.Controllers
         public HttpResponseMessage Get(string ma)
         {
             HOADON_DTO item_dto = _repository.convertToDTO(_repository.Get(ma));
+            if (item_dto != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
+        [HttpGet]
+        [Route("api/HoaDon/{maKH}")]
+        public HttpResponseMessage GetHDByMaKH(string maKH)
+        {
+            var item_dto = _repository.GetByMaKH(maKH);
             if (item_dto != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, item_dto);

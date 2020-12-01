@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.bookstore.R;
+import com.example.bookstore.adapter.RecyclerViewTouchListener;
 import com.example.bookstore.adapter.SearchBookAdapter;
 import com.example.bookstore.api.APIClient;
 import com.example.bookstore.api.RequestAPI;
@@ -110,6 +112,20 @@ public class SearchProductActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        rcvSearchBook.addOnItemTouchListener(new RecyclerViewTouchListener(this, rcvSearchBook, new RecyclerViewTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(SearchProductActivity.this, DetailProductActivity.class);
+                intent.putExtra("BookDetail", books.get(position));
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         imgSearchBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.example.bookstore.activity.LoginRegisterActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.activity.MainActivity;
+import com.example.bookstore.activity.ProductHasBeenBought;
 import com.example.bookstore.model.Entity.User;
 import com.example.bookstore.room.database.AppDatabase;
 
@@ -27,9 +28,10 @@ public class AccountFragment extends Fragment {
 
     private Button btnLogin;
     private Button btnLogged;
-    private Button btnLogout;
+    private Button btnLogout,btnProductBought;
     private AppDatabase mDB;
     private SharedPreferences sharedPreferences;
+    boolean isLogged;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -49,7 +51,7 @@ public class AccountFragment extends Fragment {
         init(view);
         sharedPreferences = requireActivity().getSharedPreferences("Logged", Context.MODE_PRIVATE);
 
-        boolean isLogged = sharedPreferences.getBoolean("IsLogged",false);
+        isLogged = sharedPreferences.getBoolean("IsLogged",false);
         if(isLogged)
         {
             btnLogged.setVisibility(View.VISIBLE);
@@ -83,6 +85,23 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        btnProductBought.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                if(isLogged)
+                {
+                    intent = new Intent(requireContext(), ProductHasBeenBought.class);
+                }
+                else
+                {
+                    intent = new Intent(requireContext(), LoginRegisterActivity.class);
+                }
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -97,5 +116,6 @@ public class AccountFragment extends Fragment {
         mDB = AppDatabase.BuilderDatabase(requireContext());
         btnLogged = view.findViewById(R.id.btnLogged);
         btnLogin = view.findViewById(R.id.btnLogin);
+        btnProductBought = view.findViewById(R.id.btnProductBought);
     }
 }

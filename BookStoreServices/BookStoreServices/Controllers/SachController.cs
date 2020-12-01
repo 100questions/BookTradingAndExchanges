@@ -1,6 +1,7 @@
 ﻿using BookStoreServices.DTO;
 using BookStoreServices.Models;
 using BookStoreServices.Repository;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -34,6 +35,26 @@ namespace BookStoreServices.Controllers
             if (item_dto != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Sach/ChiTiet/{maKH}")]
+        public HttpResponseMessage GetSachByMaKH(string maKH)
+        {
+            var item_dto = _repository.GetList(maKH);
+            List<SACH_DTO> lstSach = new List<SACH_DTO>();
+            foreach (var item in item_dto)
+            {
+                lstSach.Add(_repository.convertToDTO(item));
+            }
+            if (item_dto != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, lstSach);
             }
             else
             {

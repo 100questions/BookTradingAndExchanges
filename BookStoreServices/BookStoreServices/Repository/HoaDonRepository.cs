@@ -28,6 +28,11 @@ namespace BookStoreServices.Repository
             return db.HOADONs.Where(t => t.MAHD.Equals(ma)).FirstOrDefault();
         }
 
+        public List<HOADON> GetByMaKH(string makh)
+        {
+            return db.HOADONs.Where(t => t.MAKH.Equals(makh)).ToList();
+        }
+
         public List<HOADON> List()
         {
             return db.HOADONs.ToList();
