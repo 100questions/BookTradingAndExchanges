@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.bookstore.activity.BillsManagerActivity;
 import com.example.bookstore.activity.LoginRegisterActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.activity.MainActivity;
@@ -28,7 +29,7 @@ public class AccountFragment extends Fragment {
 
     private Button btnLogin;
     private Button btnLogged;
-    private Button btnLogout,btnProductBought;
+    private Button btnLogout,btnProductBought,btnManagerBill;
     private AppDatabase mDB;
     private SharedPreferences sharedPreferences;
     boolean isLogged;
@@ -102,6 +103,22 @@ public class AccountFragment extends Fragment {
 
             }
         });
+
+        btnManagerBill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                if(isLogged)
+                {
+                    intent = new Intent(requireContext(), BillsManagerActivity.class);
+                }
+                else
+                {
+                    intent = new Intent(requireContext(), LoginRegisterActivity.class);
+                }
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -112,6 +129,7 @@ public class AccountFragment extends Fragment {
 
     private void init(View view)
     {
+        btnManagerBill = view.findViewById(R.id.btnManagerBill);
         btnLogout = view.findViewById(R.id.btnLogout);
         mDB = AppDatabase.BuilderDatabase(requireContext());
         btnLogged = view.findViewById(R.id.btnLogged);

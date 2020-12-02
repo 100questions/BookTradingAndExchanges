@@ -43,13 +43,18 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
-        [Route("api/HoaDon/{maKH}")]
+        [Route("api/HoaDon/KhachHang/{maKH}")]
         public HttpResponseMessage GetHDByMaKH(string maKH)
         {
             var item_dto = _repository.GetByMaKH(maKH);
-            if (item_dto != null)
+            List<HOADON_DTO> lstHD = new List<HOADON_DTO>();
+            foreach (var item in item_dto)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, item_dto);
+                lstHD.Add(_repository.convertToDTO(item));
+            }
+            if (lstHD != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, lstHD);
             }
             else
             {

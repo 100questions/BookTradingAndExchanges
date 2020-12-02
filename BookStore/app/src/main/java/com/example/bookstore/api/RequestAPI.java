@@ -38,7 +38,7 @@ public interface RequestAPI {
     @GET("api/KhachHang/{tk}/{mk}")
     Call<User> Login(@Path("tk") String tk,@Path("mk") String mk);
 
-    @GET("api/HoaDon/{maKH}")
+    @GET("api/HoaDon/KhachHang/{maKH}")
     Call<ArrayList<Bill>> GetListBill(@Path("maKH") String maKH);
 
     @GET("api/ChiTietHoaDon/{maHD}")
