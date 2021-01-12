@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:weightSum="10"
+    android:background="@drawable/border_item"
+    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imgBillDetailBook"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3.5"
+        android:padding="15dp"
+        android:src="@drawable/img1"
+        />
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:paddingHorizontal="5dp">
+        <TextView
+            android:id="@+id/titleBillDetailBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="Kẻ Điên Bên Trái Thiên Tài Bên Phải"/>
+        <TextView
+            android:id="@+id/title_Supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_below="@id/titleBillDetailBook"
+            android:text="App Book Trading"/>
+        <TextView
+            android:id="@+id/priceBillDetailBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_Supplier"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/ReadLight"
+            android:text="68.680 đ" />
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceBillDetailBook">
+            <TextView
+                android:id="@+id/price_book_discount_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="820000"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="70dp"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/darker_gray" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/btn_reduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_remove_gray_24dp" />
+            <TextView
+                android:id="@+id/amountBillDetailBook"
+                android:layout_width="40dp"
+                android:layout_height="24dp"
+                tools:text="x3"
+                android:textAlignment="center"
+                android:layout_toRightOf="@id/btn_reduction" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/btn_increase"
+                android:layout_toRightOf="@id/amountBillDetailBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_black_24dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/btn_delete_cart_book"
+        android:layout_weight="0.5"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_gray_24dp" />
+</LinearLayout>

@@ -4,6 +4,7 @@ package com.example.bookstore.api;
 import com.example.bookstore.model.Entity.Bill;
 import com.example.bookstore.model.Entity.BillDetail;
 import com.example.bookstore.model.Entity.Book;
+import com.example.bookstore.model.Entity.BookRep;
 import com.example.bookstore.model.Entity.Category;
 import com.example.bookstore.model.Entity.User;
 
@@ -23,6 +24,9 @@ public interface RequestAPI {
 
     @GET("api/Sach/ChiTiet/{maKH}")
     Call<ArrayList<Book>> getListBook(@Path("maKH") String maKH);
+
+    @GET("api/Sach/HoaDon/{maHD}")
+    Call<ArrayList<BookRep>> getListBookByBillID(@Path("maHD") String maHD);
 
     @GET("api/Sach/{ma}")
     Call<Book> GetBook(@Path("ma") String ma);

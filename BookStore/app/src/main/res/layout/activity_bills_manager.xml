@@ -30,7 +30,6 @@
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvManagerBill"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         tools:listitem="@layout/bill_item_layout"
         android:layout_height="wrap_content"/>

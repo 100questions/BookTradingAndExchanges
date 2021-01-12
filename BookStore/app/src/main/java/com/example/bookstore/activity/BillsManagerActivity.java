@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 
 import com.example.bookstore.R;
 import com.example.bookstore.adapter.MangerBillAdapter;
+import com.example.bookstore.adapter.RecyclerViewTouchListener;
 import com.example.bookstore.adapter.SearchBookAdapter;
 import com.example.bookstore.api.APIClient;
 import com.example.bookstore.api.RequestAPI;
@@ -47,6 +49,21 @@ public class BillsManagerActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        rvManagerBill.addOnItemTouchListener(new RecyclerViewTouchListener(this, rvManagerBill, new RecyclerViewTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(BillsManagerActivity.this, BillDetailActivity.class);
+                intent.putExtra("BillID", bills.get(position).mAHD);
+                intent.putExtra("Price", bills.get(position).gettHANHTIEN());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     private void LoadData() {

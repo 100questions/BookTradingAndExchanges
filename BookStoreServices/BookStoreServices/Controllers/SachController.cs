@@ -43,6 +43,21 @@ namespace BookStoreServices.Controllers
         }
 
         [HttpGet]
+        [Route("api/Sach/HoaDon/{maHD}")]
+        public HttpResponseMessage GetSachByMaHD(string maHD)
+        {
+            var lstSach = _repository.GetListByMaHD(maHD);
+            if (lstSach != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, lstSach);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "NULL");
+            }
+        }
+
+        [HttpGet]
         [Route("api/Sach/ChiTiet/{maKH}")]
         public HttpResponseMessage GetSachByMaKH(string maKH)
         {

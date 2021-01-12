@@ -22,5 +22,9 @@
     <color name="LightGray">#CCCACA</color>
     <color name="Light">#F4F4F4</color>
     <color name="ReadLight">#D35B5B</color>
+    <color name="Sky">#DCF6FA</color>
+    <color name="SkyLight">#E7F6F8</color>
+    <color name="PinkLight">#FFF6FD</color>
+    <color name="GrayLight">#F6F6F6</color>
 </resources>
 

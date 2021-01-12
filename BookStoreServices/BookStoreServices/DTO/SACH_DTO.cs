@@ -22,5 +22,7 @@ namespace BookStoreServices.DTO
         public int? SOTRANG { get; set; }
         public string TRANGTHAI { get; set; }
 
+        public int? SoLuong { get; set; }
+
     }
 }

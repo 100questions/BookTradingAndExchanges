@@ -28,6 +28,16 @@ namespace BookStoreServices.Repository
             return db.SACHes.Where(t => t.MASACH.Equals(maSach)).FirstOrDefault();
         }
 
+        public List<SACH_DTO> GetListByMaHD(string maHD)
+        {
+            var query = from cthd in db.CHITIETHOADONs
+                        join sach in db.SACHes on cthd.MASP equals sach.MASACH
+                        where cthd.MAHD == maHD
+                           select new SACH_DTO { MANXB = sach.MASACH, TENSACH = sach.TENSACH , GIABANSACH = sach.GIABANSACH ,IMG = sach.IMG , SoLuong = cthd.SOLUONGMUA};
+
+            return query.ToList();
+        }
+
         public List<SACH> GetList(string maKH)
         {
             List<HOADON> lstHD = db.HOADONs.Where(hd => hd.MAKH == maKH).ToList();

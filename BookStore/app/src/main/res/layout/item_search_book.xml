@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="170dp"
+    android:background="@drawable/border_item"
     android:weightSum="10"
     android:orientation="horizontal">
     <ImageView

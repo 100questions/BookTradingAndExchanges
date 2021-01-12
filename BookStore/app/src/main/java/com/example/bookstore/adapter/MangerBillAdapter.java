@@ -23,15 +23,10 @@ import java.util.ArrayList;
 public class MangerBillAdapter extends RecyclerView.Adapter<BillViewHolder> {
     Context context;
     ArrayList<Bill> bills;
-    SearchBookAdapter.Onclick SumPriceOnClick;
 
     public MangerBillAdapter(Context context, ArrayList<Bill> bills) {
         this.context = context;
         this.bills = bills;
-    }
-
-    public void setSumPriceOnClick(SearchBookAdapter.Onclick sumPriceOnClick) {
-        SumPriceOnClick = sumPriceOnClick;
     }
 
     public interface Onclick {
