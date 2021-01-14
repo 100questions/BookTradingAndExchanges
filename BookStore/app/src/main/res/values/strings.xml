@@ -27,4 +27,5 @@
     <string name="AllProduct">Tất Cả Sản Phẩm</string>
     <string name="Logout">Đăng Xuất</string>
     <string name="rebuy">Đặt Lại Đơn Hàng</string>
+    <string name="update">Update</string>
 </resources>

@@ -14,10 +14,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/01/2020 08:55:08</publishTime>
     </File>
     <File Include="bin/BookStoreServices.dll">
-      <publishTime>01/12/2021 16:45:32</publishTime>
+      <publishTime>01/14/2021 10:07:40</publishTime>
     </File>
     <File Include="bin/BookStoreServices.pdb">
-      <publishTime>01/12/2021 16:45:32</publishTime>
+      <publishTime>01/14/2021 10:07:40</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>12/01/2020 08:55:08</publishTime>
@@ -218,7 +218,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/01/2020 09:08:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/01/2020 09:22:18</publishTime>
+      <publishTime>01/14/2021 10:08:07</publishTime>
     </File>
   </ItemGroup>
 </Project>

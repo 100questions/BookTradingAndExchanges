@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         Intent intent = getIntent();
         boolean isLogged = intent.getBooleanExtra("IsLogged",false);
+        boolean isUpdateUser = intent.getBooleanExtra("isUpdateUser",false);
 
-        if(isLogged)
+        if(isLogged || isUpdateUser)
         {
             LoadFragment(new AccountFragment());
             navView.setSelectedItemId(R.id.account_navigation);

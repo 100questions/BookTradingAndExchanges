@@ -15,6 +15,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RequestAPI {
@@ -38,6 +39,12 @@ public interface RequestAPI {
     //User
     @POST("api/KhachHang")
     Call<String> createUser(@Body User user);
+
+    @GET("api/KhachHang/{ma}")
+    Call<User> getUserByID(@Path("ma") String UserID);
+
+    @PUT("api/KhachHang/{ma}")
+    Call<String> updateUser(@Body User user,@Path("ma") String UserID);
 
     @GET("api/KhachHang/{tk}/{mk}")
     Call<User> Login(@Path("tk") String tk,@Path("mk") String mk);

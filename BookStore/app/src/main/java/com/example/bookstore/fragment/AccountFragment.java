@@ -19,6 +19,7 @@ import com.example.bookstore.activity.LoginRegisterActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.activity.MainActivity;
 import com.example.bookstore.activity.ProductHasBeenBought;
+import com.example.bookstore.activity.UpdateAccountActivity;
 import com.example.bookstore.model.Entity.User;
 import com.example.bookstore.room.database.AppDatabase;
 
@@ -116,6 +117,14 @@ public class AccountFragment extends Fragment {
                 {
                     intent = new Intent(requireContext(), LoginRegisterActivity.class);
                 }
+                startActivity(intent);
+            }
+        });
+
+        btnLogged.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), UpdateAccountActivity.class);
                 startActivity(intent);
             }
         });

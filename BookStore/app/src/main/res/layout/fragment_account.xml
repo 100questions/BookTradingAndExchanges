@@ -38,7 +38,6 @@
                 android:drawableRight="@drawable/ic_chevron_right_black_24dp"
                 android:paddingLeft="10dp"
                 android:visibility="gone"
-                android:text="@string/Login"
                 android:background="@drawable/btn_border_bottom"/>
 
             <Button

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.LoginFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="none"
+        android:background="@color/gradient_start_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/btnUpdateAccountBack"
+                android:layout_gravity="center"
+                android:layout_marginStart="-10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="10dp">
+        <!--    -->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUpdateName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/CustomerName" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!---->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUpdatePhone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/PhoneNumber" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!---->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUpdatePassWord"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/PassWord"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--    -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUpdateAddress"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/Address" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!---->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:checkedButton="@+id/radio_button_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rdUpdateMale"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/Male"
+                android:checked="true"
+                android:layout_marginHorizontal="20dp"/>
+            <RadioButton
+                android:id="@+id/rdUpdateFeMale"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/FeMale"
+                android:layout_marginHorizontal="20dp"/>
+        </RadioGroup>
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/update"
+            android:textColor="@color/white_color"
+            android:background="@color/ReadLight"
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Term"/>
+
+
+    </LinearLayout>
+</LinearLayout>

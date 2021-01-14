@@ -40,10 +40,10 @@ namespace BookStoreServices.Repository
         public void Update(KHACHHANG item, string ma)
         {
             KHACHHANG kh = db.KHACHHANGs.Where(t => t.MAKH.Equals(ma)).FirstOrDefault();
-            kh.MAKH = item.MAKH;
             kh.TENKH = item.TENKH;
             kh.SODT = item.SODT;
             kh.DIACHI = item.DIACHI;
+            kh.MatKhauDN = item.MatKhauDN;
             kh.GIOITINH = item.GIOITINH;
             db.SubmitChanges();
         }
